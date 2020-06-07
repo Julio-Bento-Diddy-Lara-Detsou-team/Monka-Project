@@ -60,3 +60,13 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Add gems for Monka Project
+gem 'better_errors'
+gem 'dotenv-rails'
+gem 'faker'
+gem 'rubocop'
+gem 'table_print'
+gem 'devise'
+gem 'stripe'
+gem 'letter_opener'
