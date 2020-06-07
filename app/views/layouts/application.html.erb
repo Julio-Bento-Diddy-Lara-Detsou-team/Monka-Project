@@ -1,15 +1,38 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>MonkaProject</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html lang="fr">
+<head>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <!-- Title -->
+  <title>Monka Project</title>
+  <!-- Favicon -->
+  <link rel="icon" href="<%= image_path 'favicon.png' %>" />
+  <!-- Fontawesome Icons CDN-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <!-- Custom CSS -->
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+<header>
+  <%= render "layouts/navbar" %>
+</header>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
+<main>
+  <div class="container">
+    <%= render "layouts/flash_messages" %>
     <%= yield %>
-  </body>
+  </div>
+</main>
+
+<%= render "layouts/footer" %>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<!-- Optional JavaScript -->
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', 'data-turbolinks-suppress-warning': true %>
+</body>
 </html>
