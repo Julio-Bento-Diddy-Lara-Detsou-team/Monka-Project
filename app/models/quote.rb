@@ -1,4 +1,10 @@
-class Quote < ApplicationRecord  # Validations
+class Quote < ApplicationRecord
+  # Relations with other tables
+  belongs_to :user
+  belongs_to :customer
+
+
+# Validations
   validates :version_number,
             presence: true
 

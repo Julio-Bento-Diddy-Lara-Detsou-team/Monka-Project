@@ -7,6 +7,8 @@ class CreateQuotes < ActiveRecord::Migration[5.2]
       t.date :sent
       t.integer :sending_counter
       t.boolean :is_invoice
+      t.belongs_to :user, index: true
+      t.belongs_to :customer, index: true
 
       t.timestamps
     end

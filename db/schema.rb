@@ -39,8 +39,12 @@ ActiveRecord::Schema.define(version: 2020_06_09_145612) do
     t.date "sent"
     t.integer "sending_counter"
     t.boolean "is_invoice"
+    t.bigint "user_id"
+    t.bigint "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_quotes_on_customer_id"
+    t.index ["user_id"], name: "index_quotes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

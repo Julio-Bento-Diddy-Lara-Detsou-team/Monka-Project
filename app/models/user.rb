@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   # Relations with other tables
   has_many :customers
+  has_many :quotes
 
   # Validations
   validates :first_name,
