@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2020_06_09_094603) do
     t.string "zip_code"
     t.string "country", default: "FRANCE"
     t.string "phone_number"
-    t.integer "company_id"
+    t.string "company_id"
     t.boolean "is_admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

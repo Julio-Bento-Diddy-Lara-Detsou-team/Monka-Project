@@ -14,7 +14,7 @@ nb_users.times do |i|
       zip_code: Faker::Address.zip_code,
       country: "FRANCE",
       phone_number: "0664765890",
-      company_id: "362 521 879 00034",
+      company_id: "36252187900034",
       email: Faker::Name.first_name + "@yopmail.com",
       password: "azerty",
       password_confirmation: "azerty",
