@@ -4,6 +4,7 @@ nb_customers =1
 
 # Reset tables in the database
 User.destroy_all
+Customer.destroy_all
 
 # Populate users
 nb_users.times do |i|
