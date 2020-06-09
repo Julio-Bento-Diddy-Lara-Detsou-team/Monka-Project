@@ -22,6 +22,10 @@ ActiveRecord::Schema.define(version: 2020_06_09_133100) do
     t.string "company_id"
     t.string "email"
     t.boolean "is_professional"
+    t.string "address"
+    t.string "zip_code"
+    t.string "country"
+    t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
