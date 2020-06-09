@@ -6,9 +6,11 @@ nb_customers =1
 User.destroy_all
 Customer.destroy_all
 
+users = []
+
 # Populate users
 nb_users.times do |i|
-  User.create!(
+  users << User.create!(
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
       company_name: Faker::Company.name,
@@ -24,9 +26,8 @@ nb_users.times do |i|
   )
 
   puts "#{i+1} user(s) generated"
-end
 
-# Populate customers
+  # Populate customers
   nb_customers.times do |i|
     Customer.create!(
         first_name: Faker::Name.first_name,
@@ -38,8 +39,10 @@ end
         country: "FRANCE",
         phone_number: "0612131415",
         email: Faker::Name.first_name + "@yopmail.com",
-        is_professional: true
+        is_professional: true,
+        user: users.sample
     )
 
     puts "#{i+1} customer(s) generated"
   end
+end

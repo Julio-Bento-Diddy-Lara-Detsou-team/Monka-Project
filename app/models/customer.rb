@@ -1,4 +1,7 @@
 class Customer < ApplicationRecord
+  # Relations with other tables
+  belongs_to :user
+
   # Validations
   validates :first_name,
             presence: true,

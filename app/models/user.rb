@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # Relations with other tables
+  has_many :customers
+
   # Validations
   validates :first_name,
             presence: true,

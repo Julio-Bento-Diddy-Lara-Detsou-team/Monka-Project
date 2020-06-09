@@ -26,8 +26,10 @@ ActiveRecord::Schema.define(version: 2020_06_09_133100) do
     t.string "zip_code"
     t.string "country"
     t.string "phone_number"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
