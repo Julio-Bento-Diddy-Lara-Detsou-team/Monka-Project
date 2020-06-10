@@ -10,13 +10,13 @@ Sign in with :
 **login :** adminmonka@yopmail.com
 **password :** monkabonga
 
-#Description
+# Description
 
-##Monka starting point
+## Monka starting point
 
 Today freelancers are expected to be experts in their domains and to fully master all parts of financial management for their activity, all at once.  Although more and more people choose to be freelancers, managing ones activity remains tough. The reason why is a deep a lack of intuitive and simple financial tools. In particular, measuring and controlling his activity takes a long, as editing and sending invoices or quotes to clients above all. 
 
-##Monka’s issue  
+## Monka’s issue  
 How can you financially manage your business quickly while getting significant insights at a glance ?
 
 ## Our vision : “go straight to the point”
@@ -25,30 +25,30 @@ We firmly believe that running a business when freelancer should be easy pie and
 ## Our mission
 Be your business-buddy and flashlight the gist of your activity for your  ! We support you in daily time-consuming tasks to help you running business smoothly and successfully ! 
 
-##Monka ‘s Unique Selling Proposition
+## Monka ‘s Unique Selling Proposition
 Monka is an app for freelancers who want to go “straight to the point” with their activity! Our stance : “basic needs, quick digits” ! Monka empowers you through a synthetic, structured and above all SIMPLE analysis of essential business insights. You’ll know quickly your turnover, your sales limit before taxes, your performances, your best clients, quotes and invoices. No need to be in front of a desk nor having specific accountant skills ! 
 
-##Why Monka ? Where does it come from ?
+## Why Monka ? Where does it come from ?
 Monka come from the French “Mon CA”. “CA” being the short for “Chiffre d’Affaire”, which is the equivalent of “Turnover”. The name itself is very revealing as you probably noticed and above all aligned with brand values : “simple and very straight to the point”. 
 
-##Main benefits
+## Main benefits
 - User-friendly : use it anywhere anytime
 - Synthetic : the gist of your business at a glance
 - Easy financial management : create, edit, send quotes and invoices
 - Practical : contact directly clients with dedicated quotes and invoices
 
-#MVP
-##Minimalist version of Monka is the following :
+# MVP
+## Minimalist version of Monka is the following :
 Watch 👉 [here the proto !](https://www.figma.com/file/yNCsutNVAo7EbrQYZYqGOv/Proto-Monka?node-id=0%3A1)
 
-#An app for freelancers, composed of :
+# An app for freelancers, composed of :
 a landing page 
 a user dashboard with main business assets
 a create and edit form for quotes and invoices
 create and edit forms form of services/product and clients
 Index of clients and invoices/quotes
 
-#Within the app, essential minimalist features :
+# Within the app, essential minimalist features :
 Access to a synthetic dashboard of activity including, turnover to date (on monthly basis), last months sales performances , best clients (on turnover basis)
 See the list of clients and dedicated invoices and quotes
 See the list of invoices and quotes
@@ -60,7 +60,7 @@ Send quotes and invoices to clients from the app
 Turn quote into invoice
 Payment with stripe to subscribe for Monka plan
 
-##Subscription
+## Subscription
 One signed up, the user is sent a welcome mail with a recap of his monka plan that he just paid with stripe.
 
 ## :wrench: Local installation
@@ -101,7 +101,7 @@ Sign in with :
 
 *Enjoy the quick tour !*
 
-##  Authors
+## Authors
 
 - [:fire: Julien Tribouillier](https://github.com/Popikadir)
 - [:seedling: David Bento-Pereira](https://github.com/davidBentoPereira)
