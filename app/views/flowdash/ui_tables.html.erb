@@ -1,0 +1,58 @@
+<div class="container-fluid page__heading-container">
+  <div class="page__heading">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a href="#"><i class="material-icons icon-20pt">home</i></a></li>
+        <li class="breadcrumb-item">UI Components</li>
+        <li class="breadcrumb-item active" aria-current="page">Tables</li>
+      </ol>
+    </nav>
+    
+    <h1 class="m-0">Tables</h1>
+  </div>
+</div>
+
+<div class="container-fluid page__container">
+  <div class="card card-form">
+    <div class="row no-gutters">
+      <div class="col-lg-4 card-body">
+        <p><strong class="headings-color">Toggle Checkboxes</strong></p>
+        <p class="text-muted">A tiny plugin which adds the ability to toggle all checkboxes within a table.</p>
+      </div>
+      <div class="col-lg-8 card-form__body">
+        <%= render 'staff.table' %>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-form">
+    <div class="row no-gutters">
+      <div class="col-lg-4 card-body">
+        <p><strong class="headings-color">Search</strong></p>
+        <p class="text-muted">Add search functionality to your tables with List.js. Please read the <a href="http://listjs.com/" target="_blank">official plugin documentation</a> for a full list of options.</p>
+      </div>
+      <div class="col-lg-8 card-form__body">
+        <div class="search-form search-form--light m-3">
+          <input type="text" class="form-control search" placeholder="Search">
+          <button class="btn" type="button" role="button"><i class="material-icons">search</i></button>
+        </div>
+
+        <%= render 'staff.table' %>
+       
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-form">
+    <div class="row no-gutters">
+      <div class="col-lg-4 card-body">
+        <p><strong class="headings-color">Sort Columns</strong></p>
+        <p class="text-muted">Add sorting functionality to your tables with by List.js. Please read the <a href="http://listjs.com/" target="_blank">official plugin documentation</a> for a full list of options.</p>
+      </div>
+      <div class="col-lg-8 card-form__body border-left">
+        <%= render 'sort-table'%>
+      </div>
+    </div>
+  </div>
+</div>

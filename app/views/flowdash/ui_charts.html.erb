@@ -1,0 +1,228 @@
+<div class="container-fluid page__heading-container">
+  <div class="page__heading">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a href="#"><i class="material-icons icon-20pt">home</i></a></li>
+        <li class="breadcrumb-item">UI Components</li>
+        <li class="breadcrumb-item active" aria-current="page">Charts</li>
+      </ol>
+    </nav>
+    
+    <h1 class="m-0">Charts</h1>
+  </div>
+</div>
+
+<div class="container-fluid page__container">
+    <div class="card">
+        <div class="card-header card-header-large bg-white">
+          <h4 class="card-header__title">Line</h4>
+        </div>
+        <div class="card-body">
+          <p>A line chart is a way of plotting data points on a line. Often, it is used to show trend data, or the comparison of two data sets.</p>
+
+          <div class="chart">
+            <canvas id="performanceChart" class="chart-canvas"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header card-header-large bg-white">
+          <h4 class="card-header__title">Area</h4>
+        </div>
+        <div class="card-body">
+          <p>An area chart or area graph displays graphically quantitative data. It is based on the line chart.</p>
+
+          <div class="chart">
+            <canvas id="performanceAreaChart" class="chart-canvas"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header card-header-large bg-white">
+          <h4 class="card-header__title">Doughnut</h4>
+        </div>
+        <div class="card-body">
+          <p>Excellent at showing the relational proportions between data.</p>
+
+          <div class="chart">
+            <canvas id="devicesChart" class="chart-canvas"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header card-header-large bg-white">
+          <h4 class="card-header__title">Bar</h4>
+        </div>
+        <div class="card-body">
+          <p>A bar chart provides a way of showing data values represented as vertical bars. It is sometimes used to show trend data, and the comparison of multiple data sets side by side.</p>
+
+          <div class="chart">
+            <canvas id="ordersChart" class="chart-canvas"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header card-header-large bg-white d-flex align-items-center">
+          <h4 class="card-header__title flex">Switch Toggle</h4>
+          <div class="d-flex align-items-center">
+            <label for="chart-switch-toggle" class="mb-0">Show affiliate:</label>
+            <div class="custom-control custom-checkbox-toggle ml-2">
+              <input 
+                checked=""
+                aria-checked="true" 
+                type="checkbox" 
+                id="chart-switch-toggle" 
+                class="custom-control-input"
+                role="switch"
+                data-toggle="chart" data-target="#ordersChartSwitch" 
+                data-add='{"data":{"datasets":[{"data":[15,10,20,12,7,0,8,16,18,16,10,22],"backgroundColor":"#b2e599","label":"Affiliate"}]}}'>
+              <label class="custom-control-label" for="chart-switch-toggle"><span class="sr-only">Show affiliate</span></label>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p>Easily toggle an additional set of data with a simple interface based on the <code>data</code> attributes.</p>
+          <div class="chart">
+            <canvas id="ordersChartSwitch" class="chart-canvas"></canvas>
+          </div>
+        </div>
+      </div>
+  
+</div>
+
+
+<% content_for :footer_scripts do %>
+
+<!-- Chart.js Samples -->
+<script>
+(function(){
+  'use strict';
+
+  Charts.init()
+  
+  var Performance = function(id, type = 'line', options = {}) {
+    options = Chart.helpers.merge({
+      scales: {
+        yAxes: [{
+          ticks: {
+            callback: function(a) {
+              if (!(a % 10))
+                return "$" + a + "k"
+            }
+          }
+        }]
+      },
+      tooltips: {
+        callbacks: {
+          label: function(a, e) {
+            var t = e.datasets[a.datasetIndex].label || "",
+                o = a.yLabel,
+                r = "";
+            return 1 < e.datasets.length && (r += '<span class="popover-body-label mr-auto">' + t + "</span>"), r += '<span class="popover-body-value">$' + o + "k</span>"
+          }
+        }
+      }
+    }, options)
+
+    var data = {
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      datasets: [{
+        label: "Performance",
+        data: [0, 10, 5, 15, 10, 20, 15, 25, 20, 30, 25, 40]
+      }]
+    }
+
+    Charts.create(id, type, options, data)
+  }
+
+  var Orders = function(id, type = 'roundedBar', options = {}) {
+    options = Chart.helpers.merge({
+      barRoundness: 1.2,
+      scales: {
+        yAxes: [{
+          ticks: {
+            callback: function(a) {
+              if (!(a % 10))
+                return "$" + a + "k"
+            }
+          }
+        }]
+      },
+      tooltips: {
+        callbacks: {
+          label: function(a, e) {
+            var t = e.datasets[a.datasetIndex].label || "",
+                o = a.yLabel,
+                r = "";
+            return 1 < e.datasets.length && (r += '<span class="popover-body-label mr-auto">' + t + "</span>"), r += '<span class="popover-body-value">$' + o + "k</span>"
+          }
+        }
+      }
+    }, options)
+
+    var data = {
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      datasets: [{
+        label: "Sales",
+        data: [25, 20, 30, 22, 17, 10, 18, 26, 28, 26, 20, 32]
+      }]
+    }
+
+    Charts.create(id, type, options, data)
+  }
+
+  var Devices = function(id, type = 'doughnut', options = {}) {
+    options = Chart.helpers.merge({
+      tooltips: {
+        callbacks: {
+          title: function(a, e) {
+            return e.labels[a[0].index]
+          },
+          label: function(a, e) {
+            var t = "";
+            return t += '<span class="popover-body-value">' + e.datasets[0].data[a.index] + "%</span>"
+          }
+        }
+      }
+    }, options)
+
+    var data = {
+      labels: ["Desktop", "Tablet", "Mobile"],
+      datasets: [{
+        data: [60, 25, 15],
+        backgroundColor: [settings.colors.primary[700], settings.colors.success[300], settings.colors.success[100]],
+        hoverBorderColor: "dark" == settings.charts.colorScheme ? settings.colors.gray[800] : settings.colors.white
+      }]
+    }
+
+    Charts.create(id, type, options, data)
+  }
+
+  ///////////////////
+  // Create Charts //
+  ///////////////////
+
+  Performance('#performanceChart')
+  
+  Performance('#performanceAreaChart', 'line', {
+    elements: {
+      line: {
+        fill: 'start',
+        backgroundColor: settings.charts.colors.area
+      }
+    }
+  })
+
+  Orders('#ordersChart')
+
+  Orders('#ordersChartSwitch')
+
+  Devices('#devicesChart')
+
+  $('[data-toggle="chart"]:checked').each(function (index, el) {
+    Charts.add($(el))
+  })
+
+})()
+</script>
+<% end %>

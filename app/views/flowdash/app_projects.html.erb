@@ -1,0 +1,61 @@
+<div class="container-fluid page__heading-container">
+  <div class="page__heading d-flex align-items-center">
+    <div class="flex">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="#"><i class="material-icons icon-20pt">home</i></a></li>
+          <li class="breadcrumb-item">Apps</li>
+          <li class="breadcrumb-item active" aria-current="page">Projects</li>
+        </ol>
+      </nav>    
+      <h1 class="m-0">Projects</h1>
+    </div>
+    <a href="" class="btn btn-success ml-3">New Ticket</a>
+  </div>
+</div>
+
+<div class="container-fluid page__container">
+  <div class="card card-form d-flex flex-column flex-sm-row">
+    <div class="card-form__body card-body-form-group flex">
+      <div class="row">
+        <div class="col-sm-auto">
+          <div class="form-group">
+            <label for="filter_name">Search</label>
+            <input id="filter_name" type="text" class="form-control" placeholder="Enter keyword">
+          </div>
+        </div>
+        <div class="col-sm-auto">
+          <div class="form-group">
+            <label for="filter_buckets">Buckets</label><br>
+            <select id="filter_buckets" class="custom-select" style="width: 150px;">
+              <option value="all">Any</option>
+              <option value="1">Deployed</option>
+              <option value="2">Concept</option>
+              <option value="3">Wireframe</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-auto">
+          <div class="form-group">
+            <label for="filter_assigned">Assigned To</label><br>
+            <select id="filter_assigned" class="custom-select" style="width: 150px;">
+              <option value="all">Any</option>
+              <option value="1">Adrian D.</option>
+              <option value="2">Michael S.</option>
+              <option value="3">John L.</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-auto">
+          <div class="form-group" style="width: 200px;">
+            <label for="filter_date">Daterange</label>
+            <input id="filter_date" type="text" class="form-control" placeholder="Select date ..." value="13/03/2018 to 20/03/2018" data-toggle="flatpickr" data-flatpickr-mode="range" data-flatpickr-alt-format="d/m/Y" data-flatpickr-date-format="d/m/Y">
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn bg-white border-left border-top border-top-sm-0 rounded-top-0 rounded-top-sm rounded-left-sm-0"><i class="material-icons text-primary">refresh</i></button>
+  </div>
+  
+  <%= render "projects_list" %>
+</div>

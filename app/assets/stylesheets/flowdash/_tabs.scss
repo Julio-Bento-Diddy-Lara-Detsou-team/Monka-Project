@@ -1,0 +1,21 @@
+.card-header-tabs-basic {
+  padding-top: 0;
+  padding-bottom: 0;
+  display: flex;
+  > div {
+    display: flex;
+  }
+  a {
+    padding: .5rem .75rem;
+    color: rgba($body-color, .54);
+    font-weight: 600;
+    &:hover {
+      text-decoration: none;
+      color: rgba(17,43,74,.84);
+    }
+  }
+  .active {
+    color: rgba(17,43,74,.84);
+    border-bottom: 2px solid $primary;
+  }
+}
