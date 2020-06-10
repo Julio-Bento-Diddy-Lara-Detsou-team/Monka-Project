@@ -33,12 +33,16 @@ ActiveRecord::Schema.define(version: 2020_06_09_145612) do
   end
 
   create_table "quotes", force: :cascade do |t|
-    t.string "version_number"
+    t.string "quote_number"
+    t.string "invoice_number"
     t.float "amount"
     t.float "discount"
-    t.date "sent"
-    t.integer "sending_counter"
+    t.date "quote_sending_date"
+    t.date "invoice_sending_date"
+    t.integer "quote_sending_counter"
+    t.integer "invoice_sending_counter"
     t.boolean "is_invoice"
+    t.boolean "is_paid"
     t.bigint "user_id"
     t.bigint "customer_id"
     t.datetime "created_at", null: false

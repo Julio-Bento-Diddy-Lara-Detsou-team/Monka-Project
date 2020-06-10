@@ -5,8 +5,8 @@ class Quote < ApplicationRecord
 
 
 # Validations
-  validates :version_number,
-            presence: true
+#   validates :version_number,
+#             presence: true
 
   validates :amount,
             presence: true

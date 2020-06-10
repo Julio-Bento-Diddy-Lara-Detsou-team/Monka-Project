@@ -57,15 +57,37 @@ nb_quotes.times do |i|
   customer = customers.sample
 
   Quote.create!(
-      version_number: "#{customer.first_name[0]}#{customer.last_name[0]}#{DateTime.now.strftime("%d%m%Y%H%M%S")}#{i}",
+      quote_number: "#{customer.first_name[0]}#{customer.last_name[0]}#{DateTime.now.strftime("%d%m%Y%H%M%S")}#{i}",
+      invoice_number: nil,
       amount: rand(250..5000),
       discount: 0,
-      sent: DateTime.now,
-      sending_counter: 0,
+      quote_sending_date: DateTime.now,
+      invoice_sending_date: nil,
+      quote_sending_counter: 0,
+      invoice_sending_counter: 0,
       is_invoice: false,
+      is_paid: false,
       user: users.sample,
       customer: customer
   )
 
   puts "#{i+1} quote(s) generated"
+
+  # Populate invoice
+  Quote.create!(
+      quote_number: nil,
+      invoice_number: "#{customer.first_name[0]}#{customer.last_name[0]}#{DateTime.now.strftime("%d%m%Y%H%M%S")}#{i}",
+      amount: rand(250..5000),
+      discount: 0,
+      quote_sending_date: nil,
+      invoice_sending_date: DateTime.now,
+      quote_sending_counter: 0,
+      invoice_sending_counter: 0,
+      is_invoice: true,
+      is_paid: false,
+      user: users.sample,
+      customer: customer
+  )
+
+  puts "#{i+1} invoice(s) generated"
 end
