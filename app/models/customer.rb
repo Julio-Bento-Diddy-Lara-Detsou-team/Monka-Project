@@ -28,7 +28,7 @@ class Customer < ApplicationRecord
 
   validates :phone_number,
             presence: true,
-            format: { with: /(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}/, message: 'Veuillez saisir une adresse email valide'}
+            format: { with: /(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}/, message: 'Veuillez saisir un numéro de téléphone valide'}
 
   validates :company_id,
             presence: true,
