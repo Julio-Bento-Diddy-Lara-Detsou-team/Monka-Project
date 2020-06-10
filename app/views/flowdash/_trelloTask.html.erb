@@ -1,0 +1,42 @@
+<%  
+    badgeLabel = badgeLabel || 'OPEN'
+    badgeClass= badgeClass || 'badge-light-gray'
+    title= title || 'Add UI Buttons Page'
+    comments= comments || 28
+    assigned= assigned || ''
+    avatarGroup= avatarGroup || false
+    avatarCount= avatarCount || 1
+    avatars= avatars || [
+      "flowdash/256_rsz_1andy-lee-642320-unsplash.jpg",
+      "flowdash/256_michael-dam-258165-unsplash.jpg",
+      "flowdash/256_luke-porter-261779-unsplash.jpg"
+    ]
+%>
+<div class="trello-board__tasks-item card shadow-none border">
+  <div class="p-3">
+    <p class="m-0 d-flex align-items-center">
+      <strong><%= title %></strong> <span class="badge <%= badgeClass %> ml-auto"><%= badgeLabel %></span></p>
+    
+    <p class="d-flex align-items-center mb-2">
+      <i class="material-icons icon-16pt mr-2 text-muted">folder_open</i>
+      <span class="text-muted mr-3">FlowDash</span>
+      <i class="material-icons icon-16pt mr-2 text-muted">comment</i>
+      <span class="text-muted"><strong><%= comments %></strong> comments</span>
+    </p>
+    <div class="media align-items-center">
+      <% random_number = rand(0..2) %>
+      <div class="media-left mr-2<% if avatarGroup %> avatar-group<% end %>">
+        <% (0..random_number).each do |i| %> 
+        <div class="avatar avatar-xs" data-toggle="tooltip" data-placement="top" title="Janell D.">
+          <img src="<%= image_path(avatars[i]) if avatars[i].present? %>" alt="Avatar" class="avatar-img rounded-circle">
+        </div>
+        <% end %>
+      </div>
+      <div class="media-body align-self-center">
+        <% if random_number > 1 %>
+        <a href="">+2 more</a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<% if resource.errors.any? %>
+<p><strong>     <%= I18n.t("errors.messages.not_saved",
+                 count: resource.errors.count,
+                 resource: resource.class.model_name.human.downcase)
+       %></strong>
+       </p>
+ <div class="alert alert-soft-danger p-0" role="alert"  id="error_explanation">
+    <ul class="list-group list-group-flush">
+      <% resource.errors.full_messages.each do |message| %>
+        <li class="list-group-item p-1 pr-3 d-flex">
+          <i class="material-icons mr-1 align-self-center icon-16pt">error</i> <%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

@@ -1,0 +1,187 @@
+<div class="container-fluid page__heading-container">
+  <div class="page__heading d-flex align-items-center">
+    <div class="flex">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+              <li class="breadcrumb-item"><a href="#"><i class="material-icons icon-20pt">home</i></a></li>
+              <li class="breadcrumb-item">Apps</li>
+              <li class="breadcrumb-item active" aria-current="page">Trello</li>
+            </ol>
+          </nav>
+      <h1 class="m-0">Trello</h1>
+    </div>
+    <a href="" class="btn btn-success ml-3">New Task</a>
+  </div>
+</div>
+
+<div class="trello-container">
+  <div class="trello-board container-fluid page__container">
+    <div 
+      class="trello-board__tasks"
+      data-toggle="dragula"
+      data-dragula-containers='["#trello-tasks-1", "#trello-tasks-2", "#trello-tasks-3", "#trello-tasks-4"]'>
+      <div class="card bg-light border">
+        <div class="card-header card-header-sm bg-white">
+          <h4 class="card-header__title">Todo (3)</h4>
+        </div>
+        <div class="card-body p-2">
+          <div class="trello-board__tasks-list card-list" id="trello-tasks-1">
+            
+            <% tasks = [{
+              badgeLabel: 'OPEN',
+              badgeClass: 'badge-light-gray',
+              date: 'Oct 28, 2018',
+              title: 'Add UI Buttons Page',
+              comments: 28,
+              assigned: 'Janell D. Matney',
+              avatarCount: 1
+            }, {
+              badgeLabel: 'RESOLVED',
+              badgeClass: 'badge-success',
+              date: 'Nov 1, 2018',
+              title: 'Envato Item Presentation',
+              comments: 28,
+              assigned: 'Adrian Demian',
+              avatarGroup: true,
+              avatarCount: 3
+            }, {
+              badgeLabel: 'NEED HELP',
+              badgeClass: 'badge-warning',
+              date: 'Nov 1, 2018',
+              title: 'Add Trello App Page',
+              comments: 28,
+              assigned: 'Laza Bogdan',
+              avatarCount: 1
+            }] %>
+
+            <% tasks.each do |task| %>
+              <%= render 'trelloTask',
+                badgeLabel: task[:badgeLabel], 
+                badgeClass: task[:badgeClass],
+                date: task[:date],
+                title: task[:title],
+                comments: task[:comments],
+                assigned: task[:assigned],
+                avatarGroup: task[:avatarGroup],
+                avatarCount: task[:avatarCount] %>
+            <% end %>
+
+          </div>
+          <a href="#" class="btn btn-light btn-block mt-2">+ Add Card</a>
+        </div>
+      </div>
+    </div>
+    <div class="trello-board__tasks">
+      <div class="card bg-light border">
+        <div class="card-header card-header-sm bg-white">
+          <h4 class="card-header__title">In Progress (2)</h4>
+        </div>
+        <div class="card-body p-2">
+          <div class="trello-board__tasks-list card-list" id="trello-tasks-2">
+          
+            <% tasks = [{
+              badgeLabel: 'HIGH',
+              badgeClass: 'badge-danger',
+              date: 'Nov 1, 2018',
+              title: 'Add Trello App Page',
+              comments: 28,
+              assigned: 'Laza Bogdan',
+              avatarGroup: true,
+              avatarCount: 2
+            }, {
+              badgeLabel: 'OPEN',
+              badgeClass: 'badge-light-gray',
+              date: 'Oct 28, 2018',
+              title: 'Add UI Alerts Page',
+              comments: 28,
+              assigned: 'Janell D. Matney',
+              avatarCount: 1
+            }] %>
+
+            <% tasks.each do |task| %>
+              <%= render 'trelloTask',
+                badgeLabel: task[:badgeLabel], 
+                badgeClass: task[:badgeClass],
+                date: task[:date],
+                title: task[:title],
+                comments: task[:comments],
+                assigned: task[:assigned],
+                avatarGroup: task[:avatarGroup],
+                avatarCount: task[:avatarCount] %>
+            <% end %>
+
+          </div>
+          <a href="#" class="btn btn-light btn-block mt-2">+ Add Card</a>
+        </div>
+      </div>
+    </div>
+    <div class="trello-board__tasks">
+      <div class="card bg-light border">
+        <div class="card-header card-header-sm bg-white">
+          <h4 class="card-header__title">Review (1)</h4>
+        </div>
+        <div class="card-body p-2">
+          <div class="trello-board__tasks-list card-list" id="trello-tasks-3">
+          
+             <% tasks = [{
+              badgeLabel: 'RESOLVED',
+              badgeClass: 'badge-success',
+              date: 'Oct 28, 2018',
+              title: 'Add UI Modals Page',
+              comments: 28,
+              assigned: 'Janell D. Matney'
+            }] %>
+
+            <% tasks.each do |task| %>
+              <%= render 'trelloTask',
+                badgeLabel: task[:badgeLabel], 
+                badgeClass: task[:badgeClass],
+                date: task[:date],
+                title: task[:title],
+                comments: task[:comments],
+                assigned: task[:assigned],
+                avatarGroup: task[:avatarGroup],
+                avatarCount: task[:avatarCount] %>
+            <% end %>
+          
+          </div>
+          <a href="#" class="btn btn-light btn-block mt-2">+ Add Card</a>
+        </div>
+      </div>
+    </div>
+    <div class="trello-board__tasks">
+      <div class="card bg-light border">
+        <div class="card-header card-header-sm bg-white">
+          <h4 class="card-header__title">Done (1)</h4>
+        </div>
+        <div class="card-body p-2">
+          <div class="trello-board__tasks-list card-list" id="trello-tasks-4">
+          
+            <% taskss = [{
+              badgeLabel: 'NEED HELP',
+              badgeClass: 'badge-warning',
+              date: 'Oct 28, 2018',
+              title: 'Add UI Avatars Page',
+              comments: 28,
+              assigned: 'Janell D. Matney'
+            }] %>
+
+            <% tasks.each do |task| %>
+              <%= render 'trelloTask',
+                badgeLabel: task[:badgeLabel], 
+                badgeClass: task[:badgeClass],
+                date: task[:date],
+                title: task[:title],
+                comments: task[:comments],
+                assigned: task[:assigned],
+                avatarGroup: task[:avatarGroup],
+                avatarCount: task[:avatarCount] %>
+            <% end %>
+
+          </div>
+          <a href="#" class="btn btn-light btn-block mt-2">+ Add Card</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
