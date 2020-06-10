@@ -32,4 +32,5 @@
 .floo
 .flooignore
 .DS_Store
-
+.generators
+.rakeTasks
