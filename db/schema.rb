@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_10_115915) do
+ActiveRecord::Schema.define(version: 2020_06_10_122300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,15 @@ ActiveRecord::Schema.define(version: 2020_06_10_115915) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_goods_on_user_id"
+  end
+
+  create_table "join_goods_quotes_tables", force: :cascade do |t|
+    t.bigint "good_id"
+    t.bigint "quote_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["good_id"], name: "index_join_goods_quotes_tables_on_good_id"
+    t.index ["quote_id"], name: "index_join_goods_quotes_tables_on_quote_id"
   end
 
   create_table "quotes", force: :cascade do |t|

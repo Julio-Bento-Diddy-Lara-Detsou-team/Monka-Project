@@ -3,10 +3,12 @@ nb_users = 1
 nb_customers = 1
 nb_quotes = 1
 nb_goods = 1
+nb_join_table = 1
 
 # Arrays used to store all created objects during the seeding
 users = []
 customers = []
+quotes = []
 goods = []
 
 # Reset tables in the database
@@ -71,13 +73,12 @@ nb_quotes.times do |i|
       is_invoice: false,
       is_paid: false,
       user: users.sample,
-      customer: customer
-  )
+      customer: customer)
 
   puts "#{i+1} quote(s) generated"
 
   # Populate invoice
-  goods << Quote.create!(
+  quotes << Quote.create!(
       quote_number: nil,
       invoice_number: "#{customer.first_name[0]}#{customer.last_name[0]}#{DateTime.now.strftime("%d%m%Y%H%M%S")}#{i}",
       amount: rand(250..5000),
@@ -97,7 +98,7 @@ end
 
 # Populate goods
 nb_goods.times do |i|
-  Good.create!(
+  goods << Good.create!(
       title: Faker::Beer.brand,
       description: Faker::Lorem.sentence,
       quantity: rand(1..5),
@@ -105,4 +106,12 @@ nb_goods.times do |i|
       user: users.sample)
 
   puts "#{i+1} good(s) generated"
+end
+
+nb_join_table.times do |i|
+  JoinGoodsQuotesTable.create!(
+      good: goods.sample,
+      quote: quotes.sample)
+
+  puts "#{i+1} joints betwen good(s) and quote(s) generated"
 end
