@@ -45,7 +45,7 @@ Monka comes from the French “Mon CA”. “CA” being the short for “Chiffr
 - A landing page 
 - A user dashboard with main business assets
 - A create and edit form for quotes and invoices
-- Create and edit forms form of services/product and clients
+- Create and edit forms of services/products and clients
 - Index of clients and invoices/quotes
 
 ### Within the app, essential minimalist features :
