@@ -10,7 +10,8 @@ Sign in with :
 **login :** adminmonka@yopmail.com
 **password :** monkabonga
 
-#Description========================================================
+#Description
+
 ##Monka starting point
 
 Today freelancers are expected to be experts in their domains and to fully master all parts of financial management for their activity, all at once.  Although more and more people choose to be freelancers, managing ones activity remains tough. The reason why is a deep a lack of intuitive and simple financial tools. In particular, measuring and controlling his activity takes a long, as editing and sending invoices or quotes to clients above all. 
@@ -64,7 +65,7 @@ One signed up, the user is sent a welcome mail with a recap of his monka plan th
 
 ## :wrench: Local installation
 
-# Configuration ========================================================
+# Configuration
 
 Enter the following commands in your terminal :
 
