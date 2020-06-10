@@ -1,0 +1,38 @@
+<h2>Modifier mon client</h2>
+<!-- Show Client -->
+<div class="col-5">
+  <h2 class="display-4 text-center my-3">Le petit potin</h2>
+  <div class="card sticky">
+    <img class="card-img-top" alt="Card image cap" src="https://actu.meilleurmobile.com/wp-content/uploads/2015/06/gossip-application.jpg">
+    <div class="card-body text-center">
+      <h3 class="card-title"><%=@gossip.title %></h3>
+      <p class="card-text"><%= @gossip.content %></p>
+      <div class="row justify-content-center">
+        <div class="row justify-content-center">
+          <div class="col">
+            <a class='btn btn-info btn-block' href="<%= edit_gossip_path %>">Editer</a>
+          </div>
+          <div class="col">
+            <%= form_tag gossip_path(@gossip.id), method: "delete" do %>
+              <%= submit_tag "Supprimer", {class: 'btn btn-danger btn-block'} %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-center">
+      <small class="text-muted">
+        <i class="fas fa-user"></i> Par <a href="<%= user_path(@gossip.user.id) %>"><%=@gossip.user.first_name %></a>
+        <i class="far fa-calendar-alt"> le </i> <%=@gossip.created_at.strftime("%d/%m/%Y") %>
+        <i class="far fa-building"></i> à <a href="<%= city_path(@gossip.user.city.id) %>"><%=@gossip.user.city.name %></a>
+      </small>
+    </div>
+  </div>
+</div>
+
+<div class="text-center">
+  <%= link_to "Editer mon profil", edit_customer_path(current_user), class: "btn btn-primary mr-5" %>
+  <%= link_to 'Retour Accueil', root_path, class:"btn btn-secondary" %>
+  <br><br><br>
+
+</div>
