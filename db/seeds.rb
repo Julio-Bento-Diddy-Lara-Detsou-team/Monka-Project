@@ -2,15 +2,18 @@
 nb_users = 1
 nb_customers = 1
 nb_quotes = 1
+nb_goods = 1
 
 # Arrays used to store all created objects during the seeding
 users = []
 customers = []
+goods = []
 
 # Reset tables in the database
 User.destroy_all
 Customer.destroy_all
 Quote.destroy_all
+Good.destroy_all
 
 # Populate users
 nb_users.times do |i|
@@ -74,7 +77,7 @@ nb_quotes.times do |i|
   puts "#{i+1} quote(s) generated"
 
   # Populate invoice
-  Quote.create!(
+  goods << Quote.create!(
       quote_number: nil,
       invoice_number: "#{customer.first_name[0]}#{customer.last_name[0]}#{DateTime.now.strftime("%d%m%Y%H%M%S")}#{i}",
       amount: rand(250..5000),
@@ -90,4 +93,16 @@ nb_quotes.times do |i|
   )
 
   puts "#{i+1} invoice(s) generated"
+end
+
+# Populate goods
+nb_goods.times do |i|
+  Good.create!(
+      title: Faker::Beer.brand,
+      description: Faker::Lorem.sentence,
+      quantity: rand(1..5),
+      price: rand(1..10),
+      user: users.sample)
+
+  puts "#{i+1} good(s) generated"
 end
