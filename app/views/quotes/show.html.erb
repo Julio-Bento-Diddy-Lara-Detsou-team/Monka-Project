@@ -1,2 +1,18 @@
 <p>This is the show quote page.</p>
 
+<h2>Show Quote n°<%= @quote.id %></h2>
+<ul>
+  <li>id : <%= @quote.id %></li>
+  <li>quote_number : <%= @quote.quote_number %></li>
+  <li>invoice_number : <%= @quote.invoice_number %></li>
+  <li>amount : <%= @quote.amount %></li>
+  <li>discount : <%= @quote.discount %></li>
+  <li>quote_sending_date : <%= @quote.quote_sending_date %></li>
+  <li>invoice_sending_date : <%= @quote.invoice_sending_date %></li>
+  <li>quote_sending_counter : <%= @quote.quote_sending_counter %></li>
+  <li>invoice_sending_counter : <%= @quote.invoice_sending_counter %></li>
+  <li>is_invoice? : <%= @quote.is_invoice %></li>
+  <li>is_paid : <%= @quote.is_paid %></li>
+  <li>user_id : <%= @quote.user_id %></li>
+  <li>customer_id : <%= @quote.customer_id %></li>
+</ul>
