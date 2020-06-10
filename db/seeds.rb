@@ -1,9 +1,9 @@
 # Edit the variables below to control the number of items to generate in each table of the database
-nb_users = 1
-nb_customers = 1
-nb_quotes = 1
-nb_goods = 1
-nb_join_table = 1
+nb_users = 5
+nb_customers = 5
+nb_quotes = 5
+nb_goods = 5
+nb_join_table = 5
 
 # Arrays used to store all created objects during the seeding
 users = []
@@ -16,6 +16,7 @@ User.destroy_all
 Customer.destroy_all
 Quote.destroy_all
 Good.destroy_all
+JoinGoodsQuotesTable.destroy_all
 
 # Populate users
 nb_users.times do |i|
@@ -113,5 +114,5 @@ nb_join_table.times do |i|
       good: goods.sample,
       quote: quotes.sample)
 
-  puts "#{i+1} joints betwen good(s) and quote(s) generated"
+  puts "#{i+1} joints between good(s) and quote(s) generated"
 end

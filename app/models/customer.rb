@@ -6,11 +6,11 @@ class Customer < ApplicationRecord
   # Validations
   validates :first_name,
             presence: true,
-            length: { in: 3..30, message: "Veuillez saisir un prénom entre 3 et 30 caractères"}
+            length: { in: 2..30, message: "Veuillez saisir un prénom entre 2 et 30 caractères"}
 
   validates :last_name,
             presence: true,
-            length: { in: 3..50, message: "Veuillez saisir un nom doit faire entre 3 et 50 caractères"}
+            length: { in: 2..50, message: "Veuillez saisir un nom doit faire entre 2 et 50 caractères"}
 
   validates :company_name,
             length: { in: 0..50, message: "Veuillez saisir un nom d'entreprise entre 0 et 50 caractères"}
