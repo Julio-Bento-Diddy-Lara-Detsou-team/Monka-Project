@@ -4,7 +4,9 @@ class QuotesController < ApplicationController
   before_action :find_quote, only: [:show, :edit, :update, :destroy]
 
   def index
-    @quotes = Quote.all
+    @quote_table = Quote.all
+    @quotes = Quote.where(is_invoice: false)
+    @invoices = Quote.where(is_invoice: true)
   end
 
   def show
