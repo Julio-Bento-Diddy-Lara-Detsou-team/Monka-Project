@@ -42,7 +42,7 @@
                     <img src="<%= image_path("flowdash/256_luke-porter-261779-unsplash.jpg")%>" alt="Avatar" class="avatar-img rounded-circle">
                   </div>
                   <div class="media-body">
-                    <span class="js-lists-values-employee-name"><%= customer.first_name %> <%= customer.last_name %></span>
+                    <span class="js-lists-values-employee-name"><%= customer.last_name.upcase %> <%= customer.first_name %></span>
                   </div>
                 </div>
               </td>

@@ -1,6 +1,6 @@
 class Customer < ApplicationRecord
   # Relations with other tables
-  belongs_to :user
+  belongs_to :user, optional: true
   has_many :quotes
 
   # Validations
