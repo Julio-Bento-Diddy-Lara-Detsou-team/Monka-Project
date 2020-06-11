@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css?family=Inter");
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', Helvetica, Arial, sans-serif;
+}
+
+main {
+    display: flex;
+    flex: 1;
+}
+
+:root {
+    --primary-color: #16e5c0;
+    --secondary-color: #AAE9E2;
+}
+
+.bg-dark {
+    background-color: var(--primary-color) !important;
+}
