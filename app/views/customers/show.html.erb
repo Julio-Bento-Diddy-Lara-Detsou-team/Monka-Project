@@ -1,38 +1,85 @@
-<h2>Modifier mon client</h2>
+<h2 class="my-5">Mon client - <%=@customer.first_name %> <%=@customer.last_name %></h2>
+
+<!-- Button to edit -->
+<div class="nav justify-content-end my-5">
+  <%= link_to 'Retour Accueil', root_path, class:"btn btn-secondary" %>
+</div>
+
 <!-- Show Client -->
-<div class="col-5">
-  <h2 class="display-4 text-center my-3">Le petit potin</h2>
-  <div class="card sticky">
-    <img class="card-img-top" alt="Card image cap" src="https://actu.meilleurmobile.com/wp-content/uploads/2015/06/gossip-application.jpg">
-    <div class="card-body text-center">
-      <h3 class="card-title"><%=@gossip.title %></h3>
-      <p class="card-text"><%= @gossip.content %></p>
-      <div class="row justify-content-center">
+<h3>Informations clients</h3>
+<table class="table-responsive">
+  <table class="table table-striped table-sm">
+    <tbody>
+    <tr>
+      <td>Prénom:</td>
+    </tr>
+    <tr>
+      <td><%=@customer.first_name %></a></td>
+    </tr>
+    <tr>
+      <td>Nom:</td>
+    </tr>
+    <tr>
+      <td><%=@customer.last_name %></td>
+    </tr>
+    <tr>
+      <td>Société:</td>
+    </tr>
+    <tr>
+      <td><%=@customer.company_name %></td>
+    </tr>
+    <tr>
+      <td>Siren Siret:</td>
+    </tr>
+    <tr>
+      <td><%=@customer.company_id %></td>
+    </tr>
+    <tr>
+      <td>Téléphone:</td>
+    </tr>
+    <tr>
+      <td><%=@customer.phone_number %></td>
+    </tr>
+    <tr>
+      <td>Email :</td>
+    </tr>
+    <tr>
+      <td><%=@customer.email %></td>
+    </tr>
+    <tr>
+      <td>Adresse :</td>
+    </tr>
+    <tr>
+      <td><%=@customer.address %></td>
+    </tr>
+    <tr>
+      <td><%=@customer.zip_code %></td>
+    </tr>
+    <tr>
+      <td><%=@customer.country %></td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
+
+  <div>
+
+<!-- Buttons action -->
+      <div class="row justify-content-center my-5">
         <div class="row justify-content-center">
           <div class="col">
-            <a class='btn btn-info btn-block' href="<%= edit_gossip_path %>">Editer</a>
+            <a class='btn btn-info btn-block' href="<%= edit_customer_path %>">Modifier</a>
           </div>
           <div class="col">
-            <%= form_tag gossip_path(@gossip.id), method: "delete" do %>
+            <%= form_tag customer_path(@customer.id), method: "delete" do %>
               <%= submit_tag "Supprimer", {class: 'btn btn-danger btn-block'} %>
             <% end %>
           </div>
         </div>
       </div>
     </div>
-    <div class="card-footer text-center">
-      <small class="text-muted">
-        <i class="fas fa-user"></i> Par <a href="<%= user_path(@gossip.user.id) %>"><%=@gossip.user.first_name %></a>
-        <i class="far fa-calendar-alt"> le </i> <%=@gossip.created_at.strftime("%d/%m/%Y") %>
-        <i class="far fa-building"></i> à <a href="<%= city_path(@gossip.user.city.id) %>"><%=@gossip.user.city.name %></a>
-      </small>
-    </div>
-  </div>
-</div>
 
-<div class="text-center">
-  <%= link_to "Editer mon profil", edit_customer_path(current_user), class: "btn btn-primary mr-5" %>
-  <%= link_to 'Retour Accueil', root_path, class:"btn btn-secondary" %>
-  <br><br><br>
+  <!-- Show Factures -->
 
-</div>
+
+

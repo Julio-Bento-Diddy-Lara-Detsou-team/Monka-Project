@@ -21,13 +21,11 @@ def log_in(user)
 end
 
 # User can modify only if he owns the customer
-def has_rights_user(customer)
-  puts current_user.id
-  puts customer.id
+# def has_rights_user(customer)
+#   puts current_user.id
+#   puts customer.id
+#
+#   if current_user.id != customer.user.id
+#     redirect_to customers_path
+#   end
 
-  if current_user.id != customer.user.id
-    puts "Super !"
-    redirect_to customers_path
-  end
-
-end

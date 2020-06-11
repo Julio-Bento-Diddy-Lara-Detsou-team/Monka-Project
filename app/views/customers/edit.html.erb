@@ -1,5 +1,17 @@
 <h2 class="h1 text-center my-3">Modifier le client</h2>
 
+<!-- Flash message -->
+<% if @customer.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <p>Oups! des erreurs dans le formulaire...</p>
+    <ul>
+      <% @customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <!-- Form -->
 
 <div class="row justify-content-center">
@@ -8,10 +20,6 @@
       <div class="form-group">
         <%= label_tag 'Prénom :' %>
         <%= text_field_tag 'title', @customer.first_name, {class: 'form-control', placeholder: "Prénom"} %>
-      </div>
-      <div class="form-group">
-        <%= label_tag 'Nom :' %>
-        <%= text_field_tag 'title', @customer.last_name, {class: 'form-control', placeholder: "Nom"} %>
       </div>
       <div class="form-group">
         <%= label_tag 'Nom :' %>
@@ -47,3 +55,10 @@
         <%= label_tag 'Téléphone :' %>
         <%= text_field_tag 'title', @customer.phone_number, {class: 'form-control', placeholder: "téléphone"} %>
       </div>
+
+        <div class="row justify-content-center my-5">
+          <%= submit_tag "Valider", {class: 'btn btn-primary'} %>
+        </div>
+      <% end %>
+  </div>
+</div>

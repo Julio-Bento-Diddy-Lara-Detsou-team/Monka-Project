@@ -43,7 +43,7 @@ class CustomersController < ApplicationController
   # Display a view with a form to edit an existing customer
   def edit
     @customer = Customer.find(params[:id])
-    has_rights_user(@customer)
+    # has_rights_user(@customer)
     flash[:notice] = "Tu t'apprêtes à modifier le profil de ce client "
   end
 
@@ -72,7 +72,7 @@ class CustomersController < ApplicationController
   # Delete a customer
   def destroy
     Customer.find(params[:id]).delete
-    flash[:alert] = "Le client va être supprimé"
+    flash[:alert] = "Le client a été supprimé"
     redirect_to customers_path
   end
 
