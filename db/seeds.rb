@@ -62,7 +62,7 @@ nb_quotes.times do |i|
 
   customer = customers.sample
 
-  Quote.create!(
+  quotes << Quote.create!(
       quote_number: "#{customer.first_name[0]}#{customer.last_name[0]}#{DateTime.now.strftime("%d%m%Y%H%M%S")}#{i}",
       invoice_number: nil,
       amount: rand(250..5000),

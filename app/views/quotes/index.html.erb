@@ -75,7 +75,7 @@
                   </div>
                 </div>
                 <div class="col">
-                  <a href="#" class="text-body"><%= quote.quote_number %></a>
+                  <a href="<%= quote_path(quote.id) %>" class="text-body"><%= quote.quote_number %></a>
                 </div>
                 <div class="col-auto d-flex align-items-center" style="min-width: 140px;">
                   <a href="<%= quote_path(quote.id) %>"<i class="fa fa-eye" aria-hidden="true"></i></a>
@@ -104,7 +104,7 @@
                   </div>
                 </div>
                 <div class="col">
-                  <a href="#" class="text-body"><%= invoice.invoice_number %></a>
+                  <a href="<%= quote_path(invoice.id) %>" class="text-body"><%= invoice.invoice_number %></a>
                 </div>
                 <div class="col-auto d-flex align-items-center" style="min-width: 140px;">
                   <a href="<%= quote_path(invoice.id) %>"<i class="fa fa-eye" aria-hidden="true"></i></a>
