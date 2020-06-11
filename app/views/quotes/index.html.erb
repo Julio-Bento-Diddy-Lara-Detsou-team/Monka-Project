@@ -1,0 +1,25 @@
+<p>This is the index quote page.</p>
+
+<h2>Quote Table</h2>
+<ul>
+  <% @quote_table.each do |elem| %>
+    <li>ID : <%= elem.id %></li>
+    <li>IS_INVOICE? : <%= elem.is_invoice %></li>
+  <% end %>
+</ul>
+
+<h2>Quotes</h2>
+<ul>
+  <% @quotes.each do |quote| %>
+    <li>ID : <%= quote.id %></li>
+    <li>IS_INVOICE? : <%= quote.is_invoice %></li>
+  <% end %>
+</ul>
+
+<h2>Invoices</h2>
+<ul>
+  <% @invoices.each do |invoice| %>
+    <li>ID : <%= invoice.id %></li>
+    <li>IS_INVOICE? : <%= invoice.is_invoice %></li>
+  <% end %>
+</ul>
