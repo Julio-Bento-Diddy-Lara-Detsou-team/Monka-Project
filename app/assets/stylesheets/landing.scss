@@ -1,10 +1,21 @@
-.jumbotron {
-  background-image: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%),
-  url(/images/waves.svg);
+
+
+.jumbotron-hero {
+  height: 500px;
+  background-image: url("jumbotron.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  width: 100%;
+
 }
+
+
+.section-grey {
+  background-color: #2F3240;
+  margin-right:0;
+}
+
 
 h1, h2, h3, h4, h5, h6 {
   color: #2F3240;
@@ -26,5 +37,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .dark-grey {
   background-color: #2F3240;
+}
+
+.btn-jumbo{
+  background-color: #2F3240;
+  color: #FFFFFF;
+  box-shadow: aliceblue;
+  font-size: 18px;
+  font-width: bold;
+}
+
+.jumbo-text{
+  color: #FFFFFF;
 }
 
