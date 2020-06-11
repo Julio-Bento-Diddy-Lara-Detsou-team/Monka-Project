@@ -12,8 +12,8 @@ module ApplicationHelper
 
   def get_turnover
     invoices = []
-    invoices << curren_user.Quote.where(is_invoice: true).amount
-    CA = invoices.sum
+    invoices << curent_user.Quote.where(is_invoice: true).amount
+    turnover = invoices.sum
   end
 
 end
