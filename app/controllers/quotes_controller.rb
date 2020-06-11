@@ -11,7 +11,6 @@ class QuotesController < ApplicationController
 
   def show
     @goods = @quote.goods
-    @total_quote = helpers.calculate_total_quote(@goods)
   end
 
   def new
