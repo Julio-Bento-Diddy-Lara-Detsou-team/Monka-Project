@@ -12,7 +12,7 @@ module ApplicationHelper
 
   def get_turnover
     invoices = []
-    invoices << curent_user.quotes.where(is_invoice: true).all.amount
+    invoices << curent_user.quotes.where(is_invoice: true).each
     turnover = invoices.sum
   end
 
