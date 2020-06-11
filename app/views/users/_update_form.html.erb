@@ -1,0 +1,34 @@
+<%= form_with(model: user, local: true, method: :put) do |update| %>
+
+  <div class="form-group">
+    <%= update.text_field :first_name, class:"form-control", placeholder:"Prénom" %>
+  </div>
+
+  <div class="form-group">
+    <%= update.text_field :last_name, class:"form-control", placeholder:"Nom" %>
+  </div>
+
+  <div class="form-group">
+    <%= update.text_field :company_name, class:"form-control", placeholder:"Nom de l'entreprise" %>
+  </div>
+
+  <div class="form-group">
+    <%= update.text_area :address, class:"form-control", placeholder:"Adresse" %>
+  </div>
+
+  <div class="form-group">
+    <%= update.text_field :zip_code, class:"form-control", placeholder:"Code postal" %>
+  </div>
+
+  <div class="form-group">
+    <%= update.text_field :phone_number, class:"form-control", placeholder:"N° de téléphone" %>
+  </div>
+
+  <div class="form-group">
+    <%= update.text_field :company_id, class:"form-control", placeholder:"N° de SIRET" %>
+  </div>
+
+  <div class="actions text-center">
+    <button type="submit" class="btn btn-primary">Editer</button>
+  </div>
+<% end %>
