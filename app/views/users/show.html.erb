@@ -1,0 +1,27 @@
+<h1 class="display-4-selection text-center my-5">Profil</h1>
+
+
+<div class="row justify-content-center">
+  <div class="card border-primary mb-3" style="max-width: 18rem;">
+    <div class="card-header">
+      <p class="h4 text-center"><%= @user.first_name %> <%= @user.last_name %></p>
+    </div>
+    <div class="card-body text-primary">
+      <h5 class="card-title text-center">Informations</h5>
+      <p class="card-text text-center"><span class="h6 text-center">Nom de l'entreprise:</span><br> <span class="ml-3 text-center"><%= @user.company_name %></span><br></p>
+      <p class="card-text text-center"><span class="h6 text-center">Adresse:</span><br> <span class="ml-3 text-center" ><%= @user.address %></span><br></p><br>
+      <p class="card-text text-center"><span class="h6 text-center">Code postal:</span><br> <span class="text-center"><%= @user.zip_code %><br></span><br></p>
+      <p class="card-text text-center"><span class="h6 text-center">Pays:</span><br> <span class="ml-3"><%= @user.country %><br></span><br></p>
+      <p class="card-text text-center"><span class="h6 text-center">N° de téléphone:</span><br> <span class="ml-3"><%= @user.phone_number %><br></span><br></p>
+      <p class="card-text text-center"><span class="h6 text-center">N° de SIRET:</span><br> <span class="ml-3"><%= @user.company_id %><br></span><br></p>
+
+    </div>
+  </div>
+</div>
+<br>
+<div class="text-center">
+  <%= link_to "Editer mon profil", edit_user_path(current_user), class: "btn btn-primary mr-5" %>
+  <%= link_to 'Retour Accueil', root_path, class:"btn btn-secondary" %>
+  <br><br><br>
+
+</div>
