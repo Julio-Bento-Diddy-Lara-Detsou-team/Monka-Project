@@ -9,4 +9,14 @@ module ApplicationHelper
       "alert-info"
     end
   end
+
+  def calculate_total_quote(goods)
+    @total_quote = 0
+
+    goods.each do |good|
+      @total_quote += good.price
+    end
+
+    @total_quote
+  end
 end

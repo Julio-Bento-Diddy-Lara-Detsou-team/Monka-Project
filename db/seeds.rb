@@ -2,8 +2,8 @@
 nb_users = 5
 nb_customers = 5
 nb_quotes = 5
-nb_goods = 5
-nb_join_table = 5
+nb_goods = 30
+nb_join_table = 60
 
 # Arrays used to store all created objects during the seeding
 users = []
