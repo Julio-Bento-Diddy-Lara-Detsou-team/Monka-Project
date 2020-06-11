@@ -51,28 +51,28 @@ class CustomersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_customer
-      @customer = Customer.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_customer
+    @customer = Customer.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def customer_params
-      params.fetch(:customer, {}).permit(
-                                        :first_name,
-                                        :last_name,
-                                        :company_name,
-                                        :company_id,
-                                        :email,
-                                        :is_professional,
-                                        :address,
-                                        :zip_code,
-                                        :country,
-                                        :phone_number,
-                                        current_user)
-    end
+  # Only allow a list of trusted parameters through.
+  def customer_params
+    params.fetch(:customer, {}).permit(
+        :first_name,
+        :last_name,
+        :company_name,
+        :company_id,
+        :email,
+        :is_professional,
+        :address,
+        :zip_code,
+        :country,
+        :phone_number,
+        current_user)
+  end
 
-    def customer_to_current_user
-      @customer.update(user: current_user)
-    end
+  def customer_to_current_user
+    @customer.update(user: current_user, country: params[:customer][:country])
+  end
 end
