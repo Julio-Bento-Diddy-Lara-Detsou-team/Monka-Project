@@ -2,9 +2,9 @@
 
 <div class="layout-login-centered-boxed__form card">
   <div class="d-flex flex-column justify-content-center align-items-center mt-2 mb-5 navbar-light">
-    <a href="<%= flowdash_path(:index) %>" class="navbar-brand flex-column mb-2 align-items-center mr-0" style="min-width: 0">
+    <a href="<%= root_path %>" class="navbar-brand flex-column mb-2 align-items-center mr-0" style="min-width: 0">
       <img class="navbar-brand-icon mr-0 mb-2" src="<%= image_path('flowdash/stack-logo-blue.svg')%>" width="25" alt="FlowDash">
-      <span>Account Access </span>
+      <span>Se connecter</span>
     </a>
   </div>
 
@@ -18,20 +18,20 @@
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group">
-      <label class="text-label" for="email_2">Email Address:</label>
+      <label class="text-label" for="email_2">Adresse mail :</label>
       <div class="input-group input-group-merge">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control form-control-prepended', value: 'demo@demo.com' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control form-control-prepended', placeholder: "Entrez votre adresse mail"%>
         <div class="input-group-prepend">
           <div class="input-group-text">
-            <span class="far fa-envelope"></span>
+            <span class="fa fa-envelope"></span>
           </div>
         </div>
       </div>
     </div>
     <div class="form-group">
-      <label class="text-label" for="password_2">Password:</label>
+      <label class="text-label" for="password_2">Mot de passe :</label>
       <div class="input-group input-group-merge">  
-        <%= f.password_field :password, autocomplete: "current-password", class: 'form-control form-control-prepended', placeholder: 'Enter your password', value: 'password123' %>
+        <%= f.password_field :password, autocomplete: "current-password", class: 'form-control form-control-prepended', placeholder: 'Entrez votre mot de passe', value: 'password123' %>
         <div class="input-group-prepend">
           <div class="input-group-text">
             <span class="fa fa-key"></span>
@@ -40,13 +40,13 @@
       </div>
     </div>
     <div class="form-group">
-      <button class="btn btn-block btn-primary" type="submit">Login</button>
+      <button class="btn btn-block btn-primary" type="submit">Connexion</button>
     </div>
     <% if devise_mapping.rememberable? %>
     <div class="form-group text-center">
       <div class="custom-control custom-checkbox">
         <%= f.check_box :remember_me, class:'custom-control-input' %>
-        <%= f.label :remember_me, class: 'custom-control-label' %>
+        <%= f.label :remember_me, "Se souvenir de moi", class: 'custom-control-label' %>
       </div>
     </div>
     <% end %>
