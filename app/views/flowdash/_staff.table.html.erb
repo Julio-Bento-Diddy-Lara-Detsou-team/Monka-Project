@@ -1,0 +1,72 @@
+<div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
+  
+  <%# <div class="search-form search-form--light m-3">
+    <input type="text" class="form-control search" placeholder="Search">
+    <button class="btn" type="button" role="button"><i class="material-icons">search</i></button>
+  </div>
+   %>
+  <table class="table mb-0 thead-border-top-0">
+    <thead>
+      <tr>
+        
+        <th style="width: 18px;">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input js-toggle-check-all" data-target="#{{ id }}" id="customCheckAll">
+            <label class="custom-control-label" for="customCheckAll"><span class="text-hide">Toggle all</span></label>
+          </div>
+        </th>
+        
+        <th>Employee</th>
+        <th style="width: 220px;">Current Employer</th>
+        <th style="width: 60px">Projects</th>
+        <th style="width: 37px;">Status</th>
+        <th style="width: 120px;">Last Activity</th>
+        <th style="width: 51px;">Earnings</th>
+        <th style="width: 24px;"></th>
+      </tr>
+    </thead>
+    <tbody class="list" id="blah">
+      <% (0..2).each do |i| %>
+      <tr>
+        <td>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input js-check-selected-row" checked="" id="customCheck1_<%= i %>">
+            <label class="custom-control-label" for="customCheck1_<%= i %>"><span class="text-hide">Check</span></label>
+          </div>
+        </td>
+        
+        <td>
+          
+          <div class="media align-items-center">
+              <div class="avatar avatar-xs mr-2">
+                  <img src="<%= image_path("flowdash/256_luke-porter-261779-unsplash.jpg")%>" alt="Avatar" class="avatar-img rounded-circle">
+                </div>
+            <div class="media-body">
+              <span class="js-lists-values-employee-name">Michael Smith</span>
+            </div>
+          </div>
+        </td>
+     
+        <td>
+          <div class="media align-items-center">
+            <a href="">Black Ops</a>
+            <a href="#" class="rating-link"><i class="material-icons ml-2">star</i></a>
+          </div>
+        </td>
+     
+        <td class="text-center">12</td>
+        <td><span class="badge badge-warning">ADMIN</span></td>
+        <td><small class="text-muted">3 days ago</small></td>
+        <td>&dollar;12,402</td>
+        <td><a href="" class="text-muted"><i class="material-icons">more_vert</i></a></td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card-body text-right">
+  15 <span class="text-muted">of 1,430</span> <a href="#" class="text-muted-light"><i class="material-icons ml-1">arrow_forward</i></a>
+</div>
+
+

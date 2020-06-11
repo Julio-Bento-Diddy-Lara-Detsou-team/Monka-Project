@@ -1,0 +1,81 @@
+//** CORE
+// Variables
+@import 'variables';
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+// MDK
+@import 'material-design-kit/src/style';
+// SIMPLEBAR (SCROLL)
+@import 'simplebar/dist/simplebar';
+
+//** PLUGINS (NODE_MODULES)
+@import "vendor-flatpickr";
+@import "vendor-flatpickr-airbnb";
+
+@import "daterangepicker/daterangepicker";
+@import "jqvmap/dist/jqvmap.min";
+
+@import "toastr/toastr";
+@import "toastr/toastr";
+
+@import "vendor-select2";
+@import "select2/dist/css/select2.min";
+
+@import "dragula/dist/dragula.min";
+@import "fullcalendar/dist/fullcalendar.min";
+@import "fullcalendar";
+
+@import "vendor-fontawesome-free";
+@import "vendor-quill";
+@import "vendor-dropzone";
+
+//** APP
+@import 'flexbox';
+@import 'icons';
+@import 'type';
+@import 'layout';
+@import 'dropdown';
+@import 'header';
+@import 'search-form';
+@import 'navbar';
+@import 'navbar-dark';
+@import 'navbar-light';
+@import 'drawer';
+@import 'sidebar';
+@import 'card';
+@import 'table';
+@import 'button';
+@import 'breadcrumb';
+@import 'form';
+@import 'flatpickr';
+@import 'input-group';
+@import 'progress';
+@import 'tabs';
+@import 'list-group';
+@import 'borders';
+@import 'custom-checkbox-toggle';
+@import 'alert';
+@import 'loader';
+@import 'helpers';
+@import 'badge';
+@import 'avatar';
+@import 'chart';
+@import 'pagination';
+@import 'page-separator';
+@import 'apps/trello';
+@import 'apps/chat';
+@import 'daterangepicker';
+@import 'toastr';
+@import 'fullcalendar';
+@import 'preloader';
+
+//** PAGES
+@import 'dashboard-area-tabs';
+@import 'dashboard-location-tabs';
+@import 'todo';
+@import 'skills';
+@import 'login';
+@import 'login-centered-boxed';
+@import 'stories';
+@import 'pricing';
+@import 'map';
