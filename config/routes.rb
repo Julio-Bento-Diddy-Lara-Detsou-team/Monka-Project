@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'flowdash#show'
+  root 'home#index'
   resources 'home', only: [:index]
   get 'flowdash/:page' => 'flowdash#show', as: 'flowdash'
 end
