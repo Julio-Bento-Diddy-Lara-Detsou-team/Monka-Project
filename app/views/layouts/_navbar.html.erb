@@ -5,9 +5,16 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" href="#">Profil <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#">Clients</a>
-      <a class="nav-item nav-link" href="#">Devis</a>
+      <% if user_signed_in? %>
+        <a class="nav-item nav-link" href="#">Profil <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="#">Clients</a>
+        <a class="nav-item nav-link" href="#">Devis</a>
+        <%= link_to 'Déconnexion', destroy_user_session_path, :method => :delete, class:"nav-item nav-link" %>
+      <% else %>
+        <a class="nav-item nav-link active" href="<%= root_path %>">Accueil <span class="sr-only">(current)</span></a>
+        <%= link_to "S'inscrire", new_user_registration_path, class:"nav-item nav-link" %>
+        <%= link_to "Connexion", new_user_session_path, class:"nav-item nav-link" %>
+      <% end %>
     </div>
   </div>
 </nav>
