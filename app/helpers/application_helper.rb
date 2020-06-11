@@ -9,4 +9,11 @@ module ApplicationHelper
       "alert-info"
     end
   end
+
+  def get_turnover
+    invoices = []
+    invoices << curren_user.Quote.where(is_invoice: true).amount
+    CA = invoices.sum
+  end
+
 end
