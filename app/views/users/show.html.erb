@@ -17,19 +17,16 @@
       <div class="col-lg-4 card-body mt-5 ">
         <p><span class="greentitle">Mes informations</span></p>
       </div>
-      <!--2 col section firstname lastname-->
+      <!--section-->
       <div class="col-lg-8 card-form__body card-body my-5">
-        <div class="row justify-content-start">
-          <div class="col p-0">
-            <p class="text-muted">Prénom :</p>
-            <p class="ml-3 text-right"><%= @user.first_name %></p>
-          </div>
-          <div class="col">
-            <p class="text-muted">Nom :</p>
-            <p class="ml-3 text-right"><%= @user.last_name %></p>
-          </div>
+        <div class="row my-1">
+          <p class="text-muted">Prénom : </p>
+          <p class="ml-3 text-right"><%= @user.first_name %></p>
         </div>
-        <!--2 col section firstname lastname-->
+        <div class="row my-1">
+          <p class="text-muted">Nom : </p>
+          <p class="ml-3 text-right"><%= @user.last_name %></p>
+        </div>
         <div class="row my-1">
           <p class="text-muted">Nom de l'entreprise : </p>
           <p class="ml-3 text-right"><%= @user.company_name %></p>
