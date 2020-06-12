@@ -7,11 +7,11 @@
 
 ## **[https://monka-project.herokuapp.com/](https://monka-project.herokuapp.com/)**
 
-### **Admin Account**
+### **Preview Account**
 
 Sign in with :  \
-login : adminmonka@yopmail.com  \
-password : monkabonga
+login : monka@yopmail.com  \
+password : azerty
 
 # **Description**
 
@@ -106,11 +106,11 @@ Monka comes from the French “Mon CA”. “CA” being short for “Chiffre d�
 
 ##   🔥** Log In**
 
-###  **(NB) Admin Account**
+###  **(NB) Preview Account**
 
 Sign in with :  \
-login : adminmonka@yopmail.com  \
-password : monkabonga
+login : monka@yopmail.com  \
+password : azerty
 
 
  _Enjoy the tour !_
