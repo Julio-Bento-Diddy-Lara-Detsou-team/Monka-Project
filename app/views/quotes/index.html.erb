@@ -19,7 +19,7 @@
       <strong>Mes devis</strong>
     </h3>
 
-    <% @quotes.each do |quote| %>
+    <% @quotes.order(quote_sending_date: :asc).each do |quote| %>
       <div class="row projects-item mb-1">
         <div class="col-sm">
           <div class="card m-0">
@@ -48,7 +48,7 @@
       <strong>Mes factures</strong>
     </h3>
 
-    <% @invoices.each do |invoice| %>
+    <% @invoices.order(invoice_sending_date: :asc).each do |invoice| %>
 
       <div class="row align-items-center projects-item mb-1">
         <div class="col-sm">

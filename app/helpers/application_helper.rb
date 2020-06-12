@@ -14,7 +14,7 @@ module ApplicationHelper
     @total_quote = 0
 
     goods.each do |good|
-      @total_quote += good.price
+      @total_quote += good.price * good.quantity
     end
 
     @total_quote
