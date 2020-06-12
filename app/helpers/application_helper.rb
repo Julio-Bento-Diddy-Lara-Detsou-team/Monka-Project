@@ -19,4 +19,15 @@ module ApplicationHelper
 
     @total_quote
   end
+
+  def get_total_turnover(quotes)
+    turnover = 0
+
+    quotes.each do |quote|
+      turnover += quote.amount
+    end
+
+    turnover
+  end
+
 end
