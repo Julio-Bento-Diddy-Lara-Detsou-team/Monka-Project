@@ -10,10 +10,14 @@ module ApplicationHelper
     end
   end
 
-  def get_turnover
-    invoices = []
-    invoices << curent_user.quotes.where(is_invoice: true).each
-    turnover = invoices.sum
+  def get_total_turnover(quotes)
+    turnover = 0
+
+    quotes.each do |quote|
+      turnover += quote.amount
+    end
+
+    turnover
   end
 
 end
