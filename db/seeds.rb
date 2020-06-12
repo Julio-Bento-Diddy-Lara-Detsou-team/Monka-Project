@@ -70,7 +70,7 @@ end
   quotes << Quote.create!(
       quote_number: "#{customer_of_user.first_name[0]}#{customer_of_user.last_name[0]}#{random_date.strftime("%d%m%Y")}#{i}",
       invoice_number: nil,
-      amount: rand(250..5000),
+      amount: 0,
       discount: 0,
       quote_sending_date: random_date,
       invoice_sending_date: nil,
@@ -92,7 +92,7 @@ end
   quotes << Quote.create!(
       quote_number: nil,
       invoice_number: "#{customer_of_user.first_name[0]}#{customer_of_user.last_name[0]}#{random_date.strftime("%d%m%Y")}#{i}",
-      amount: rand(250..5000),
+      amount: 0,
       discount: 0,
       quote_sending_date: nil,
       invoice_sending_date: random_date,
@@ -114,7 +114,7 @@ end
   quotes << Quote.create!(
       quote_number: nil,
       invoice_number: "#{customer_of_user.first_name[0]}#{customer_of_user.last_name[0]}#{random_date.strftime("%d%m%Y")}#{i}",
-      amount: rand(250..5000),
+      amount: 0,
       discount: 0,
       quote_sending_date: nil,
       invoice_sending_date: random_date,
@@ -136,7 +136,7 @@ end
   quotes << Quote.create!(
       quote_number: nil,
       invoice_number: "#{customer_of_user.first_name[0]}#{customer_of_user.last_name[0]}#{random_date.strftime("%d%m%Y")}#{i}",
-      amount: rand(250..5000),
+      amount: 0,
       discount: 0,
       quote_sending_date: nil,
       invoice_sending_date: random_date,
