@@ -89,7 +89,7 @@ nb_quotes.times do |i|
       quote_sending_counter: 0,
       invoice_sending_counter: 0,
       is_invoice: true,
-      is_paid: false,
+      is_paid: true,
       user: users.sample,
       customer: customer
   )
