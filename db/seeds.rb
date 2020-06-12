@@ -1,7 +1,7 @@
 # Edit the variables below to control the number of items to generate in each table of the database
 nb_users = 5
 nb_customers = 5
-nb_quotes = 5
+nb_quotes = 30
 nb_goods = 30
 nb_join_table = 60
 
