@@ -28,6 +28,11 @@ footer {
     color: #aae9e2;
 }
 
+.greentitle {
+    color: var(--primary-color) !important;
+    font-weight: bold;
+}
+
 :root {
     --primary-color: #16e5c0;
     --secondary-color: #AAE9E2;
@@ -75,6 +80,4 @@ footer {
 .white-hr {
     border-top: 1px solid white;
 }
-
-
 
