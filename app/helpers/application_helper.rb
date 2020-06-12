@@ -14,7 +14,7 @@ module ApplicationHelper
     @total_quote = 0
 
     goods.each do |good|
-      @total_quote += good.price
+      @total_quote += good.price * good.quantity
     end
 
     @total_quote
@@ -35,6 +35,18 @@ module ApplicationHelper
 
     invoices.each do |invoice|
       if DateTime.now.strftime("%m") === invoice.invoice_sending_date.strftime("%m")
+        turnover += invoice.amount
+      end
+    end
+
+    turnover
+  end
+
+  def get_calendar_turnover(invoices, month)
+    turnover = 0
+
+    invoices.each do |invoice|
+      if month === invoice.invoice_sending_date.strftime("%m")
         turnover += invoice.amount
       end
     end

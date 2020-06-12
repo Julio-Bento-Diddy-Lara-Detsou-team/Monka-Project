@@ -81,7 +81,7 @@
                           ticks: {
                               callback: function(a) {
                                   if (!(a % 10))
-                                      return a + "00€"
+                                      return a + "€"
                               }
                           }
                       }]
@@ -92,7 +92,7 @@
                               var t = e.datasets[a.datasetIndex].label || "",
                                   o = a.yLabel,
                                   r = "";
-                              return 1 < e.datasets.length && (r += '<span class="popover-body-label mr-auto">' + t + "</span>"), r += '<span class="popover-body-value">' + o + "00€</span>"
+                              return 1 < e.datasets.length && (r += '<span class="popover-body-label mr-auto">' + t + "</span>"), r += '<span class="popover-body-value">' + o + "€</span>"
                           }
                       }
                   }
@@ -102,7 +102,12 @@
                   labels: ["Jan", "Fev", "Mar", "Avr", "Mai", "Jui"],
                   datasets: [{
                       label: "Performance",
-                      data: [6, 14, 5, 9, 12, 16]
+                      data: [<%= get_calendar_turnover(@paid_invoices, "01") %>,
+                          <%= get_calendar_turnover(@paid_invoices, "02") %>,
+                          <%= get_calendar_turnover(@paid_invoices, "03") %>,
+                          <%= get_calendar_turnover(@paid_invoices, "04") %>,
+                          <%= get_calendar_turnover(@paid_invoices, "05") %>,
+                          <%= get_calendar_turnover(@paid_invoices, "06") %>]
                   }]
               }
 
@@ -117,7 +122,7 @@
                           ticks: {
                               callback: function(a) {
                                   if (!(a % 10))
-                                      return a + "k€"
+                                      return a + "€"
                               }
                           }
                       }]
@@ -138,7 +143,7 @@
                   labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                   datasets: [{
                       label: "Sales",
-                      data: [25, 20, 30, 22, 17, 10, 18, 26, 28, 26, 20, 32]
+                      data: [6, 20, 30, 22, 17, 10, 18, 26, 28, 26, 20, 32]
                   }]
               }
 
@@ -161,10 +166,10 @@
               }, options)
 
               var data = {
-                  labels: ["Devis", "Factures"],
+                  labels: ["Devis", "Factures payées", "Factures non-payées"],
                   datasets: [{
-                      data: [10, 2],
-                      backgroundColor: [settings.colors.primary[700], settings.colors.success[300], settings.colors.success[100]],
+                      data: [<%= current_user.quotes.where(is_invoice: false).count %>, <%= current_user.quotes.where(is_invoice: true, is_paid: true).count %>, <%= current_user.quotes.where(is_invoice: true, is_paid: false).count %>],
+                      backgroundColor: [settings.colors.primary[400], settings.colors.success[400], settings.colors.danger[400]],
                       hoverBorderColor: "dark" == settings.charts.colorScheme ? settings.colors.gray[800] : settings.colors.white
                   }]
               }
