@@ -74,20 +74,20 @@ const globalSettings = {
   elements: {
     point: {
       radius: 0,
-      backgroundColor: settings.colors.primary[700]
+      backgroundColor: settings.colors.primary[100]
     },
     line: {
       tension: .4,
       borderWidth: 3,
-      borderColor: settings.colors.primary[700],
+      borderColor: settings.colors.primary[500],
       backgroundColor: settings.colors.transparent,
       borderCapStyle: "rounded"
     },
     rectangle: {
-      backgroundColor: settings.colors.primary[700]
+      backgroundColor: settings.colors.primary[100]
     },
     arc: {
-      backgroundColor: settings.colors.primary[700],
+      backgroundColor: settings.colors.primary[100],
       borderColor: "dark" == settings.charts.colorScheme ? settings.colors.gray[800] : settings.colors.white,
       borderWidth: 4
     }

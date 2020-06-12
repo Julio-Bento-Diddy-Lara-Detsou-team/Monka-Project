@@ -42,4 +42,16 @@ module ApplicationHelper
     turnover
   end
 
+  def get_calendar_turnover(invoices, month)
+    turnover = 0
+
+    invoices.each do |invoice|
+      if month === invoice.invoice_sending_date.strftime("%m")
+        turnover += invoice.amount
+      end
+    end
+
+    turnover
+  end
+
 end
