@@ -5,19 +5,33 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-<!--  <div class="navbar-nav">-->
-<!--    <a class="nav-item nav-link" href="<%#= user_path(current_user) %>">Profil <span class="sr-only">(current)</span></a>-->
-<!--    <a class="nav-item nav-link <%#= "active" if controller_name === 'customers' && action_name === 'index' %>" href="<%#= customers_path %>">Mes clients</a>-->
-<!--    <a class="nav-item nav-link" href="">Mes Devis</a>-->
-<!--  </div>-->
 
   <!--navigation -->
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <% if user_signed_in? %>
-        <a class="nav-item nav-link <%= "active" if controller_name === 'users' && action_name === 'show' %>" href="<%= user_path(current_user) %>">Mon profil<span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link <%= "active" if controller_name === 'customers' && action_name === 'index' %>" href="<%= customers_path %>">Mes clients</a>
-        <a class="nav-item nav-link <%= "active" if controller_name === 'quotes' && action_name === 'index' %>" href="<%= quotes_path %>">Mes devis</a>
+        <!--change color for user -->
+        <a class="nav-item nav-link <%= "active" if controller_name === 'users' && action_name === 'show' %>" href="<%= user_path(current_user) %>">
+          Mon profil
+          <% if controller_name === 'users' && action_name === 'show' %>
+            <span class="sr-only">(current)</span>
+          <% end %>
+        </a>
+        <!--change color for view index customer -->
+        <a class="nav-item nav-link <%= "active" if controller_name === 'customers' && action_name === 'index' %>" href="<%= customers_path %>">
+          Mes clients
+          <% if controller_name === 'customers' && action_name === 'index' %>
+            <span class="sr-only">(current)</span>
+          <% end %>
+        </a>
+        <!--change color for view index quotes -->
+        <a class="nav-item nav-link <%= "active" if controller_name === 'quotes' && action_name === 'index' %>" href="<%= quotes_path %>">
+          Mes devis & factures </a>
+        <% if controller_name === 'quotes' && action_name === 'index' %>
+          <span class="sr-only">(current)</span>
+        <% end %>
+        </a>
+        <!--log out -->
         <%= link_to 'Déconnexion', destroy_user_session_path, :method => :delete, class:"nav-item nav-link" %>
       <% else %>
         <li class="nav-item nav-link active">
