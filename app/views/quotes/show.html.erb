@@ -9,7 +9,7 @@
       </nav>
       <h1 class="mt-3"><% if @quote.is_invoice %>Facture <%= @quote.invoice_number %><% else %>Devis <%= @quote.quote_number %><% end %></h1>
     </div>
-    <a href="<%= image_path "Devis_FS0501202012.pdf" %>" class="qbtn btn-primary"><i class="material-icons">file_download</i> Télécharger</a>
+    <a href="<%= image_path "Devis_FS0501202012.pdf" %>" target="_blank" class="qbtn btn-primary"><i class="material-icons">file_download</i> Télécharger</a>
   </div>
 </div>
 
