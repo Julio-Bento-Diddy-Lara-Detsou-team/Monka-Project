@@ -7,7 +7,7 @@
     <div class="navbar-nav">
       <% if user_signed_in? %>
         <%= link_to "Profil", user_path(current_user), class:"nav-item nav-link" %>
-        <a class="nav-item nav-link" href="#">Clients</a>
+        <%= link_to "Clients", customers_path, class:"nav-item nav-link" %>
         <%= link_to "Devis", quotes_path, class:"nav-item nav-link" %>
         <%= link_to 'Déconnexion', destroy_user_session_path, :method => :delete, class:"nav-item nav-link" %>
       <% else %>
