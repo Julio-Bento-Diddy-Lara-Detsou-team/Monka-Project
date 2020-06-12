@@ -7,11 +7,11 @@
 
 ## **[https://monka-project.herokuapp.com/](https://monka-project.herokuapp.com/)**
 
-### **Admin Account**
+### **Preview Account**
 
 Sign in with :  \
-login : adminmonka@yopmail.com  \
-password : monkabonga
+login : monka@yopmail.com  \
+password : azerrty
 
 # **Description**
 
