@@ -7,6 +7,6 @@ Rails.application.routes.draw do
 
   resources 'home', only: [:index]
   resources 'quotes'
-  resources 'users', only: [:show, :edit, :update]
+  resources 'users', only: [:show, :edit, :update, :new]
   resources :customers
 end
