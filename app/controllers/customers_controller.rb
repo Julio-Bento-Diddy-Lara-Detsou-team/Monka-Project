@@ -1,4 +1,7 @@
 class CustomersController < ApplicationController
+  include ApplicationHelper
+
+  before_action :authenticate_user!
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
   after_action :customer_to_current_user, only: [:create]
 
@@ -21,7 +24,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
+        format.html { redirect_to @customer, notice: 'Le client a été créé avec succès.' }
         format.json { render :show, status: :created, location: @customer }
       else
         format.html { render :new }
@@ -33,7 +36,7 @@ class CustomersController < ApplicationController
   def update
     respond_to do |format|
       if @customer.update(customer_params)
-        format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
+        format.html { redirect_to @customer, notice: 'Le client a été mis à jour avec succès.' }
         format.json { render :show, status: :ok, location: @customer }
       else
         format.html { render :edit }
@@ -45,7 +48,7 @@ class CustomersController < ApplicationController
   def destroy
     @customer.destroy
     respond_to do |format|
-      format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }
+      format.html { redirect_to customers_url, notice: 'Le client a été supprimé avec succès.' }
       format.json { head :no_content }
     end
   end
