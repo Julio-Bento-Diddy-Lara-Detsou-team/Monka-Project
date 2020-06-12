@@ -30,7 +30,11 @@ footer {
 
 :root {
     --primary-color: #16e5c0;
-    --secondary-color: #AAE9E2;
+    --secondary-color: #AAE9E2;# @invoices = Quote.all
+    # 
+
+    # @paid_invoices = current_user.quotes.where(is_paid: true)
+    # @unpayed_invoices = current_user.quotes.where(is_paid: false, is_invoice: true).count
     --grey-color: #2F3240;
 }
 
@@ -53,6 +57,11 @@ footer {
     border-color: var(--primary-color) !important;
 }
 
+
+.active {
+    background: #aae9e2!important;
+    color: #FFFFFF!important;
+
 .btn-secondary {
     background-color: var(--grey-color) !important;
     border-color: var(--grey-color) !important;
@@ -60,6 +69,7 @@ footer {
 
 .btn-secondary:hover {
     color: rgba(255, 255, 255, 0.54) !important;
+
 }
 
 .text-success {
@@ -69,3 +79,6 @@ footer {
 .white-hr {
     border-top: 1px solid white;
 }
+
+
+
