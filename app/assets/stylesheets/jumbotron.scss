@@ -1,0 +1,54 @@
+
+.jumbotron-hero {
+  height: 700px;
+  background-image: url("jumbotron.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+
+.backgound-wavy {
+  height: 700px;
+  background-image: url("wave2.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  opacity: 50%;
+}
+
+
+/*Boutons*/
+.btn-jumbo{
+  background-color: var(--grey-color);
+  color: #FFFFFF;
+  font-size: 18px;
+  font-width: bold;
+  box-shadow: #2E2F30;
+  box-sizing: border-box;
+  width: 200px;
+}
+
+.btn-jumbo:hover {
+  color: rgba(255, 255, 255, 0.54);
+}
+
+.btn-jumbo2{
+  background-color: var(--primary-color);
+  color: #FFFFFF;
+  box-shadow: aliceblue;
+  font-size: 18px;
+  font-width: bold;
+  width: 200px;
+}
+
+.btn-jumbo2:hover {
+  color: #FFFFFF;
+  background-color: #12ccab !important;
+}
+
+/*Jumbotron*/
+.jumbo-text{
+  color: #FFFFFF;
+}

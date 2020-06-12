@@ -1,0 +1,60 @@
+<!--Breadcrumb--->
+<div class="container-fluid  page__heading-container">
+  <div class="page__heading">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a href="#"><i class="material-icons icon-20pt">home</i></a></li>
+        <li class="breadcrumb-item active" aria-current="page">Mon profil</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+<!--Breadcrumb--->
+<h1 class="my-2">Mon <span class="greentitle">profil</span></h1>
+<div class="container-fluid page__container mt-5">
+  <div class="card card-form my-5">
+    <div class="row no-gutters">
+      <div class="col-lg-4 card-body mt-5 ">
+        <p><span class="greentitle">Mes informations</span></p>
+      </div>
+      <!--section-->
+      <div class="col-lg-8 card-form__body card-body my-5">
+        <div class="row my-1">
+          <p class="text-muted">Prénom : </p>
+          <p class="ml-3 text-right"><%= @user.first_name %></p>
+        </div>
+        <div class="row my-1">
+          <p class="text-muted">Nom : </p>
+          <p class="ml-3 text-right"><%= @user.last_name %></p>
+        </div>
+        <div class="row my-1">
+          <p class="text-muted">Nom de l'entreprise : </p>
+          <p class="ml-3 text-right"><%= @user.company_name %></p>
+        </div>
+        <div class="row my-1">
+          <p class="text-muted">N°SIRET : </p>
+          <p class="ml-3 text-right"><%= @user.company_id %></p>
+        </div>
+        <div class="row my-1">
+          <p class="text-muted">Adresse de la société : </p>
+          <p class="ml-3 text-right"><%= @user.address %> <%=@user.zip_code %> <%=@user.country %></p>
+        </div>
+        <div class="row my-1">
+          <p class="text-muted">Numéro de téléphone : </p>
+          <p class="ml-3 text-right"><%= @user.phone_number %></p>
+        </div>
+        <div class="row my-1">
+          <p class="text-muted">Email : </p>
+          <p class="ml-3 text-right mb-3"><%= @user.email %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="text-center">
+  <%= link_to "Editer mon profil", edit_user_path(current_user), class: "btn btn-jumbo2 mr-5 p-3 my-5" %>
+  <%= link_to 'Retour Accueil', root_path, class:"btn btn-jumbo p-3 my-5" %>
+  <br><br><br>
+</div>
+

@@ -1,0 +1,91 @@
+<div class="row justify-content-center">
+  <div class="container-fluid  page__heading-container">
+    <div class="page__heading">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="#"><i class="material-icons icon-20pt">Accueil</i></a></li>
+          <li class="breadcrumb-item active" aria-current="page"><%= resource_name.to_s.humanize %></li>
+        </ol>
+      </nav>
+      <h1 class="m-0">Modifier <%= resource_name.to_s.humanize %></h1>
+    </div>
+  </div>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+    <div class="container-fluid page__container">
+      <div class="card card-form">
+        <div class="row no-gutters">
+          <div class="col-lg-4 card-body">
+            <p><strong class="headings-color">Informations</strong></p>
+            <p class="text-muted">Modifier mes informations.</p>
+          </div>
+          <div class="col-lg-8 card-form__body card-body">
+            <div class="row">
+              <div class="col-md-6">
+
+                <%= render "devise/shared/error_messages", resource: resource %>
+                <div class="form-group">
+                  <%= f.label :email %>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'form-control' %>
+                </div>
+
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <div>En attente de confirmation: <%= resource.unconfirmed_email %></div>
+                <% end %>
+
+                <div class="form-group">
+                  <%= f.label :password %> <small>(laisser vide s'il n'y pas pas de changement)</small>
+                  <%= f.password_field :password, autocomplete: "new-password", class:'form-control' %>
+                  <% if @minimum_password_length %>
+                    <small class="form-text text-muted"><%= @minimum_password_length %> 6 caractères minimum</small>
+                  <% end %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :password_confirmation %>
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'form-control' %>
+                </div>
+              </div>
+            </div>
+
+            <hr>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <%= f.label :current_password %>
+                  <%= f.password_field :current_password, autocomplete: "current-password", class:'form-control' %>
+                  <small class="form-text text-muted"> <i>(nous avons besoin de ton mot de passe actuel)</i></small>
+                </div>
+
+                <div class="actions">
+                  <%= f.submit "Mettre à jour", class:'btn btn-success' %>
+                </div>
+  <% end %>
+
+
+  </div>
+  </div>
+
+  </div>
+  </div>
+  </div>
+
+
+  <div class="card card-form">
+    <div class="row no-gutters">
+      <div class="col-lg-4 card-body">
+        <p><strong class="headings-color">Supprimer mon compte</strong></p>
+        <p class="text-muted">Pas satisfait ?</p>
+      </div>
+      <div class="col-lg-8 card-form__body card-body">
+
+        <p><label for="">Cette action ne saurait être annulée !</label></p>
+        <%#= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger disabled', disabled: disabled %>
+        <%= button_to "Cancel my account", '#', data: { confirm: "Êtes-vous sûr(e)?" }, method: :get, class: 'btn btn-danger'%>
+
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

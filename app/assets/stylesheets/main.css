@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap%27');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@600');
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Comfortaa', Helvetica, Arial, sans-serif;
+}
+
+main {
+    display: flex;
+    flex: 1;
+}
+
+footer {
+    color: #FFFFFF;
+}
+
+.greenfoot {
+    color: #36F1CD;
+}
+
+.hrw{
+    border-top: 1px solid #aae9e2;
+}
+
+.greenblue{
+    color: #aae9e2;
+}
+
+.greentitle {
+    color: var(--primary-color) !important;
+    font-weight: bold;
+}
+
+:root {
+    --primary-color: #16e5c0;
+    --secondary-color: #AAE9E2;
+    --grey-color: #2F3240;
+}
+
+.bg-dark {
+    background-color: var(--grey-color) !important;
+}
+
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.btn-primary:hover {
+    background-color: #12ccab !important;
+    border-color: var(--primary-color) !important;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active {
+    background-color: #12ccab !important;
+    border-color: var(--primary-color) !important;
+}
+
+
+.active {
+    color: var(--primary-color) !important;
+}
+
+.btn-secondary {
+    background-color: var(--grey-color) !important;
+    border-color: var(--grey-color) !important;
+}
+
+.btn-secondary:hover {
+    color: rgba(255, 255, 255, 0.54) !important;
+
+}
+
+.text-success {
+    color: var(--primary-color) !important;
+}
+
+.white-hr {
+    border-top: 1px solid white;
+}
+

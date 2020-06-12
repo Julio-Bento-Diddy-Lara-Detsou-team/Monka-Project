@@ -1,15 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <title>MonkaProject</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Title -->
+    <title>Monka Project</title>
+    <!-- Favicon -->
+    <link rel="icon" href="<%= image_path 'calculate_vert_icon160.png' %>" />
+    <!-- Custom CSS -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+
   </head>
 
   <body>
-    <%= yield %>
+
+    <header>
+      <%= render "layouts/navbar" %>
+    </header>
+
+    <% if controller_name === 'home' && action_name === 'index' %>
+      <% unless user_signed_in? %>
+        <%= render "layouts/jumbotron" %>
+      <% end %>
+    <% end %>
+    
+    <main>
+      <div class="container">
+        <%= render "layouts/flash_messages" %>
+        <%= yield %>
+      </div>
+    </main>
+
+    <%= render "layouts/footer" %>
+
+    <%= javascript_include_tag 'application', 'data-track' => 'reload' %>
+    <%= content_for :footer_scripts %>
+
   </body>
+
 </html>
