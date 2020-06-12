@@ -23,9 +23,9 @@
           </h3>
           <thead>
           <tr>
-            <th>Nom du client</th>
-            <th>Entreprise</th>
             <th>Numéro du devis</th>
+            <th>Entreprise</th>
+            <th>Nom du client</th>
             <th class="text-center">Voir</th>
             <th class="text-center">Supprimer</th>
           </tr>
@@ -34,16 +34,16 @@
           <% @quotes.order(quote_sending_date: :asc).each do |quote| %>
             <tr>
               <td>
-                <a href="<%= customer_path(quote.customer.id) %>"><%= quote.customer.last_name.upcase %> <%= quote.customer.first_name %></a>
+                <a href="<%= quote_path(quote.id) %>"><%= quote.quote_number %></a>
               </td>
               <td>
                 <%= quote.customer.company_name %>
               </td>
               <td>
-                <a href="<%= quote_path(quote.id) %>"><%= quote.quote_number %></a>
+                <a href="<%= customer_path(quote.customer.id) %>"><%= quote.customer.last_name.upcase %> <%= quote.customer.first_name %></a>
               </td>
               <td class="text-center">
-                <a href="<%= quote_path(quote.id) %>", class="btn btn-secondary btn-sm">Voir</i></a>
+                <a href="<%= quote_path(quote.id) %>", class="btn btn-primary btn-sm">Voir</i></a>
               </td>
               <td class="text-center">
                 <a href="<%= quote_path(quote.id) %>", class="btn btn-danger text-white btn-sm", data-method="DELETE">Supprimer</a>
@@ -62,9 +62,9 @@
           </h3>
           <thead>
           <tr>
-            <th>Nom du client</th>
-            <th>Entreprise</th>
             <th>Numéro de la facture</th>
+            <th>Entreprise</th>
+            <th>Nom du client</th>
             <th class="text-center">Voir</th>
             <th class="text-center">Supprimer</th>
           </tr>
@@ -73,16 +73,16 @@
           <% @invoices.order(invoice_sending_date: :asc).each do |invoice| %>
             <tr>
               <td>
-                <a href="<%= customer_path(invoice.customer.id) %>"><%= invoice.customer.last_name.upcase %> <%= invoice.customer.first_name %></a>
+                <a href="<%= quote_path(invoice.id) %>"><%= invoice.invoice_number %></a>
               </td>
               <td>
                 <%= invoice.customer.company_name %>
               </td>
               <td>
-                <a href="<%= quote_path(invoice.id) %>"><%= invoice.invoice_number %></a>
+                <a href="<%= customer_path(invoice.customer.id) %>"><%= invoice.customer.last_name.upcase %> <%= invoice.customer.first_name %></a>
               </td>
               <td class="text-center">
-                <a href="<%= quote_path(invoice.id) %>", class="btn btn-secondary btn-sm">Voir</i></a>
+                <a href="<%= quote_path(invoice.id) %>", class="btn btn-primary btn-sm">Voir</i></a>
               </td>
               <td class="text-center">
                 <a href="<%= quote_path(invoice.id) %>", class="btn btn-danger text-white btn-sm", data-method="DELETE">Supprimer</a>

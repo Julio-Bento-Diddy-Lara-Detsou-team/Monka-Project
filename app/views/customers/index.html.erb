@@ -50,10 +50,10 @@
               <td><%= customer.email %></td>
 
               <td class="text-center">
-                <a href="<%= customer_path(customer.id) %>", class="btn btn-secondary btn-sm">Voir</i></a>
+                <a href="<%= customer_path(customer.id) %>", class="btn btn-primary btn-sm">Voir</i></a>
               </td>
               <td class="text-center">
-                <a href="<%= edit_customer_path(customer.id) %>" class="btn btn-secondary btn-sm">Editer</a>
+                <a href="<%= edit_customer_path(customer.id) %>" class="btn btn-primary btn-sm">Editer</a>
               </td>
               <td class="text-center">
                 <a href="<%= customer_path(customer.id) %>", class="btn btn-danger text-white btn-sm", data-method="DELETE">Supprimer</a>
