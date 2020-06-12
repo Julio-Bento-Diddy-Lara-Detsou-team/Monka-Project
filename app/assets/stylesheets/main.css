@@ -12,6 +12,22 @@ main {
     flex: 1;
 }
 
+footer {
+    color: #FFFFFF;
+}
+
+.greenfoot {
+    color: #36F1CD;
+}
+
+.hrw{
+    border-top: 1px solid #aae9e2;
+}
+
+.greenblue{
+    color: #aae9e2;
+}
+
 :root {
     --primary-color: #16e5c0;
     --secondary-color: #AAE9E2;
