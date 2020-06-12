@@ -4,7 +4,7 @@
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
           <li class="breadcrumb-item"><a href="<%= root_path %>">Accueil</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Page <% if @quote.is_invoice %>Facture<% else %>Devis<% end %></li>
+          <li class="breadcrumb-item"><a href="<%= quotes_path %>" class="active">Mes devis et factures</a></li>
         </ol>
       </nav>
       <h1 class="mt-3"><% if @quote.is_invoice %>Facture <%= @quote.invoice_number %><% else %>Devis <%= @quote.quote_number %><% end %></h1>

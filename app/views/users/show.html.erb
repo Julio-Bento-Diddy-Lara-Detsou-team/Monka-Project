@@ -1,21 +1,23 @@
-<!--Breadcrumb--->
-<div class="container-fluid  page__heading-container">
-  <div class="page__heading">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb mb-0">
-        <li class="breadcrumb-item"><a href="#"><i class="material-icons icon-20pt">home</i></a></li>
-        <li class="breadcrumb-item active" aria-current="page">Mon profil</li>
-      </ol>
-    </nav>
+<div class="container-fluid page__heading-container">
+  <div class="page__heading d-flex align-items-center">
+    <div class="flex">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="<%= root_path %>">Accueil</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Mon profil</li>
+        </ol>
+      </nav>
+      <h1 class="mt-3">Mon <span class="greentitle">profil</span></h1>
+    </div>
   </div>
 </div>
 <!--Breadcrumb--->
-<h1 class="my-2">Mon <span class="greentitle">profil</span></h1>
-<div class="container-fluid page__container mt-5">
-  <div class="card card-form my-5">
+<div class="container-fluid page__container">
+  <div class="card card-form">
     <div class="row no-gutters">
-      <div class="col-lg-4 card-body mt-5 ">
-        <p><span class="greentitle">Mes informations</span></p>
+
+      <div class="col-lg-4 card-body mt-5 text-center">
+        <p class="greentitle">Mes informations</p>
       </div>
       <!--section-->
       <div class="col-lg-8 card-form__body card-body my-5">
@@ -52,9 +54,8 @@
   </div>
 </div>
 
-<div class="text-center">
+<div class="text-center mb-3">
   <%= link_to "Editer mon profil", edit_user_path(current_user), class: "btn btn-jumbo2 mr-5 p-3 my-5" %>
   <%= link_to 'Retour Accueil', root_path, class:"btn btn-jumbo p-3 my-5" %>
-  <br><br><br>
 </div>
 

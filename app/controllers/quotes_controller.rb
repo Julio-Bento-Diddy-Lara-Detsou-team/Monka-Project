@@ -31,6 +31,10 @@ class QuotesController < ApplicationController
 
   def destroy
     @quote.destroy
+    respond_to do |format|
+      format.html { redirect_to customers_url, notice: "L'objet a été supprimé avec succès." }
+      format.json { head :no_content }
+    end
   end
 
   private
