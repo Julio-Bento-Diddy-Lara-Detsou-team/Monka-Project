@@ -3,11 +3,11 @@
     <div class="page__heading">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
-          <li class="breadcrumb-item"><a href="#"><i class="material-icons icon-20pt">home</i></a></li>
+          <li class="breadcrumb-item"><a href="#"><i class="material-icons icon-20pt">Accueil</i></a></li>
           <li class="breadcrumb-item active" aria-current="page"><%= resource_name.to_s.humanize %></li>
         </ol>
       </nav>
-      <h1 class="m-0">Edit <%= resource_name.to_s.humanize %></h1>
+      <h1 class="m-0">Modifier <%= resource_name.to_s.humanize %></h1>
     </div>
   </div>
 
@@ -17,8 +17,8 @@
       <div class="card card-form">
         <div class="row no-gutters">
           <div class="col-lg-4 card-body">
-            <p><strong class="headings-color">Basic Information</strong></p>
-            <p class="text-muted">Edit your account details and settings.</p>
+            <p><strong class="headings-color">Informations</strong></p>
+            <p class="text-muted">Modifier mes informations.</p>
           </div>
           <div class="col-lg-8 card-form__body card-body">
             <div class="row">
@@ -31,14 +31,14 @@
                 </div>
 
                 <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                  <div>En attente de confirmation: <%= resource.unconfirmed_email %></div>
                 <% end %>
 
                 <div class="form-group">
-                  <%= f.label :password %> <small>(leave blank if you don't want to change it)</small>
+                  <%= f.label :password %> <small>(laisser vide s'il n'y pas pas de changement)</small>
                   <%= f.password_field :password, autocomplete: "new-password", class:'form-control' %>
                   <% if @minimum_password_length %>
-                    <small class="form-text text-muted"><%= @minimum_password_length %> characters minimum</small>
+                    <small class="form-text text-muted"><%= @minimum_password_length %> 6 caractères minimum</small>
                   <% end %>
                 </div>
 
@@ -55,11 +55,11 @@
                 <div class="form-group">
                   <%= f.label :current_password %>
                   <%= f.password_field :current_password, autocomplete: "current-password", class:'form-control' %>
-                  <small class="form-text text-muted"> <i>(we need your current password to confirm your changes)</i></small>
+                  <small class="form-text text-muted"> <i>(nous avons besoin de ton mot de passe actuel)</i></small>
                 </div>
 
                 <div class="actions">
-                  <%= f.submit "Update", class:'btn btn-success' %>
+                  <%= f.submit "Mettre à jour", class:'btn btn-success' %>
                 </div>
   <% end %>
 
@@ -75,14 +75,14 @@
   <div class="card card-form">
     <div class="row no-gutters">
       <div class="col-lg-4 card-body">
-        <p><strong class="headings-color">Cancel My Account</strong></p>
-        <p class="text-muted">Unhappy?</p>
+        <p><strong class="headings-color">Supprimer mon compte</strong></p>
+        <p class="text-muted">Pas satisfait ?</p>
       </div>
       <div class="col-lg-8 card-form__body card-body">
 
-        <p><label for="">This action can't be undone!</label></p>
+        <p><label for="">Cette action ne saurait être annulée !</label></p>
         <%#= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger disabled', disabled: disabled %>
-        <%= button_to "Cancel my account", '#', data: { confirm: "Are you sure?" }, method: :get, class: 'btn btn-danger'%>
+        <%= button_to "Cancel my account", '#', data: { confirm: "Êtes-vous sûr(e)?" }, method: :get, class: 'btn btn-danger'%>
 
       </div>
     </div>
