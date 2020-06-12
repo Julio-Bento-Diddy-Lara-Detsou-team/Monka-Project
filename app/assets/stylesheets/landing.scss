@@ -21,9 +21,10 @@ h1, h2, h3, h4, h5, h6 {
   color: #2F3240;
 }
 
-.body {
+body {
 
   color:#484C5E;
+  font-family: Nunito;
 
 }
 .green-new {
@@ -39,6 +40,8 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #2F3240;
 }
 
+
+/*Boutons*/
 .btn-jumbo{
   background-color: #2F3240;
   color: #FFFFFF;
@@ -47,7 +50,33 @@ h1, h2, h3, h4, h5, h6 {
   font-width: bold;
 }
 
+.btn-jumbo2{
+  background-color: #36F1CD;
+  color: #FFFFFF;
+  box-shadow: aliceblue;
+  font-size: 18px;
+  font-width: bold;
+}
+
+/*Jumbotron*/
 .jumbo-text{
   color: #FFFFFF;
 }
-
+/*Video*/
+.video-container {
+  position:relative;
+  margin:0 auto;
+  padding-bottom:56.25%; /* ratio 16:9 */
+  padding-top:30px;
+  height:0;
+  overflow:hidden
+}
+.video-container iframe {
+  position:absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  width:100%;
+  height:100%;
+}
