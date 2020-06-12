@@ -20,11 +20,23 @@ module ApplicationHelper
     @total_quote
   end
 
-  def get_total_turnover(quotes)
+  def get_annual_turnover(quotes)
     turnover = 0
 
     quotes.each do |quote|
       turnover += quote.amount
+    end
+
+    turnover
+  end
+
+  def get_monthly_turnover(invoices)
+    turnover = 0
+
+    invoices.each do |invoice|
+      if DateTime.now.strftime("%m") === invoice.invoice_sending_date.strftime("%m")
+        turnover += invoice.amount
+      end
     end
 
     turnover
