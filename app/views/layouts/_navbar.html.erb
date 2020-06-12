@@ -35,9 +35,9 @@
         <%= link_to 'Déconnexion', destroy_user_session_path, :method => :delete, class:"nav-item nav-link" %>
       <% else %>
         <li class="nav-item nav-link active">
-        <a class="nav-item nav-link active" href="<%= root_path %>">Accueil <span class="sr-only">(current)</span></a>
-        <%= link_to "Inscription", new_user_registration_path, class:"nav-item nav-link" %>
-        <%= link_to "Connexion", new_user_session_path, class:"nav-item nav-link" %>
+          <a class="nav-item nav-link active" href="<%= root_path %>">Accueil <span class="sr-only">(current)</span></a>
+          <%= link_to "Inscription", new_user_registration_path, class:"nav-item nav-link" %>
+          <%= link_to "Connexion", new_user_session_path, class:"nav-item nav-link" %>
       <% end %>
     </div>
   </div>

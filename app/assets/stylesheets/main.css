@@ -55,8 +55,7 @@ footer {
 
 
 .active {
-    background: #aae9e2 !important;
-    color: #FFFFFF !important;
+    color: var(--primary-color) !important;
 }
 
 .btn-secondary {
