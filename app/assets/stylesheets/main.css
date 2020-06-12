@@ -37,6 +37,11 @@ main {
     border-color: var(--primary-color) !important;
 }
 
+.active {
+    background: #aae9e2!important;
+    color: #FFFFFF!important;
+}
+
 .text-success {
     color: var(--primary-color) !important;
 }
@@ -44,3 +49,6 @@ main {
 .white-hr {
     border-top: 1px solid white;
 }
+
+
+
