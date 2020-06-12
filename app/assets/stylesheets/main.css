@@ -58,6 +58,12 @@ footer {
     border-color: var(--primary-color) !important;
 }
 
+
+.active {
+    background: #aae9e2 !important;
+    color: #FFFFFF !important;
+}
+
 .btn-secondary {
     background-color: var(--grey-color) !important;
     border-color: var(--grey-color) !important;
@@ -65,6 +71,7 @@ footer {
 
 .btn-secondary:hover {
     color: rgba(255, 255, 255, 0.54) !important;
+
 }
 
 .text-success {
@@ -74,3 +81,4 @@ footer {
 .white-hr {
     border-top: 1px solid white;
 }
+
