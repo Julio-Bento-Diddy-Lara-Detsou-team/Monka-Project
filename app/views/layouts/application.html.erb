@@ -5,7 +5,7 @@
     <!-- Title -->
     <title>Monka Project</title>
     <!-- Favicon -->
-    <link rel="icon" href="<%= image_path 'favicon.png' %>" />
+    <link rel="icon" href="<%= image_path 'calculate_vert_icon160.png' %>" />
     <!-- Custom CSS -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,10 +23,10 @@
     </header>
 
     <% if controller_name === 'home' && action_name === 'index' %>
-    <%= render "layouts/jumbotron" %>
-  <% end %>
+      <%= render "layouts/jumbotron" %>
+    <% end %>
+    
     <main>
-
       <div class="container">
         <%= render "layouts/flash_messages" %>
         <%= yield %>

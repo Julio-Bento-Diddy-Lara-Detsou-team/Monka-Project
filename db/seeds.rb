@@ -2,8 +2,8 @@
 nb_users = 5
 nb_customers = 5
 nb_quotes = 5
-nb_goods = 5
-nb_join_table = 5
+nb_goods = 30
+nb_join_table = 60
 
 # Arrays used to store all created objects during the seeding
 users = []
@@ -62,7 +62,7 @@ nb_quotes.times do |i|
 
   customer = customers.sample
 
-  Quote.create!(
+  quotes << Quote.create!(
       quote_number: "#{customer.first_name[0]}#{customer.last_name[0]}#{DateTime.now.strftime("%d%m%Y%H%M%S")}#{i}",
       invoice_number: nil,
       amount: rand(250..5000),
@@ -89,7 +89,7 @@ nb_quotes.times do |i|
       quote_sending_counter: 0,
       invoice_sending_counter: 0,
       is_invoice: true,
-      is_paid: false,
+      is_paid: true,
       user: users.sample,
       customer: customer
   )

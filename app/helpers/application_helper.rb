@@ -9,4 +9,37 @@ module ApplicationHelper
       "alert-info"
     end
   end
+
+  def calculate_total_quote(goods)
+    @total_quote = 0
+
+    goods.each do |good|
+      @total_quote += good.price
+    end
+
+    @total_quote
+  end
+
+  def get_annual_turnover(quotes)
+    turnover = 0
+
+    quotes.each do |quote|
+      turnover += quote.amount
+    end
+
+    turnover
+  end
+
+  def get_monthly_turnover(invoices)
+    turnover = 0
+
+    invoices.each do |invoice|
+      if DateTime.now.strftime("%m") === invoice.invoice_sending_date.strftime("%m")
+        turnover += invoice.amount
+      end
+    end
+
+    turnover
+  end
+
 end
