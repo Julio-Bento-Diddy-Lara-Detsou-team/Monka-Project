@@ -138,7 +138,7 @@
                   labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                   datasets: [{
                       label: "Sales",
-                      data: [25, 20, 30, 22, 17, 10, 18, 26, 28, 26, 20, 32]
+                      data: [<%= current_user.quotes.where(is_invoice: true, is_paid: true, invoice_sending_date: DateTime.new(2020,1)..DateTime.new.next_month) %>, 20, 30, 22, 17, 10, 18, 26, 28, 26, 20, 32]
                   }]
               }
 
@@ -161,9 +161,9 @@
               }, options)
 
               var data = {
-                  labels: ["Devis", "Factures"],
+                  labels: ["Devis", "Factures payées", "Factures non-payées"],
                   datasets: [{
-                      data: [10, 2],
+                      data: [<%= current_user.quotes.where(is_invoice: false).count %>, <%= current_user.quotes.where(is_invoice: true, is_paid: true).count %>, <%= current_user.quotes.where(is_invoice: true, is_paid: false).count %>],
                       backgroundColor: [settings.colors.primary[700], settings.colors.success[300], settings.colors.success[100]],
                       hoverBorderColor: "dark" == settings.charts.colorScheme ? settings.colors.gray[800] : settings.colors.white
                   }]

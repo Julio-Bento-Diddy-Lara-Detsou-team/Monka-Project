@@ -172,7 +172,7 @@ end
   puts "Preview #{i+1} goods generated"
 end
 
-10.times do |i|
+15.times do |i|
 
   random_date = rand(6.months).seconds.ago
   customer_of_user = user.customers.sample
@@ -194,9 +194,31 @@ end
   puts "Preview #{i+1} quotes generated"
 end
 
-8.times do |i|
+6.times do |i|
 
   random_date = rand(6.months).seconds.ago
+  customer_of_user = user.customers.sample
+
+  quotes << Quote.create!(
+      quote_number: nil,
+      invoice_number: "#{customer_of_user.first_name[0]}#{customer_of_user.last_name[0]}#{random_date.strftime("%d%m%Y%H%M%S")}#{i}",
+      amount: rand(250..5000),
+      discount: 0,
+      quote_sending_date: nil,
+      invoice_sending_date: random_date,
+      quote_sending_counter: 0,
+      invoice_sending_counter: 0,
+      is_invoice: true,
+      is_paid: true,
+      user: user,
+      customer: customer_of_user)
+
+  puts "Preview #{i+1} invoices (paid) generated"
+end
+
+2.times do |i|
+
+  random_date = rand(7.days).seconds.ago
   customer_of_user = user.customers.sample
 
   quotes << Quote.create!(
