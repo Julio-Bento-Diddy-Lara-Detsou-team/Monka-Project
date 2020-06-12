@@ -23,7 +23,9 @@
     </header>
 
     <% if controller_name === 'home' && action_name === 'index' %>
-      <%= render "layouts/jumbotron" %>
+      <% unless user_signed_in? %>
+        <%= render "layouts/jumbotron" %>
+      <% end %>
     <% end %>
     
     <main>
