@@ -29,7 +29,7 @@
         <p><strong>Prénom : </strong><%= @customer.first_name %> <%= @customer.last_name.upcase %></p>
         <p><strong>Entreprise : </strong> <%= @customer.company_name %></p>
         <p><strong>SIRET / SIREN : </strong><%= @customer.company_id %></p>
-        <p><strong>Professionel : </strong><%= @customer.is_professional %></p>
+        <p><strong>Professionel : </strong><% if @customer.is_professional %>True <% else %>False <%end %></p>
         <p><strong>Email : </strong><%= @customer.email %></p>
         <p><strong>Téléphone : </strong><%= @customer.phone_number %></p>
         <p><strong>Adresse : </strong><%= @customer.address %> <%= @customer.zip_code %> <%= @customer.country.upcase %></p>
