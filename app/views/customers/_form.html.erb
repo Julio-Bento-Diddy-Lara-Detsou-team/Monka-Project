@@ -44,9 +44,9 @@
     </div>
   </div>
 
-  <div class="form-check">
-    <%= check_box_tag :is_professional, class: "form-control", value: true %>
-    <%= label_tag :is_professional, "Cocher cette case si le client est un professionel" %>
+  <div class="form-group form-row">
+    <%= form.check_box :is_professional, class: "form-control ml-3", value: true, :style => "width: 20px; height: 20px;" %>
+    <%= form.label :is_professional, "Cocher si professionnel", class: "ml-2" %>
   </div>
 
   <div class="form-row">
