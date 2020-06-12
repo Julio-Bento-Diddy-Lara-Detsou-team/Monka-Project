@@ -31,6 +31,8 @@ class QuotesController < ApplicationController
 
   def destroy
     @quote.destroy
+    flash[:error] = "L'élément a bien été supprimé"
+    redirect_to :quotes
   end
 
   private
