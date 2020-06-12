@@ -1,7 +1,13 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class="container text-center text-light">
-    <h1 class="display-4">Monka</h1>
-    <h2 class="h3 mb-3">Tout sur mon CA</h2>
+<div class="jumbotron jumbotron-fluid jumbotron-hero text-center text-center">
+
+  <div class="justify-content-start col-lg-6 ">
+    <h2 class="display-2 jumbo-text ">monka</h2>
+    <p class="lead text-white"> En un clic, tout sur mon CA !</p>
+
+    <%= link_to "Se connecter", new_user_session_path, class: 'btn btn-jumbo w-25 h-25 m-2 p-3 shadow mb-5' %>
+    <%= link_to "S'inscrire", new_user_registration_path, class: 'btn btn-jumbo w-25 h-25 m-2 p-3 shadow mb-5' %>
+
   </div>
+
 </div>
 

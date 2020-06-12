@@ -22,6 +22,10 @@
       <%= render "layouts/navbar" %>
     </header>
 
+    <% if controller_name === 'home' && action_name === 'index' %>
+      <%= render "layouts/jumbotron" %>
+    <% end %>
+    
     <main>
       <div class="container">
         <%= render "layouts/flash_messages" %>
