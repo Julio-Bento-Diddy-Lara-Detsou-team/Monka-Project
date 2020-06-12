@@ -30,11 +30,7 @@ footer {
 
 :root {
     --primary-color: #16e5c0;
-    --secondary-color: #AAE9E2;# @invoices = Quote.all
-    # 
-
-    # @paid_invoices = current_user.quotes.where(is_paid: true)
-    # @unpayed_invoices = current_user.quotes.where(is_paid: false, is_invoice: true).count
+    --secondary-color: #AAE9E2;
     --grey-color: #2F3240;
 }
 
@@ -59,8 +55,9 @@ footer {
 
 
 .active {
-    background: #aae9e2!important;
-    color: #FFFFFF!important;
+    background: #aae9e2 !important;
+    color: #FFFFFF !important;
+}
 
 .btn-secondary {
     background-color: var(--grey-color) !important;
