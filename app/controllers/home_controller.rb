@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  include ApplicationHelper
+
   def index
     @invoices = Quote.all
     @paid_invoices = Quote.where(is_paid: true)
