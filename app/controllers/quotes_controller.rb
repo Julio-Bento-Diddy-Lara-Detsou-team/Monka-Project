@@ -10,6 +10,7 @@ class QuotesController < ApplicationController
   end
 
   def show
+    @goods = @quote.goods
   end
 
   def new

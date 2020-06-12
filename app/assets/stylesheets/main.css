@@ -1,9 +1,10 @@
-@import url("https://fonts.googleapis.com/css?family=Inter");
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap%27');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@600');
 
 body {
     display: flex;
     flex-direction: column;
-    font-family: 'Inter', Helvetica, Arial, sans-serif;
+    font-family: 'Comfortaa', Helvetica, Arial, sans-serif;
 }
 
 main {
@@ -14,8 +15,32 @@ main {
 :root {
     --primary-color: #16e5c0;
     --secondary-color: #AAE9E2;
+    --grey-color: #2F3240;
 }
 
 .bg-dark {
+    background-color: var(--grey-color) !important;
+}
+
+.btn-primary {
     background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.btn-primary:hover {
+    background-color: #12ccab !important;
+    border-color: var(--primary-color) !important;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active {
+    background-color: #12ccab !important;
+    border-color: var(--primary-color) !important;
+}
+
+.text-success {
+    color: var(--primary-color) !important;
+}
+
+.white-hr {
+    border-top: 1px solid white;
 }

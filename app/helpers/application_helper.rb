@@ -10,6 +10,16 @@ module ApplicationHelper
     end
   end
 
+  def calculate_total_quote(goods)
+    @total_quote = 0
+
+    goods.each do |good|
+      @total_quote += good.price
+    end
+
+    @total_quote
+  end
+
   def get_total_turnover(quotes)
     turnover = 0
 

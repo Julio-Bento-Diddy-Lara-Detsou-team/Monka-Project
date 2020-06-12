@@ -1,13 +1,20 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Monka</a>
+  <a class="navbar-brand" href="<%= root_path %>">monka</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" href="<%= user_path(current_user) if user_signed_in? %>">Profil <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link <%= "active" if controller_name === 'customers' && action_name === 'index' %>" href="<%= customers_path %>">Mes clients</a>
-      <a class="nav-item nav-link" href="">Mes Devis</a>
+      <% if user_signed_in? %>
+        <%= link_to "Profil", user_path(current_user), class:"nav-item nav-link" %>
+        <a class="nav-item nav-link" href="#">Clients</a>
+        <%= link_to "Devis", quotes_path, class:"nav-item nav-link" %>
+        <%= link_to 'Déconnexion', destroy_user_session_path, :method => :delete, class:"nav-item nav-link" %>
+      <% else %>
+        <a class="nav-item nav-link active" href="<%= root_path %>">Accueil <span class="sr-only">(current)</span></a>
+        <%= link_to "S'inscrire", new_user_registration_path, class:"nav-item nav-link" %>
+        <%= link_to "Connexion", new_user_session_path, class:"nav-item nav-link" %>
+      <% end %>
     </div>
   </div>
 </nav>
