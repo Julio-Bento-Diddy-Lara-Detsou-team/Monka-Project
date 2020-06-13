@@ -1,3 +1,4 @@
+
   <div class="container-fluid page__heading-container">
     <div class="page__heading d-flex align-items-center">
       <div class="flex">
@@ -12,7 +13,8 @@
     </div>
   </div>
 
-    <div class="btn-group-lg btn-group-toggle my-2 ml-4" data-toggle="buttons">
+  <div class="container-small page__container">
+    <div class="btn-group-lg btn-group-toggle mb-3 ml-4" data-toggle="buttons">
       <label class="btn btn-primary btn-lg form-check-label active">
         <input class="form-check-input" type="radio" name="options" id="quote" autocomplete="off" value="" checked>
         Devis
@@ -23,30 +25,36 @@
       </label>
     </div>
 
-    <div class="container-fluid page__container">
-      <div class="col card card-form__body card-body">
-        <div class="form-group">
+    <div class="card card-form__body card-body">
+      <div class="d-flex justify-content-center flex-column text-center my-5 navbar-light">
+        <div class="navbar-brand d-flex flex-column m-0" style="min-width: 0">
+          <img class="navbar-brand-icon mb-2" src="<%= image_path('calculate_vert.png')%>" width="25" alt="Logo de la compagnie">
+          <span><% if @quote.is_invoice %>Facture<% else %>Devis<% end %></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 form-group">
           <label for="customer_select">À destination de :</label>
-          <div class="row flex-wrap-reverse align-items-center">
-            <div class="col-lg-11">
+          <div class="row align-items-center">
+            <div class="col-lg-10 mb-3 mb-lg-0">
               <select
                 id="customer_select"
                 data-toggle="select"
                 class="form-control form-control-lg">
                 <option value= "" disabled selected>Choisir un client</option>
                 <% current_user.customers.each do |customer| %>
-                <option value= "<% customer.id %>"><%= customer.first_name %></option>
+                <option value= "<% customer.id %>"><%= customer.first_name %> <%= customer.last_name %></option>
                 <% end %>
               </select>
             </div>
             <div class="col-lg-1">
               <button type="button" class="btn btn-primary">
-                <i class="fa fa-plus" aria-hidden="true"></i>
+                Créer
               </button>
             </div>
           </div>
         </div>
-        <div class="text-right">
+        <div class="col-lg-6 text-right">
           <label>De la part de :</label>
           <p class="mb-4">
             <strong class="text-body"><%= current_user.first_name %> <%= current_user.last_name %></strong><br>
@@ -54,53 +62,53 @@
             <%= current_user.address %><br>
             <%= current_user.zip_code %> <%= current_user.country %><br>
           </p>
-          <hr/>
         </div>
-        <fieldset disabled>
-          <div class="form-group">
-            <label for="quote_number">Numéro du devis/de la facture :</label>
-            <input type="text" id="quote_number" class="form-control" placeholder="<%= DateTime.now.strftime("%d%m%Y") %>-INITIALES-01">
-          </div>
-          <div class="form-group">
-            <label for="date">Date d'échéance :</label>
-            <input type="password" class="form-control" id="date" placeholder="<%= 3.days.from_now.strftime("%d/%m/%Y") %>">
-          </div>
-        </fieldset>
-        <hr/>
-        <label for="goods_select">Liste des produits/services :</label>
-        <div class="row flex-wrap-reverse align-items-center">
-          <div class="col-lg-11">
-            <select
-              id="goods_select"
-              data-toggle="select"
-              class="form-control form-control-lg">
-              <option value= "" disabled selected>Choisir un produit/service</option>
-              <% current_user.goods.each do |good| %>
-                <option value= "<% good.id %>"><%= good.title %></option>
-              <% end %>
-            </select>
-          </div>
-          <div class="col-lg-1">
-            <button type="button" class="btn btn-primary">
-              <i class="fa fa-plus" aria-hidden="true"></i>
-            </button>
-          </div>
-        </div>
-        <hr/>
-        <div class="bg-dark rounded">
-          <h5 class="text-white text-right mr-5 pt-3">Réduction : 00%</h5>
-          <hr class="white-hr mx-5">
-          <h3 class="text-white text-right mr-5 pb-3">Total : 9999€</h3>
-        </div>
-        <hr/>
-        <label for="terms_conditions_select">Termes et conditions :</label>
-        <select
-          id="terms_conditions_select"
-          data-toggle="select"
-          class="form-control form-control-lg">
-          <option value= "" disabled selected>Choisir les termes et conditions</option>
-          <option value= "">Conditions générales de vente n°1</option>
-        </select>
-        <button type="submit" class="btn btn-primary mt-4" style="float: right;">Valider</button>
       </div>
+      <div class="row mb-5">
+        <div class="col-lg">
+          <fieldset disabled>
+          <label for="quote_number">Numéro de devis :</label>
+          <input type="text" class="form-control" id="quote_number" value="INITIALES-<%= DateTime.now.strftime("%d%m%Y") %>-01">
+          </fieldset>
+        </div>
+        <div class="col-lg text-right">
+          <fieldset disabled>
+          <label for="date">Date d'échéance :</label>
+          <input type="text" class="form-control text-right" id="date" value="<%= 3.days.from_now.strftime("%d/%m/%Y") %>">
+          </fieldset>
+        </div>
+      </div>
+      <hr/>
+      <label for="goods_select">Liste des produits/services :</label>
+      <div class="row align-items-center">
+        <div class="col-lg-10 mb-3 mb-lg-0">
+          <select
+            id="goods_select"
+            data-toggle="select"
+            class="form-control form-control-lg">
+            <option value= "" disabled selected>Choisir un produit/service</option>
+            <% current_user.goods.each do |good| %>
+              <option value= "<% good.id %>"><%= good.title %></option>
+            <% end %>
+          </select>
+        </div>
+        <div class="col-lg-1">
+          <button type="button" class="btn btn-primary">
+            Créer
+          </button>
+        </div>
+      </div>
+      <hr/>
+      <div class="bg-dark rounded">
+        <h5 class="text-white text-right mr-5 pt-3">Réduction : 00%</h5>
+        <hr class="white-hr mx-5">
+        <h3 class="text-white text-right mr-5 pb-3">Total : 9999€</h3>
+      </div>
+      <hr/>
+      <fieldset disabled>
+        <label for="CGV">Termes et conditions :</label>
+        <input type="text" class="form-control" id="CGV" value="Conditions générales de vente n°1">
+      </fieldset>
+      <button type="submit" class="btn btn-primary mt-4" style="float: right;">Valider</button>
     </div>
+  </div>
