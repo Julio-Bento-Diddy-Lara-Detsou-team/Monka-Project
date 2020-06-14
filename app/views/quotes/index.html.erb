@@ -43,10 +43,10 @@
                 <a href="<%= customer_path(quote.customer.id) %>"><%= quote.customer.last_name.upcase %> <%= quote.customer.first_name %></a>
               </td>
               <td class="text-center">
-                <a href="<%= quote_path(quote.id) %>", class="btn btn-primary btn-sm">Voir</i></a>
+                <a href="<%= quote_path(quote.id) %>" class="btn btn-primary btn-sm">Voir</a>
               </td>
               <td class="text-center">
-                <a href="<%= quote_path(quote.id) %>", class="btn btn-danger text-white btn-sm", data-method="DELETE">Supprimer</a>
+                <a href="<%= quote_path(quote.id) %>" class="btn btn-danger text-white btn-sm" data-method="DELETE">Supprimer</a>
               </td>
             </tr>
           <% end %>
@@ -82,10 +82,10 @@
                 <a href="<%= customer_path(invoice.customer.id) %>"><%= invoice.customer.last_name.upcase %> <%= invoice.customer.first_name %></a>
               </td>
               <td class="text-center">
-                <a href="<%= quote_path(invoice.id) %>", class="btn btn-primary btn-sm">Voir</i></a>
+                <a href="<%= quote_path(invoice.id) %>" class="btn btn-primary btn-sm">Voir</a>
               </td>
               <td class="text-center">
-                <a href="<%= quote_path(invoice.id) %>", class="btn btn-danger text-white btn-sm", data-method="DELETE">Supprimer</a>
+                <a href="<%= quote_path(invoice.id) %>" class="btn btn-danger text-white btn-sm" data-method="DELETE">Supprimer</a>
               </td>
             </tr>
           <% end %>
