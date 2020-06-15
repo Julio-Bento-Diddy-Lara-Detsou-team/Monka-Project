@@ -18,11 +18,19 @@
         <p><span class="greentitle">Mes informations</span></p>
       </div>
 
-      <% if @user.logo.attached? %>
-        <%= image_tag @user.logo, alt: 'logo' %>
-      <%end%>
+
       <!--section-->
       <div class="col-lg-8 card-form__body card-body my-5">
+        <div class="row my-1">
+        <% if @user.logo.attached? %>
+          <%= image_tag @user.logo, alt: 'logo' %>
+        <%end%>
+#form whith the logo's showing because don't work otherwise
+        <%= form_tag user_logo_index_path(@user), multipart: true do %>
+          <%= file_field_tag :logo %>
+          <%= submit_tag "mettre à jour" %>
+        <% end %>
+        </div>
         <div class="row my-1">
           <p class="text-muted">Prénom : </p>
           <p class="ml-3 text-right"><%= @user.first_name %></p>
