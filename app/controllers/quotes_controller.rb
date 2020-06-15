@@ -2,10 +2,13 @@ class QuotesController < ApplicationController
   before_action :set_quote, only: [:show, :edit, :update, :destroy]
 
   def index
-    @quotes = current_user.quotes.all
+    @quote_table = current_user.quotes.all
+    @quotes = current_user.quotes.where(is_invoice: false)
+    @invoices = current_user.quotes.where(is_invoice: true)
   end
 
   def show
+    @goods = @quote.goods.all
   end
 
   def new

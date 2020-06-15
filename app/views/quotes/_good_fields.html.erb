@@ -1,14 +1,27 @@
-<%= f.label :title %>
-<%= f.text_field :title %>
 
-<%= f.label :description %>
-<%= f.text_field :description %>
-
-<%= f.label :quantity %>
-<%= f.text_field :quantity %>
-
-<%= f.label :price %>
-<%= f.text_field :price %>
-
-<%= f.label :user_id %>
-<%= f.text_field :user_id %>
+<div class="row">
+  <div class="col-lg-6">
+    <div>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div>
+      <%= f.label :description, "Desc." %>
+      <%= f.text_field :description %>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div>
+      <%= f.text_field :quantity %>
+      <%= f.label :quantity %>
+    </div>
+    <div>
+      <%= f.text_field :price %>
+      <%= f.label :price %>
+    </div>
+  </div>
+</div>
+<div>
+  <%= f.label :user_id %>
+  <%= f.text_field :user_id %>
+</div>

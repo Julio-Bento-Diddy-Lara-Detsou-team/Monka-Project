@@ -1,49 +1,96 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid page__heading-container">
+  <div class="page__heading d-flex align-items-center">
+    <div class="flex">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="<%= root_path %>">Accueil</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Mes devis et factures</li>
+        </ol>
+      </nav>
+      <h1 class="mt-3">Mes devis et factures</h1>
+    </div>
+    <a href="<%= new_quote_path %>" class="btn btn-primary ml-3">Nouveau devis</a>
+  </div>
+</div>
 
-<h1>Quotes</h1>
+<div class="container-fluid page__container mb-5">
 
-<table>
-  <thead>
-    <tr>
-      <th>Quote number</th>
-      <th>Invoice number</th>
-      <th>Amount</th>
-      <th>Discount</th>
-      <th>Quote sending date</th>
-      <th>Invoice sending date</th>
-      <th>Quote sending counter</th>
-      <th>Invoice sending counter</th>
-      <th>Is invoice</th>
-      <th>Is paid</th>
-      <th>User</th>
-      <th>Customer</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @quotes.each do |quote| %>
-      <tr>
-        <td><%= quote.quote_number %></td>
-        <td><%= quote.invoice_number %></td>
-        <td><%= quote.amount %></td>
-        <td><%= quote.discount %></td>
-        <td><%= quote.quote_sending_date %></td>
-        <td><%= quote.invoice_sending_date %></td>
-        <td><%= quote.quote_sending_counter %></td>
-        <td><%= quote.invoice_sending_counter %></td>
-        <td><%= quote.is_invoice %></td>
-        <td><%= quote.is_paid %></td>
-        <td><%= quote.user_id %></td>
-        <td><%= quote.customer_id %></td>
-        <td><%= link_to 'Show', quote %></td>
-        <td><%= link_to 'Edit', edit_quote_path(quote) %></td>
-        <td><%= link_to 'Destroy', quote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Quote', new_quote_path %>
+  <div class="col-lg-12 card-form__body">
+    <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
+      <table class="table mb-0 thead-border-top-0">
+        <h3 class="text-dark-gray d-flex align-items-center mt-3 ml-4">
+          <strong>Mes devis</strong>
+        </h3>
+        <thead>
+        <tr>
+          <th>Numéro du devis</th>
+          <th>Entreprise</th>
+          <th>Nom du client</th>
+          <th class="text-center">Voir</th>
+          <th class="text-center">Supprimer</th>
+        </tr>
+        </thead>
+        <tbody class="list" id="blah">
+        <% @quotes.order(quote_sending_date: :asc).each do |quote| %>
+          <tr>
+            <td>
+              <a href="<%= quote_path(quote.id) %>"><%= quote.quote_number %></a>
+            </td>
+            <td>
+              <%= quote.customer.company_name %>
+            </td>
+            <td>
+              <a href="<%= customer_path(quote.customer.id) %>"><%= quote.customer.last_name.upcase %> <%= quote.customer.first_name %></a>
+            </td>
+            <td class="text-center">
+              <a href="<%= quote_path(quote.id) %>" class="btn btn-primary btn-sm">Voir</a>
+            </td>
+            <td class="text-center">
+              <a href="<%= quote_path(quote.id) %>" class="btn btn-danger text-white btn-sm" data-method="DELETE">Supprimer</a>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-lg-12 card-form__body mt-5">
+    <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
+      <table class="table mb-0 thead-border-top-0">
+        <h3 class="text-dark-gray d-flex align-items-center mt-3 ml-4">
+          <strong>Mes factures</strong>
+        </h3>
+        <thead>
+        <tr>
+          <th>Numéro de la facture</th>
+          <th>Entreprise</th>
+          <th>Nom du client</th>
+          <th class="text-center">Voir</th>
+          <th class="text-center">Supprimer</th>
+        </tr>
+        </thead>
+        <tbody class="list" id="blah">
+        <% @invoices.order(invoice_sending_date: :asc).each do |invoice| %>
+          <tr>
+            <td>
+              <a href="<%= quote_path(invoice.id) %>"><%= invoice.invoice_number %></a>
+            </td>
+            <td>
+              <%= invoice.customer.company_name %>
+            </td>
+            <td>
+              <a href="<%= customer_path(invoice.customer.id) %>"><%= invoice.customer.last_name.upcase %> <%= invoice.customer.first_name %></a>
+            </td>
+            <td class="text-center">
+              <a href="<%= quote_path(invoice.id) %>" class="btn btn-primary btn-sm">Voir</a>
+            </td>
+            <td class="text-center">
+              <a href="<%= quote_path(invoice.id) %>" class="btn btn-danger text-white btn-sm" data-method="DELETE">Supprimer</a>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
