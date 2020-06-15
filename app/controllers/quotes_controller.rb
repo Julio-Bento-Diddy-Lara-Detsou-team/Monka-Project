@@ -26,7 +26,19 @@ class QuotesController < ApplicationController
   end
 
   def update
-    @quote.update
+    @quote = Quote.find(params[:id])
+
+    # Convert a quote into an invoice
+    if params[:convert_to_invoice] === "true" && @quote.is_invoice === false
+      @quote.update(
+          is_invoice: @quote.is_invoice = true,
+          invoice_number: @quote.invoice_number = "#{current_user.first_name[0]}#{current_user.last_name[0]}#{DateTime.now.strftime("%d%m%Y%H%M")}"
+      )
+
+      flash[:success] = "Le devis a été transformé en facture"
+    end
+
+    redirect_to :quotes
   end
 
   def destroy
@@ -43,3 +55,4 @@ class QuotesController < ApplicationController
     @quote = Quote.find(params[:id])
   end
 end
+
