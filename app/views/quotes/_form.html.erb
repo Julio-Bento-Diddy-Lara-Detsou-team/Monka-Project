@@ -1,0 +1,103 @@
+<%= form_with(model: quote, local: true) do |form| %>
+  <% if quote.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(quote.errors.count, "error") %> prohibited this quote from being saved:</h2>
+
+      <ul>
+        <% quote.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :quote_number %>
+    <%= form.text_field :quote_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :invoice_number %>
+    <%= form.text_field :invoice_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :discount %>
+    <%= form.text_field :discount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quote_sending_date %>
+    <%= form.text_field :quote_sending_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :invoice_sending_date %>
+    <%= form.text_field :invoice_sending_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quote_sending_counter %>
+    <%= form.text_field :quote_sending_counter %>
+  </div>
+
+  <div class="field">
+    <%= form.label :invoice_sending_counter %>
+    <%= form.text_field :invoice_sending_counter %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_invoice %>
+    <%= form.text_field :is_invoice %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_paid %>
+    <%= form.text_field :is_paid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :customer_id %>
+    <%#= form.text_field :customer_id %>
+    <%= form.collection_select :customer_id, Customer.order(:first_name),:id,:first_name %>
+
+  </div>
+
+  <h3 class="pt-5">Goods</h3>
+
+  <%#= form.collection_select :goods, Good.order(:title),:id,:title, id: "goods_list" %>
+
+  <div class="field">
+    <%= form.fields_for :goods do |f| %>
+      <div id="goods_input_form">
+        <%= render 'good_fields', f: f %>
+      </div>
+      <%#= button_to "Ajouter un produit/service", { action: "create" }, remote: true, class: " btn btn-outline-secondary my-3" %>
+      <%= button_to "Ajouter un produit/service", remote: true, class: "btn btn-outline-secondary my-3", id: "add_new_good_btn" %>
+    <% end %>
+
+    <%= link_to_add_fields "Ajouter un produit/service", form, :goods %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+    let add_new_good_btn = document.getElementById("add_new_good_btn");
+
+    add_new_good_btn.addEventListener("click", function() {
+        document.getElementById('goods_input_form').insertAdjacentHTML("beforeend", "<j render 'good_fields', good: @good %>");
+    })
+</script>

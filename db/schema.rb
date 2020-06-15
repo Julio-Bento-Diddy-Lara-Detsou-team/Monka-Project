@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_06_10_122300) do
     t.index ["quote_id"], name: "index_join_goods_quotes_tables_on_quote_id"
   end
 
-  create_table "quotes", force: :cascade do |t|
+  create_table "quotes_old", force: :cascade do |t|
     t.string "quote_number"
     t.string "invoice_number"
     t.float "amount"

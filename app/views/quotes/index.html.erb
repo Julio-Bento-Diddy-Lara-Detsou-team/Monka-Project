@@ -1,76 +1,49 @@
-<div class="container-fluid page__heading-container">
-  <div class="page__heading d-flex align-items-center">
-    <div class="flex">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb mb-0">
-          <li class="breadcrumb-item"><a href="<%= root_path %>">Accueil</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Mes devis et factures</li>
-        </ol>
-      </nav>
-      <h1 class="mt-3">Mes devis et factures</h1>
-    </div>
-    <a href="<%= new_quote_path %>" class="btn btn-primary ml-3">Nouveau devis</a>
-  </div>
-</div>
+<p id="notice"><%= notice %></p>
 
-<div class="container-fluid page__container">
+<h1>Quotes</h1>
 
-  <h3 class="text-dark-gray d-flex align-items-center mt-3 ml-4">
-    <strong>Mes devis</strong>
-  </h3>
+<table>
+  <thead>
+    <tr>
+      <th>Quote number</th>
+      <th>Invoice number</th>
+      <th>Amount</th>
+      <th>Discount</th>
+      <th>Quote sending date</th>
+      <th>Invoice sending date</th>
+      <th>Quote sending counter</th>
+      <th>Invoice sending counter</th>
+      <th>Is invoice</th>
+      <th>Is paid</th>
+      <th>User</th>
+      <th>Customer</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-  <% @quotes.order(quote_sending_date: :asc).each do |quote| %>
-    <div class="row projects-item mb-1">
-      <div class="col-sm">
-        <div class="card m-0">
-          <div class="px-4 py-3">
-            <div class="row align-items-center">
-              <div class="col" style="min-width: 300px">
-                <div class="d-flex align-items-center">
-                  <strong class="text-15pt mr-2"><%= quote.customer.company_name %></strong>
-                </div>
-              </div>
-              <div class="col">
-                <a href="<%= quote_path(quote.id) %>" class="text-body"><%= quote.quote_number %></a>
-              </div>
-              <div class="col-auto d-flex align-items-center" style="min-width: 140px;">
-                <a href="<%= quote_path(quote.id) %>", class="btn btn-secondary mr-2"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                <a href="<%= quote_path(quote.id) %>", class="btn btn-danger text-white", data-method="DELETE"><i class="material-icons">close</i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
+  <tbody>
+    <% @quotes.each do |quote| %>
+      <tr>
+        <td><%= quote.quote_number %></td>
+        <td><%= quote.invoice_number %></td>
+        <td><%= quote.amount %></td>
+        <td><%= quote.discount %></td>
+        <td><%= quote.quote_sending_date %></td>
+        <td><%= quote.invoice_sending_date %></td>
+        <td><%= quote.quote_sending_counter %></td>
+        <td><%= quote.invoice_sending_counter %></td>
+        <td><%= quote.is_invoice %></td>
+        <td><%= quote.is_paid %></td>
+        <td><%= quote.user_id %></td>
+        <td><%= quote.customer_id %></td>
+        <td><%= link_to 'Show', quote %></td>
+        <td><%= link_to 'Edit', edit_quote_path(quote) %></td>
+        <td><%= link_to 'Destroy', quote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-  <h3 class="text-dark-gray d-flex align-items-center mt-3 ml-4">
-    <strong>Mes factures</strong>
-  </h3>
+<br>
 
-  <% @invoices.order(invoice_sending_date: :asc).each do |invoice| %>
-
-    <div class="row align-items-center projects-item mb-1">
-      <div class="col-sm">
-        <div class="card m-0">
-          <div class="px-4 py-3">
-            <div class="row align-items-center">
-              <div class="col" style="min-width: 300px">
-                <div class="d-flex align-items-center">
-                  <strong class="text-15pt mr-2"><%= invoice.customer.company_name %></strong>
-                </div>
-              </div>
-              <div class="col">
-                <a href="<%= quote_path(invoice.id) %>" class="text-body"><%= invoice.invoice_number %></a>
-              </div>
-              <div class="col-auto d-flex align-items-center" style="min-width: 140px;">
-                <a href="<%= quote_path(invoice.id) %>" class="btn btn-secondary mr-2"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                <a href="<%= quote_path(invoice.id) %>" class="btn btn-danger text-white" data-method="DELETE"><i class="material-icons">close</i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
+<%= link_to 'New Quote', new_quote_path %>

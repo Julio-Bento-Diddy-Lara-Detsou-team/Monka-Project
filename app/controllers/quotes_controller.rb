@@ -1,56 +1,76 @@
 class QuotesController < ApplicationController
-  include ApplicationHelper
-
-  before_action :authenticate_user!
-  before_action :find_quote, only: [:show, :edit, :update, :destroy]
+  before_action :set_quote, only: [:show, :edit, :update, :destroy]
 
   def index
-    @quote_table = current_user.quotes.all
-    @quotes = current_user.quotes.where(is_invoice: false)
-    @invoices = current_user.quotes.where(is_invoice: true)
+    @quotes = current_user.quotes.all
   end
 
   def show
-    @goods = @quote.goods
   end
 
   def new
     @quote = Quote.new
-  end
-
-  def create
-    @quote = Quote.create
+    @quote.goods.build
   end
 
   def edit
   end
 
-  def update
-    @quote = Quote.find(params[:id])
+  def create
+    @quote = Quote.new(quote_params)
 
-    # Convert a quote into an invoice
-    if params[:convert_to_invoice] === "true" && @quote.is_invoice === false
-      @quote.update(
-          is_invoice: @quote.is_invoice = true,
-          invoice_number: @quote.invoice_number = "#{current_user.first_name[0]}#{current_user.last_name[0]}#{DateTime.now.strftime("%d%m%Y%H%M")}"
-      )
-
-      flash[:success] = "Le devis a été transformé en facture"
+    respond_to do |format|
+      if @quote.save
+        format.html { redirect_to @quote, notice: 'Quote was successfully created.' }
+        format.json { render :show, status: :created, location: @quote }
+      else
+        format.html { render :new }
+        format.json { render json: @quote.errors, status: :unprocessable_entity }
+      end
     end
+  end
 
-    redirect_to :quotes
+  def update
+    respond_to do |format|
+      if @quote.update(quote_params)
+        format.html { redirect_to @quote, notice: 'Quote was successfully updated.' }
+        format.json { render :show, status: :ok, location: @quote }
+      else
+        format.html { render :edit }
+        format.json { render json: @quote.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
     @quote.destroy
-    flash[:error] = "L'élément a bien été supprimé"
-    redirect_to :quotes
+    respond_to do |format|
+      format.html { redirect_to quotes_url, notice: 'Quote was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_quote
+      @quote = Quote.find(params[:id])
+    end
 
-  def find_quote
-    @quote = Quote.find(params[:id])
-  end
+    # Only allow a list of trusted parameters through.
+    def quote_params
+      params.require(:quote).permit(
+          :quote_number,
+          :invoice_number,
+          :amount,
+          :discount,
+          :quote_sending_date,
+          :invoice_sending_date,
+          :quote_sending_counter,
+          :invoice_sending_counter,
+          :is_invoice,
+          :is_paid,
+          :user_id,
+          :customer_id,
+          goods_attributes: [:id, :title, :description, :quantity, :price, :user_id])
+    end
 end
-
