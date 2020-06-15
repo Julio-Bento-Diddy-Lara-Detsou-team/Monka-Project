@@ -12,29 +12,34 @@
   </div>
 </div>
 
-<div class="row justify-content-center">
-  <%= form_for @quote do |f| %>
+<div class="container-small">
+  <%= form_with(model: @quote, local: true) do |f| %>
 <!--    <div class="field">-->
 <!--      <%#= f.label :is_invoice %><br>-->
-      <%#= f.text_field :title %>
+          <%#= f.text_field :title %>
 <!--    </div>-->
 
-    <div class="form-group btn-group-lg btn-group-toggle my-2 ml-4">
+    <div class="form-group btn-group-lg mb-5">
       <%= f.label :is_invoice, "Quel est le type de document ?" %><br />
 
-      <%= f.label :is_invoice, "Devis", :value => false, class: "btn btn-primary btn-lg form-check-label"  %>
+      <%= f.label :is_invoice, "Devis", :value => false, class: "btn btn-primary"  %>
       <%= f.radio_button :is_invoice, false, :checked => true, class: "form-check-input" %>
 
-      <%= f.label :is_invoice, "Facture", :value => true, class: "btn btn-primary btn-lg form-check-label" %>
-      <%= f.radio_button :is_invoice, true, class: "form-check-input" %>
+      <%= f.label :is_invoice, "Facture", :value => true, class: "btn btn-primary" %>
+      <%= f.radio_button :is_invoice, true, class: "custom-control-input" %>
     </div>
 
-    <!-- Dropdown Client -->
-    <%= f.label :customer_id, "A destination de : " %><br />
+    <div class="row">
+      <div class="col-lg-6">
+        <!-- Dropdown Client -->
+        <%= f.label :customer_id, "À destination de :" %><br />
 
-    <%= f.collection_select :customer_id, Customer.order(:last_name),:id,:last_name, include_blank: true %>
-
-    <%= render "sender" %>
+        <%= f.collection_select :customer_id, Customer.order(:last_name), :id, :last_name, include_blank: true %>
+      </div>
+      <div class="col-lg-6">
+        <%= render "sender" %>
+      </div>
+    </div>
 
     <div class="actions text-center">
       <%= f.submit "Valider", class: "btn btn-primary mt-4" %>
