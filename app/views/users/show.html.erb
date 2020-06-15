@@ -17,6 +17,10 @@
       <div class="col-lg-4 card-body mt-5 ">
         <p><span class="greentitle">Mes informations</span></p>
       </div>
+
+      <% if @user.logo.attached? %>
+        <%= image_tag @user.logo, alt: 'logo' %>
+      <%end%>
       <!--section-->
       <div class="col-lg-8 card-form__body card-body my-5">
         <div class="row my-1">
