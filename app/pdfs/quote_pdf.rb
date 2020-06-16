@@ -7,6 +7,7 @@ class QuotePdf < Prawn::Document
     destination_address
     sender_address
     show_goods
+    terms_and_conditions
   end
 
   def quote_number
@@ -28,17 +29,18 @@ class QuotePdf < Prawn::Document
   def show_goods
     total_price = 0
     @quote.goods.each do |good|
-
-    text "#{good.title}"
-    text "#{good.description}"
-    text "#{good.quantity}"
-    text "#{good.price} €"
-    total_price = total_price + good.quantity * good.price
-
-
+      text "#{good.title}"
+      text "#{good.description}"
+      text "#{good.quantity}"
+      text "#{good.price} €"
+      total_price = total_price + good.quantity * good.price
     end
     text "Prix Total #{total_price} €"
+  end
 
+  def terms_and_conditions
+    text "Termes et conditions"
+    text "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse facilisis feugiat erat, sed porta lacus pellentesque mattis. Suspendisse id vulputate mi. Nunc posuere varius sapien et commodo. Praesent pharetra nibh nulla, vitae cursus tellus semper ut. Sed nisl diam, ultrices id maximus in, mollis eu sapien."
   end
 
 
