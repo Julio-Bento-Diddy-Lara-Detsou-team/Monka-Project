@@ -26,16 +26,18 @@ class QuotePdf < Prawn::Document
   end
 
   def show_goods
-    total_price = []
+    total_price = 0
     @quote.goods.each do |good|
 
     text "#{good.title}"
     text "#{good.description}"
     text "#{good.quantity}"
     text "#{good.price} €"
-    total_price << good.quantity * good.price
+    total_price = total_price + good.quantity * good.price
+
+
     end
-    text "#{total_price}"
+    text "Prix Total #{total_price} €"
 
   end
 
