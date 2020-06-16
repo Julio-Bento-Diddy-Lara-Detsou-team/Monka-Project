@@ -1,7 +1,8 @@
 class QuotePdf < Prawn::Document
-  def initialize(quote)
+  def initialize(quote, user)
     super(top_margin: 70)
     @quote = quote
+    @user = user
     quote_number
     destination_address
     sender_address
@@ -18,7 +19,9 @@ class QuotePdf < Prawn::Document
   end
 
   def sender_address
-
+    text "#{@user.company_name}"
+    text "#{@user.address}"
+    text "#{@user.zip_code} #{@user.country}"
   end
 
 

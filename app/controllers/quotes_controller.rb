@@ -12,10 +12,11 @@ class QuotesController < ApplicationController
 
   def show
     @goods = @quote.goods
+    @user = current_user
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = QuotePdf.new(@quote)
+        pdf = QuotePdf.new(@quote, @user)
         send_data pdf.render, filename: "Doc_#{@quote.quote_number}.pdf",
                   type: "application/pdf",
                   disposition: "inline"
