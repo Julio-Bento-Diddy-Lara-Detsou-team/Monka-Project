@@ -9,5 +9,5 @@ Rails.application.routes.draw do
     resources :logo, only: [:create]
   end
   resources :customers
-  resources :charges
+  resources :charges, only: [:new, :create]
 end
