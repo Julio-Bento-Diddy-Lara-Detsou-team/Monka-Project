@@ -36,8 +36,6 @@
               <div class="navbar-brand d-flex flex-column m-0" style="min-width: 0">
                 <% if @user.logo.attached? %>
                   <%= image_tag @user.logo, alt: 'logo', width: "100" %>
-                  <%else %>
-                <img class="navbar-brand-icon mb-2" src="<%= image_path('calculate_vert.png')%>" width="100" alt="Logo de la compagnie">
                   <%end %>
                 <span><% if @quote.is_invoice %>Facture<% else %>Devis<% end %></span>
               </div>
