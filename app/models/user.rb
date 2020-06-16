@@ -47,4 +47,11 @@ class User < ApplicationRecord
   #           presence: true,
   #           format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/, message: 'Veuillez saisir une adresse email valide'},
   #           length: { maximum: 256, message: 'Veuillez saisir une adresse email valide' }
+
+  after_create :welcome_send
+
+  def welcome_send
+    UserMailer.welcome_email(self).deliver_now
+  end
 end
+
