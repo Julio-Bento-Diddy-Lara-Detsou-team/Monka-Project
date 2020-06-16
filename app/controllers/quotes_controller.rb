@@ -12,6 +12,8 @@ class QuotesController < ApplicationController
 
   def show
     @goods = @quote.goods
+    @user = current_user
+
   end
 
   def new
