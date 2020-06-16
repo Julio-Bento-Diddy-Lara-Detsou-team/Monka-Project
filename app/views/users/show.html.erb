@@ -22,9 +22,7 @@
         <div class="row my-1">
         <% if @user.logo.attached? %>
           <%= image_tag @user.logo, alt: 'logo', width: '100' %>
-        <%else %>
-          <img class="navbar-brand-icon mb-2" src="<%= image_path('calculate_vert.png')%>" width="100" alt="Logo de la compagnie">
-        <%end%>
+       <%end>
 
         <%= form_tag user_logo_index_path(@user), multipart: true do %>
           <%= file_field_tag :logo %>
