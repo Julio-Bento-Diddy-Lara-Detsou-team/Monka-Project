@@ -6,6 +6,7 @@ class QuotePdf < Prawn::Document
     quote_number
     destination_address
     sender_address
+    show_goods
   end
 
   def quote_number
@@ -22,6 +23,17 @@ class QuotePdf < Prawn::Document
     text "#{@user.company_name}"
     text "#{@user.address}"
     text "#{@user.zip_code} #{@user.country}"
+  end
+
+  def show_goods
+    @quote.goods.each do |good|
+
+    text "#{good.title}"
+    text "#{good.description}"
+    text "#{good.quantity}"
+    text "#{good.price} €"
+    text "#{good.quantity * good.price} €"
+    end
   end
 
 
