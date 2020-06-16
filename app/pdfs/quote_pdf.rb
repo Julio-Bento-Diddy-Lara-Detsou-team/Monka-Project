@@ -21,9 +21,10 @@ class QuotePdf < Prawn::Document
   end
 
   def sender_address
-    text "#{@user.company_name}"
-    text "#{@user.address}"
-    text "#{@user.zip_code} #{@user.country}"
+    text_box"#{@user.company_name} #{@user.address} #{@user.zip_code} #{@user.country}",
+    :at => [400, 700],
+        :height => 100,
+        :width => 150
   end
 
   def show_goods
