@@ -44,9 +44,7 @@ module ApplicationHelper
     turnover = 0
 
     invoices.each do |invoice|
-      if month === invoice.invoice_sending_date.strftime("%m")
-        turnover += invoice.amount
-      end
+      turnover += invoice.amount if month === invoice.invoice_sending_date.strftime("%m")
     end
 
     turnover
