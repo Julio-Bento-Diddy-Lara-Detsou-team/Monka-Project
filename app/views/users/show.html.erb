@@ -21,9 +21,9 @@
       <div class="col-lg-8 card-form__body card-body my-5">
         <div class="row my-1">
         <% if @user.logo.attached? %>
-          <%= image_tag @user.logo, alt: 'logo' %>
+          <%= image_tag @user.logo, alt: 'logo', width: '100' %>
         <%else %>
-          <img class="navbar-brand-icon mb-2" src="<%= image_path('calculate_vert.png')%>" width="25" alt="Logo de la compagnie">
+          <img class="navbar-brand-icon mb-2" src="<%= image_path('calculate_vert.png')%>" width="100" alt="Logo de la compagnie">
         <%end%>
 
         <%= form_tag user_logo_index_path(@user), multipart: true do %>
