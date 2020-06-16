@@ -1,5 +1,4 @@
 class QuotesController < ApplicationController
-  include ApplicationHelper
 
   before_action :authenticate_user!
   before_action :find_quote, only: [:show, :edit, :update, :destroy]

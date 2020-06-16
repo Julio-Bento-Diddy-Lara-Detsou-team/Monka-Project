@@ -1,5 +1,4 @@
 class CustomersController < ApplicationController
-  include ApplicationHelper
 
   before_action :authenticate_user!
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
