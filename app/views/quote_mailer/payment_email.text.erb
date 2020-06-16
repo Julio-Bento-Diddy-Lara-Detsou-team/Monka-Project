@@ -1,0 +1,11 @@
+Résumé de votre commande :
+
+==========================================================
+<% @cart.items.each do |item| %>
+  <%= item.title %>
+  <%= item.price %>€
+  ==========================================================
+<% end %>
+
+Quantité : <%= @cart.items.count %>
+Prix total : <%= @cart_price %>€
