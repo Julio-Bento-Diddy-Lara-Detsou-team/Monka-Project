@@ -1,11 +1,30 @@
-Résumé de votre commande :
+Demande de paiement de la part de <%= @user.first_name %> <%= @user.last_name %> ; société : <%= @user.company_name %> :
+  à destination de <%= @customer.first_name %> <%= customer.last_name %> ; société: <%= @customer.company_name %>
 
 ==========================================================
-<% @cart.items.each do |item| %>
-  <%= item.title %>
-  <%= item.price %>€
-  ==========================================================
+
+Bonjour <%=@customer.first_name %> ! Vous avez reçu une demande de paiement de la part de <%= @user.first_name %> <%= @user.last_name %> de la société : <%= @user.company_name %>.
+
+Il s'agit du devis : <%=@quote.quote_number %> pour la prestation :
+
+==========================================================
+
+<% @quote.goods.each do |good| %>
+  <%= good.title %>
+  <%= good.quantity %>
+  <%= good.price %>€
 <% end %>
 
-Quantité : <%= @cart.items.count %>
-Prix total : <%= @cart_price %>€
+==========================================================
+<!-- Quote total amount -->
+Le total s'élève à : <%=@quote.amount %>€
+
+Vous pouvez directement payer <%=@user.first_name %> <%=user.last_name %> en cliquant sur le lien sécurisé ci-dessous 👇</p>
+<%= @url %>
+
+<!-- Add a method to show the good link to pay the adequate sum correlated to a specific quote + do the same for invoice-->
+
+À très vite,
+
+La Team Monka 🌈
+

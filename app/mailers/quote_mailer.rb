@@ -8,6 +8,6 @@ class QuoteMailer < ApplicationMailer
     @url = 'https://monsite.com/'
     mail(to: @customer.email, subject: "Demande de paiement #{@quote.quote_number}",
          cc: @user.email)
-
+    # attachments['filename.jpg'] = File.read('/path/to/filename.jpg')
   end
 end

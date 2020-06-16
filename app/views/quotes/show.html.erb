@@ -11,9 +11,20 @@
     </div>
     <%= form_tag quote_path(@quote.id, convert_to_invoice: true), method: "put" do %>
       <button type="submit" class="btn btn-outline-secondary mr-3"><i class="material-icons">arrow_forward</i> Transformer en Facture</button>
-      <button type="submit" class="btn btn-outline-secondary mr-3 text-center"><i class="material-icons">attach_email</i> Envoyer par mail</button>
-    <% end %>
-    <a href="<%= image_path "Devis_FS0501202012.pdf" %>" target="_blank" class="btn btn-primary"><i class="material-icons">file_download</i> Télécharger</a>
+<%end %>
+      <!--Button to send mail to customer from the app-->
+      <%#= button_to [:payment_send, @quote], class: "btn btn-outline-secondary" do%>
+<!--        <i class="material-icons">attach_email</i>Envoyer le devis par mail-->
+      <%# end %>
+
+
+
+
+      <!--Button link to PDF-->
+      <%#link_to image_path: "Devis_FS0501202012.pdf", target: "_blank" , class:"btn btn-outline-secondary"%>
+<!--      <i class="material-icons">file_download</i> Télécharger-->
+      <%# end %>
+
   </div>
 </div>
 
