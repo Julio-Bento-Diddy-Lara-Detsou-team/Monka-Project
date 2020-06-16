@@ -1,8 +1,9 @@
 <%= form_with(model: quote, local: true) do |form| %>
+
+  <!-- Display errors-->
   <% if quote.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(quote.errors.count, "error") %> prohibited this quote from being saved:</h2>
-
+      <h2><%= pluralize(quote.errors.count, "erreurs") %> empêchent ce produit/service d'être créé :</h2>
       <ul>
         <% quote.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -19,58 +20,73 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="field col-lg-6">
-          <%= form.label :customer_id, "À destination de :" %><br/>
-          <%= form.collection_select :customer_id, Customer.order(:last_name), :id, :last_name %>
+    <div class="form-group btn-group-lg mb-5">
+      <%= form.label :is_invoice, "Quel est le type de document ?" %><br />
+
+      <div class="form-check form-check-inline">
+        <%= form.radio_button :is_invoice, false, checked: true, class: "form-check-input" %>
+        <%= form.label :is_invoice, "Devis", value: false, class: "form-check-label" %>
       </div>
+
+      <div class="form-check form-check-inline">
+        <%= form.radio_button :is_invoice, true, class: "form-check-input" %>
+        <%= form.label :is_invoice, "Facture", value: true, class: "form-check-label" %>
+      </div>
+    </div>
+
+
+    <div class="row">
+
+      <div class="field col-lg-6">
+        <%= form.label :customer_id, "À destination de :" %><br/>
+        <%= form.select :customer_id, options_for_select(Customer.order(:last_name).collect{ |u| [u.fullname, u.id] }), class: "form-control" %>
+      </div>
+
       <div class="col-lg-6 text-right">
-        <label>De la part de :</label>
+        <%= form.label :user_id, "De la part de :" %><br/>
+        <%= form.hidden_field :user_id, value: current_user.id %>
         <p class="mb-4">
           <strong class="text-body"><%= current_user.first_name %> <%= current_user.last_name %></strong><br>
           <%= current_user.company_name %><br>
           <%= current_user.address %><br>
           <%= current_user.zip_code %> <%= current_user.country %><br>
         </p>
-
-        <%= form.label :user_id %>
-        <div class="field mb-2">
-          <%= form.text_field :user_id %>
-        </div>
       </div>
     </div>
 
-    <div class="row mb-5">
-      <div class="col-lg">
-        <fieldset disabled>
-          <label for="quote_number">Numéro de devis :</label>
-          <input type="text" class="form-control" id="quote_number" value="INITIALES-<%= DateTime.now.strftime("%d%m%Y") %>-01">
-        </fieldset>
-      </div>
-      <div class="col-lg text-right">
-        <fieldset disabled>
-          <label for="date">Date d'échéance :</label>
-          <input type="text" class="form-control text-right" id="date" value="<%= 3.days.from_now.strftime("%d/%m/%Y") %>">
-        </fieldset>
-      </div>
-    </div>
+    <p class="lead">Numéro de devis : <span class="small">INITIALES-<%= DateTime.now.strftime("%d%m%Y") %>-01</span> </p>
+    <p class="lead">Date d'échéance : <span class="small"><%= 3.days.from_now.strftime("%d/%m/%Y") %></span> </p>
 
     <hr/>
 
-    <%#= form.collection_select :goods, Good.order(:title),:id,:title, id: "goods_list" %>
-
-    <div class="field">
-      <label for="date">Liste des produits/services :</label>
-      <%= form.fields_for :goods do |f| %>
-        <div id="goods_input_form">
-          <%= render 'good_fields', f: f %>
-        </div>
-        <%#= button_to "Ajouter un produit/service", { action: "create" }, remote: true, class: " btn btn-outline-secondary my-3" %>
-        <%= button_to "Ajouter un produit/service", remote: true, class: "btn btn-outline-secondary my-3", id: "add_new_good_btn" %>
-      <% end %>
-
-      <%= link_to_add_fields "Ajouter un produit/service", form, :goods %>
+    <div class="form-group">
+      <%= form.label :goods, "Produits ou services :" %><br/>
+      <%= form.select :goods, options_for_select(Good.order(:title).collect{ |u| [u.title, u.id] }, class: "form-control") ,{ :prompt => "Select"}, { :multiple => true, :size => 5 } %>
+      <hr />
     </div>
+
+<!--    <div class="form-group">-->
+<!--      <label for="select03">Multiple</label>-->
+<!--      <select id="select03" data-toggle="select" multiple class="form-control">-->
+<!--        <option selected>CSS</option>-->
+<!--        <option selected>HTML</option>-->
+<!--        <option>JavaScript</option>-->
+<!--        <option>Bootstrap</option>-->
+<!--      </select>-->
+<!--    </div>-->
+
+<!--    <div class="form-group">-->
+<!--      <label>Liste des produits/services :</label>-->
+      <%#= form.fields_for :goods do |f| %>
+<!--        <div id="goods_input_form">-->
+          <%#= render 'good_fields', f: f %>
+<!--        </div>-->
+        <%#= button_to "Ajouter un produit/service", { action: "create" }, remote: true, class: " btn btn-outline-secondary my-3" %>
+        <%#= button_to "Ajouter un produit/service", remote: true, class: "btn btn-outline-secondary my-3", id: "add_new_good_btn" %>
+      <%# end %>
+
+      <%#= link_to_add_fields "Ajouter un produit/service", form, :goods %>
+<!--    </div>-->
 
     <hr/>
 
@@ -79,7 +95,7 @@
       <hr class="white-hr mx-5">
       <div class="field text-right mr-4 mb-3">
         <%= form.label :amount, "Total :" %><br/>
-        <%= form.text_field :amount %>
+        <%= form.text_field :amount, value: 500 %> <span class="text-white lead"> €</span>
       </div>
     </div>
 
@@ -92,46 +108,6 @@
       <%= form.submit %>
     </div>
   </div>
-
-<!--  <div class="field">-->
-    <%#= form.label :quote_number %>
-    <%#= form.text_field :quote_number %>
-<!--  </div>-->
-
-<!--  <div class="field">-->
-    <%#= form.label :invoice_number %>
-    <%#= form.text_field :invoice_number %>
-<!--  </div>-->
-
-<!--  <div class="field">-->
-    <%#= form.label :discount %>
-    <%#= form.text_field :discount %>
-<!--  </div>-->
-
-<!--  <div class="field">-->
-    <%#= form.label :quote_sending_date %>
-    <%#= form.text_field :quote_sending_date %>
-<!--  </div>-->
-
-<!--  <div class="field">-->
-    <%#= form.label :invoice_sending_date %>
-    <%#= form.text_field :invoice_sending_date %>
-<!--  </div>-->
-
-<!--  <div class="field">-->
-    <%#= form.label :quote_sending_counter %>
-    <%#= form.text_field :quote_sending_counter %>
-<!--  </div>-->
-
-<!--  <div class="field">-->
-    <%#= form.label :invoice_sending_counter %>
-    <%#= form.text_field :invoice_sending_counter %>
-<!--  </div>-->
-
-<!--  <div class="field">-->
-    <%#= form.label :is_paid %>
-    <%#= form.text_field :is_paid %>
-<!--  </div>-->
 
 <% end %>
 

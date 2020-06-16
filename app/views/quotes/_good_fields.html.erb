@@ -1,27 +1,27 @@
 
 <div class="row">
-  <div class="col-lg-6">
+  <div class="col-12">
     <div>
       <%= f.label :title %>
-      <%= f.text_field :title %>
+      <%= f.text_field :title, class: "form-control" %>
     </div>
     <div>
       <%= f.label :description, "Desc." %>
-      <%= f.text_field :description %>
+      <%= f.text_field :description, class: "form-control" %>
     </div>
   </div>
-  <div class="col-lg-6">
+  <div class="col-12">
     <div>
-      <%= f.text_field :quantity %>
       <%= f.label :quantity %>
+      <%= f.text_field :quantity, class: "form-control" %>
     </div>
     <div>
-      <%= f.text_field :price %>
       <%= f.label :price %>
+      <%= f.text_field :price, class: "form-control" %>
     </div>
   </div>
 </div>
 <div>
   <%= f.label :user_id %>
-  <%= f.text_field :user_id %>
+  <%= f.text_field :user_id, class: "form-control" %>
 </div>

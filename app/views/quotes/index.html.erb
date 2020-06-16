@@ -17,10 +17,8 @@
 
   <div class="col-lg-12 card-form__body">
     <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
+      <h3 class="text-dark-gray d-flex align-items-center mt-3 ml-4 bold">Mes devis</h3>
       <table class="table mb-0 thead-border-top-0">
-        <h3 class="text-dark-gray d-flex align-items-center mt-3 ml-4">
-          <strong>Mes devis</strong>
-        </h3>
         <thead>
         <tr>
           <th>Numéro du devis</th>
@@ -31,7 +29,7 @@
         </tr>
         </thead>
         <tbody class="list" id="blah">
-        <% @quotes.order(quote_sending_date: :asc).each do |quote| %>
+        <% @quotes.order(created_at: :desc).each do |quote| %>
           <tr>
             <td>
               <a href="<%= quote_path(quote.id) %>"><%= quote.quote_number %></a>
@@ -70,7 +68,7 @@
         </tr>
         </thead>
         <tbody class="list" id="blah">
-        <% @invoices.order(invoice_sending_date: :asc).each do |invoice| %>
+        <% @invoices.order(created_at: :desc).each do |invoice| %>
           <tr>
             <td>
               <a href="<%= quote_path(invoice.id) %>"><%= invoice.invoice_number %></a>
