@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources 'quotes'
   resources 'users', only: [:show, :edit, :update]
   resources :customers
+  resources :charges
 end
