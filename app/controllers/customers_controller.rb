@@ -44,6 +44,7 @@ class CustomersController < ApplicationController
     @customer.destroy
     respond_to do |format|
       format.html { redirect_to customers_url, notice: 'Le client a été supprimé avec succès.' }
+      format.js {}
     end
   end
 
