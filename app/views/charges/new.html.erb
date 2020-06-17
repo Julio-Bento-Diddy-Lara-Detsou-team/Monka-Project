@@ -1,27 +1,6 @@
-<div class="container-fluid page__heading-container">
-  <div class="page__heading d-flex align-items-center">
-    <div class="flex">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb mb-0">
-          <li class="breadcrumb-item"><%= link_to root_path do %><i class="material-icons icon-20pt">home</i><% end %></li>
-          <li class="breadcrumb-item active" aria-current="page">Page <% if @quote.is_invoice %>Facture<% else %>Devis<% end %></li>
-        </ol>
-      </nav>
-      <h1 class="mt-3"><% if @quote.is_invoice %>Facture <%= @quote.invoice_number %><% else %>Devis <%= @quote.quote_number %><% end %></h1>
-    </div>
-
-    <%= form_tag quote_path(@quote.id, convert_to_invoice: true), method: "put" do %>
-      <button type="submit" class="btn btn-outline-secondary mr-3"><i class="material-icons">arrow_forward</i> Transformer en Facture</button>
-    <%end %>
-
-    <%= link_to "Envoyer par mail", { :controller => "quotes", :action => "payment_send", :id => @quote.id }, class:"btn btn-outline-secondary" %>
-
-    <!--Button link to PDF-->
-    <%= link_to image_path("Devis_FS0501202012.pdf"), target: "_blank", class:"btn btn-outline-secondary ml-3" do %>
-      Télécharger <i class='material-icons'>file_download</i>
-    <% end %>
-
-  </div>
+<!-- Create order Button -->
+<div class="row justify-content-center my-3">
+  <%= render 'charges/stripe_form', {quote: @quote} %>
 </div>
 
 <div class="container-fluid page__container">
@@ -42,9 +21,9 @@
           <div class="px-3">
             <div class="d-flex justify-content-center flex-column text-center my-5 navbar-light">
               <div class="navbar-brand d-flex flex-column m-0" style="min-width: 0">
-                <% if @user.logo.attached? %>
-                  <%= image_tag @user.logo, alt: 'logo', width: "100" %>
-                  <%end %>
+                <% if @quote.user.logo.attached? %>
+                  <%= image_tag @quote.user.logo, alt: 'logo', width: "100" %>
+                <%end %>
                 <span><% if @quote.is_invoice %>Facture<% else %>Devis<% end %></span>
               </div>
             </div>
@@ -63,10 +42,10 @@
               <div class="col-lg text-right">
                 <div class="text-label">De la part de :</div>
                 <p class="mb-4">
-                  <strong class="text-body"><%= current_user.first_name %> <%= current_user.last_name %></strong><br>
-                  <%= current_user.company_name %><br>
-                  <%= current_user.address %><br>
-                  <%= current_user.zip_code %> <%= current_user.country %><br>
+                  <strong class="text-body"><%= @quote.user.first_name %> <%= @quote.user.last_name %></strong><br>
+                  <%= @quote.user.company_name %><br>
+                  <%= @quote.user.address %><br>
+                  <%= @quote.user.zip_code %> <%= @quote.user.country %><br>
                 </p>
                 <!--                <div class="text-label">Date d'échéance</div>-->
                 <%# if @quote.is_invoice %><%#= @quote.invoice_sending_date + 3.days %><%# else %><%#= @quote.quote_sending_date + 3.days %><%# end %>
@@ -88,7 +67,7 @@
                   <tr>
                     <td><%= good.title %></td>
                     <td><%= good.quantity %></td>
-                    <td class="text-right"><%= good.price %>€</td>
+                    <td class="text-right"><%= number_to_currency(good.price, locale: :fr) %></td>
                   </tr>
                   <tr>
                     <td class="text-muted small"><%= good.description %></td>
@@ -99,12 +78,11 @@
             </div>
             <!--Quote total amount ---------->
             <div class="bg-dark rounded">
-              <h3 class="text-white text-right mr-5 pb-3 pt-4">Total : <%= calculate_total_quote(@goods) %>€</h3>
+              <h3 class="text-white text-right mr-5 pb-3 pt-4">Total : <%= number_to_currency(calculate_total_quote(@quote.goods), locale: :fr) %></h3>
             </div>
             <!--Terms and conditions ---------->
             <div class="text-label mt-4">Termes et conditions</div>
             <p class="text-muted small mx-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse facilisis feugiat erat, sed porta lacus pellentesque mattis. Suspendisse id vulputate mi. Nunc posuere varius sapien et commodo. Praesent pharetra nibh nulla, vitae cursus tellus semper ut. Sed nisl diam, ultrices id maximus in, mollis eu sapien.</p>
-            <%= link_to "Télécharger en pdf", quote_path(@quote, format: "pdf") %>
           </div>
         </div>
       </div>

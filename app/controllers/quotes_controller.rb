@@ -13,6 +13,15 @@ class QuotesController < ApplicationController
     @goods = @quote.goods
     @user = current_user
 
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = QuotePdf.new(@quote, @user, view_context)
+        send_data pdf.render, filename: "Doc_#{@quote.quote_number}.pdf",
+                  type: "application/pdf",
+                  disposition: "inline"
+      end
+    end
   end
 
   def new
@@ -62,6 +71,5 @@ class QuotesController < ApplicationController
   def find_quote
     @quote = Quote.find(params[:id])
   end
-
 end
 
