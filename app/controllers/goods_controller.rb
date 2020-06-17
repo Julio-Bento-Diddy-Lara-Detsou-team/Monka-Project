@@ -18,6 +18,7 @@ class GoodsController < ApplicationController
   def create
     # Create a new good
     @good = Good.new(good_params)
+    @good.user_id = current_user.id
 
     # Get the selected quote by its id
     # quote = Quote.find(params[:quote_id])
@@ -28,7 +29,10 @@ class GoodsController < ApplicationController
 
     respond_to do |format|
       if @good.save
-        format.html { redirect_to @good, flash[:success] = 'Le produit/service a bien été créé.' }
+        format.html {
+          redirect_to @good
+          flash[:success] = "Le produit/service a bien été créé."
+        }
       else
         format.html { render :new }
       end
@@ -38,7 +42,10 @@ class GoodsController < ApplicationController
   def update
     respond_to do |format|
       if @good.update(good_params)
-        format.html { redirect_to @good, flash[:success] = 'Le produit/service a bien été mis à jour.' }
+        format.html {
+          redirect_to @good
+          flash[:success] = "Le produit/service a bien été mis à jour."
+        }
       else
         format.html { render :edit }
       end
@@ -48,18 +55,21 @@ class GoodsController < ApplicationController
   def destroy
     @good.destroy
     respond_to do |format|
-      format.html { redirect_to goods_url, flash[:success] = 'Le produit/service a bien été supprimé.' }
+      format.html {
+        redirect_to goods_path
+        flash[:success] = "Le produit/service a bien été supprimé."
+      }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_good
-      @good = Good.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_good
+    @good = Good.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def good_params
-      params.require(:good).permit(:title, :description, :quantity, :price, :user_id)
-    end
+  # Only allow a list of trusted parameters through.
+  def good_params
+    params.require(:good).permit(:title, :description, :quantity, :price, :user_id)
+  end
 end
