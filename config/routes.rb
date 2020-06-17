@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   end
   resources :customers
   resources :charges
+  get :payment_send, to: 'quotes#payment_send', as: :payment_send
 end
+
