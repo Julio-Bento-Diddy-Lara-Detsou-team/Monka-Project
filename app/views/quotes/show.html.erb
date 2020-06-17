@@ -11,15 +11,12 @@
     </div>
     <%= form_tag quote_path(@quote.id, convert_to_invoice: true), method: "put" do %>
       <button type="submit" class="btn btn-outline-secondary mr-3"><i class="material-icons">arrow_forward</i> Transformer en Facture</button>
-<%end %>
-
+    <%end %>
     <%= link_to "Envoyer par mail", { :controller => "quotes", :action => "payment_send", :id => @quote.id }, class:"btn btn-outline-secondary" %>
-
-      <!--Button link to PDF-->
-      <%#link_to image_path: "Devis_FS0501202012.pdf", target: "_blank" , class:"btn btn-outline-secondary"%>
-<!--      <i class="material-icons">file_download</i> Télécharger-->
-      <%# end %>
-
+    <!--Button link to PDF-->
+    <%= link_to image_path("Devis_FS0501202012.pdf"), target: "_blank", class:"btn btn-outline-secondary ml-3" do %>
+      Télécharger <i class='material-icons'>file_download</i>
+    <% end %>
   </div>
 </div>
 

@@ -54,11 +54,4 @@ module ApplicationHelper
     turnover
   end
 
-  #Send mail to customer
-  def payment_send
-    @quote = Quote.find(params[:id])
-    QuoteMailer.payment_email(@quote).deliver_now
-    flash[:success] = "Votre document a bien été envoyé par mail !"
-    redirect_back(fallback_location: quotes_path)
-  end
 end
