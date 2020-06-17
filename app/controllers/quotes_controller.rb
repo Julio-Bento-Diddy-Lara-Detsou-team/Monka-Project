@@ -57,32 +57,15 @@ class QuotesController < ApplicationController
   end
 
   def update
-    # Convert a quote into an invoice
-    # convert_quote_to_invoice
-
-
-    @quote = Quote.find(params[:id])
-
-    # Convert a quote into an invoice
     if params[:convert_to_invoice] === "true" && @quote.is_invoice === false
-      @quote.update(
-          is_invoice: @quote.is_invoice = true,
-          invoice_number: @quote.invoice_number = "#{current_user.first_name[0]}#{current_user.last_name[0]}#{DateTime.now.strftime("%d%m%Y%H%M")}"
-      )
-
-      flash[:success] = "Le devis a été transformé en facture"
-    end
-
-    redirect_to :quotes
-
-
-
-
-    respond_to do |format|
-      if @quote.update(quote_params)
-        format.html { redirect_to @quote, notice: 'Le devis ou la facture a bien été mise à jour.' }
-      else
-        format.html { render :edit }
+      convert_quote_to_invoice(@quote)
+    else
+      respond_to do |format|
+        if @quote.update(quote_params)
+          format.html { redirect_to @quote, notice: 'Le devis ou la facture a bien été mise à jour.' }
+        else
+          format.html { render :edit }
+        end
       end
     end
   end
@@ -169,22 +152,14 @@ class QuotesController < ApplicationController
 
     quote
   end
-end
 
-def convert_quote_to_invoice
-  @quote = Quote.find(params[:id])
-
-  # Convert a quote into an invoice
-  if params[:convert_to_invoice] === "true" && @quote.is_invoice === false
-    @quote.update(
-        is_invoice: @quote.is_invoice = true,
-        invoice_number: @quote.invoice_number = "#{current_user.first_name[0]}#{current_user.last_name[0]}#{DateTime.now.strftime("%d%m%Y%H%M")}"
+  def convert_quote_to_invoice(quote)
+    quote.update(
+        is_invoice: quote.is_invoice = true,
+        invoice_number: quote.invoice_number = "#{current_user.first_name[0]}#{current_user.last_name[0]}#{DateTime.now.strftime("%d%m%Y%H%M")}"
     )
 
     flash[:success] = "Le devis a été transformé en facture"
+    redirect_to :quotes
   end
-
-  redirect_to :quotes
 end
-
-
