@@ -50,10 +50,8 @@ class QuotesController < ApplicationController
     respond_to do |format|
       if @quote.save
         format.html { redirect_to @quote, notice: 'Le devis ou la facture a bien été créé.' }
-        format.json { render :show, status: :created, location: @quote }
       else
         format.html { render :new }
-        format.json { render json: @quote.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -62,10 +60,8 @@ class QuotesController < ApplicationController
     respond_to do |format|
       if @quote.update(quote_params)
         format.html { redirect_to @quote, notice: 'Le devis ou la facture a bien été mise à jour.' }
-        format.json { render :show, status: :ok, location: @quote }
       else
         format.html { render :edit }
-        format.json { render json: @quote.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -74,7 +70,6 @@ class QuotesController < ApplicationController
     @quote.destroy
     respond_to do |format|
       format.html { redirect_to quotes_url, notice: 'Le devis ou la facture a bien été supprimé.' }
-      format.json { head :no_content }
     end
   end
 
