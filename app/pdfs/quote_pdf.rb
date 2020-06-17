@@ -9,6 +9,7 @@ class QuotePdf < Prawn::Document
     destination_address
     sender_address
     show_goods
+    total_price
     terms_and_conditions
   end
 
@@ -44,7 +45,6 @@ class QuotePdf < Prawn::Document
 
     data = [["Produit/Service", "Description", "Quantité", "prix"]]
     @quote.goods.each do |good|
-      total_price = 0
       data << [good.title, good.description, good.quantity, price(good.price)]
     end
     data
@@ -60,6 +60,15 @@ class QuotePdf < Prawn::Document
     @view.number_to_currency(num,:unit => '€')
   end
 
+  def total_price
+    move_down 20
+    total_price = 0
+    @quote.goods.each do |good|
+      [good.quantity, good.price]
+      total_price = good.price * good.quantity
+    end
+    text "Prix Total:  #{price(total_price)}"
+  end
 
 
 end
