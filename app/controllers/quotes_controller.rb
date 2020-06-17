@@ -13,6 +13,7 @@ class QuotesController < ApplicationController
   def show
     @goods = @quote.goods
     @user = current_user
+
     respond_to do |format|
       format.html
       format.pdf do
@@ -22,7 +23,6 @@ class QuotesController < ApplicationController
                   disposition: "inline"
       end
     end
-
   end
 
   def new
@@ -72,6 +72,5 @@ class QuotesController < ApplicationController
   def find_quote
     @quote = Quote.find(params[:id])
   end
-
 end
 
