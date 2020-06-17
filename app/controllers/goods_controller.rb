@@ -28,7 +28,7 @@ class GoodsController < ApplicationController
 
     respond_to do |format|
       if @good.save
-        format.html { redirect_to @good, notice: 'Good was successfully created.' }
+        format.html { redirect_to @good, flash[:success] = 'Le produit/service a bien été créé.' }
       else
         format.html { render :new }
       end
@@ -38,7 +38,7 @@ class GoodsController < ApplicationController
   def update
     respond_to do |format|
       if @good.update(good_params)
-        format.html { redirect_to @good, notice: 'Good was successfully updated.' }
+        format.html { redirect_to @good, flash[:success] = 'Le produit/service a bien été mis à jour.' }
       else
         format.html { render :edit }
       end
@@ -48,7 +48,7 @@ class GoodsController < ApplicationController
   def destroy
     @good.destroy
     respond_to do |format|
-      format.html { redirect_to goods_url, notice: 'Good was successfully destroyed.' }
+      format.html { redirect_to goods_url, flash[:success] = 'Le produit/service a bien été supprimé.' }
     end
   end
 
