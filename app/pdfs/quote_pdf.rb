@@ -33,22 +33,36 @@ class QuotePdf < Prawn::Document
 
   def show_goods
     move_down 50
-    total_price = 0
-    @quote.goods.each do |good|
-
-      data = [[" #{good.title}", "#{good.description}", "#{good.quantity}", " #{good.price} €" ]]
-      table(data, :column_widths => {1 => 240}, :position => :center)
-
-
-
-      # text "#{good.title}"
-      # text "#{good.description}"
-      # text "#{good.quantity}"
-      # text "#{good.price} €"
-      total_price = total_price + good.quantity * good.price
+    table show_goods_rows do
+      row(0).font_style = :bold
     end
+    # total_price = 0
+    # @quote.goods.each do |good|
+    #
+    #   data = [[" #{good.title}", "#{good.description}", "#{good.quantity}", " #{good.price} €" ]]
+    #   table(data, :column_widths => {1 => 240}, :position => :center)
+    #
+    #   data = [["Titre", "Description", "Quantité", "Prix"],
+    #           ["#{good.title}", "#{good.description}", "#{good.quantity}", " #{good.price} €" ]
+    #   ]
+    #   table(data, :column_widths => {1 => 240}, :position => :center)
+    #
+    #
+    #   # text "#{good.title}"
+    #   # text "#{good.description}"
+    #   # text "#{good.quantity}"
+    #   # text "#{good.price} €"
+    #   total_price = total_price + good.quantity * good.price
+  end
 
-    text "Prix Total #{total_price} €"
+    # text "Prix Total #{total_price} €"
+
+  def show_goods_rows
+    data = [["Produit/Service", "Description", "Quantité", "prix"]]
+    @quote.goods.each do |good|
+      data << [good.title, good.description, good.quantity, good.price]
+    end
+    data
   end
 
   def terms_and_conditions
