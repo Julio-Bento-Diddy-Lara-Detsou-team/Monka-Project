@@ -17,9 +17,9 @@
     <%= link_to "Envoyer par mail", { :controller => "quotes", :action => "payment_send", :id => @quote.id }, class:"btn btn-outline-secondary" %>
 
     <!--Button link to PDF-->
-    <%= link_to image_path("Devis_FS0501202012.pdf"), target: "_blank", class:"btn btn-outline-secondary ml-3" do %>
+    <%= link_to quote_path(@quote, format: "pdf"), class:"btn btn-outline-secondary ml-3" do %>
       Télécharger <i class='material-icons'>file_download</i>
-    <% end %>
+      <% end %>
 
   </div>
 </div>
@@ -104,7 +104,7 @@
             <!--Terms and conditions ---------->
             <div class="text-label mt-4">Termes et conditions</div>
             <p class="text-muted small mx-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse facilisis feugiat erat, sed porta lacus pellentesque mattis. Suspendisse id vulputate mi. Nunc posuere varius sapien et commodo. Praesent pharetra nibh nulla, vitae cursus tellus semper ut. Sed nisl diam, ultrices id maximus in, mollis eu sapien.</p>
-            <%= link_to "Télécharger en pdf", quote_path(@quote, format: "pdf") %>
+
           </div>
         </div>
       </div>
