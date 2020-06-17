@@ -3,7 +3,7 @@
     <div class="flex">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
-          <li class="breadcrumb-item"><a href="<%= root_path %>">Accueil</a></li>
+          <li class="breadcrumb-item"><%= link_to root_path do %><i class="material-icons icon-20pt">home</i><% end %></li>
           <li class="breadcrumb-item active" aria-current="page">Page <% if @quote.is_invoice %>Facture<% else %>Devis<% end %></li>
         </ol>
       </nav>
@@ -12,7 +12,9 @@
     <%= form_tag quote_path(@quote.id, convert_to_invoice: true), method: "put" do %>
       <button type="submit" class="btn btn-outline-secondary mr-3"><i class="material-icons">arrow_forward</i> Transformer en Facture</button>
     <% end %>
-    <a href="<%= image_path "Devis_FS0501202012.pdf" %>" target="_blank" class="btn btn-primary"><i class="material-icons">file_download</i> Télécharger</a>
+    <%= link_to image_path "Devis_FS0501202012.pdf", class: "btn btn-primary", target: :_blank do %>
+      <i class="material-icons">file_download</i> Télécharger
+    <% end %>
   </div>
 </div>
 
