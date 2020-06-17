@@ -10,6 +10,7 @@ Customer.destroy_all
 Quote.destroy_all
 Good.destroy_all
 JoinGoodsQuotesTable.destroy_all
+AdminUser.destroy_all
 
 random_boolean = [true, false].sample
 
