@@ -17,9 +17,7 @@ Il s'agit du devis : <%= @quote.quote_number %> pour la prestation décrite ci-d
 
 Le total s'élève donc à : <%=@quote.amount %>€
 
-Vous pouvez directement payer <%= @user.first_name %> <%= @user.last_name %> en cliquant sur le lien sécurisé ci-dessous 👇
-<%= @url %>.
-<%#= image_tag attachments['image.jpg'].url %>
+Vous pouvez directement payer <%= @user.first_name %> <%= @user.last_name %> <%= link_to  "en cliquant sur 👉 ce lien sécurisé ", @url %>
 
 À très vite,
 
