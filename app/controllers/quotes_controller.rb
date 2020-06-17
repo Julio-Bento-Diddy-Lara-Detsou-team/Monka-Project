@@ -16,7 +16,7 @@ class QuotesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = QuotePdf.new(@quote, @user)
+        pdf = QuotePdf.new(@quote, @user, view_context)
         send_data pdf.render, filename: "Doc_#{@quote.quote_number}.pdf",
                   type: "application/pdf",
                   disposition: "inline"
