@@ -30,15 +30,6 @@
     <div class="col-md-8 offset-md-2">
       <div class="card">
         <div class="card-body">
-          <%# if @quote.is_invoice %>
-          <%# if DateTime.now > @quote.invoice_sending_date + 3.days %>
-          <!--              <div class="badge badge-danger">EN RETARD</div>-->
-          <%# end %>
-          <%# else %>
-          <%# if DateTime.now > @quote.quote_sending_date + 3.days %>
-          <!--              <div class="badge badge-danger">EN RETARD</div>-->
-          <%# end %>
-          <%# end %>
           <div class="px-3">
             <div class="d-flex justify-content-center flex-column text-center my-5 navbar-light">
               <div class="navbar-brand d-flex flex-column m-0" style="min-width: 0">
@@ -110,11 +101,6 @@
       </div>
     </div>
   </div>
-
-  <!--  <div class="text-center">-->
-  <!--    <%#= link_to 'Edit', edit_quote_path(@quote) %> /-->
-  <%#= link_to 'Delete', quote_path(@quote), method: "delete" %>
-  <!--  </div>-->
 
   <!-- Buttons action -->
   <div class="row justify-content-center my-5">

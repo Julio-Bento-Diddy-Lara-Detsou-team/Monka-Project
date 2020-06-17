@@ -15,8 +15,10 @@
   <div class="card card-form__body card-body">
     <div class="d-flex justify-content-center flex-column text-center my-5 navbar-light">
       <div class="navbar-brand d-flex flex-column m-0" style="min-width: 0">
-        <img class="navbar-brand-icon mb-2" src="<%= image_path('calculate_vert.png')%>" width="25" alt="Logo de la compagnie">
-        <span><% if @quote.is_invoice %>Facture<% else %>Devis<% end %></span>
+        <% if current_user.logo.attached? %>
+          <%= image_tag current_user.logo, alt: 'logo', width: "100" %>
+        <%end %>
+        <span><% if quote.is_invoice %>Facture<% else %>Devis<% end %></span>
       </div>
     </div>
 
@@ -104,8 +106,8 @@
       <input type="text" class="form-control" id="CGV" value="Conditions générales de vente n°1">
     </fieldset>
 
-    <div class="actions my-3 text-right">
-      <%= form.submit %>
+    <div class="row justify-content-center">
+      <%= form.submit "Valider", class: "btn btn-primary btn-lg mt-4" %>
     </div>
   </div>
 
