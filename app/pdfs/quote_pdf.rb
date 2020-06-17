@@ -30,6 +30,12 @@ class QuotePdf < Prawn::Document
   def show_goods
     total_price = 0
     @quote.goods.each do |good|
+
+      # data = [["Titre #{good.title}", "Description #{good.description}", "Quantité #{good.quantity}", "Prix #{good.price} €", "Total #{total_price} €" ]]
+      # table(data, :column_widths => {2 => 240})
+
+
+
       text "#{good.title}"
       text "#{good.description}"
       text "#{good.quantity}"
