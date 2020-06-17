@@ -5,7 +5,7 @@
       <!-- Breadcrumb-->
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
-          <li class="breadcrumb-item"><a href="<%= root_path %>">Accueil</a></li>
+          <li class="breadcrumb-item"><%= link_to "Accueil", root_path %></li>
           <li class="breadcrumb-item active" aria-current="page">Liste de mes clients</li>
         </ol>
       </nav>
@@ -14,7 +14,9 @@
     </div>
     <!-- Button "Back to customer index" -->
     <div class="nav justify-content-end">
-      <a href="<%= customers_path %>" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Retour accueil</a>
+      <%= link_to customers_path, class: "btn btn-secondary" do %>
+        <i class="fa fa-arrow-left"></i> Retour
+      <% end %>
     </div>
   </div>
 </div>
