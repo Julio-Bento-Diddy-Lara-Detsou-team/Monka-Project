@@ -1,6 +1,6 @@
 <!-- Create order Button -->
 <div class="row justify-content-center my-3">
-  <%= render 'charges/stripe_form', {quote_amount: @quote.amount} %>
+  <%= render 'charges/stripe_form', {quote: @quote} %>
 </div>
 
 <div class="container-fluid page__container">
