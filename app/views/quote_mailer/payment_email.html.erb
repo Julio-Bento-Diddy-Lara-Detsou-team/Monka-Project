@@ -5,7 +5,7 @@
 <body>
 
 <h2>Demande de paiement de la part de <%= @user.first_name %> <%= @user.last_name %> ; société : <%= @user.company_name %> : <br>
-  à destination de <%= @customer.first_name %> <%= customer.last_name %> ; société: <%= @customer.company_name %></h2>
+  à destination de <%= @customer.first_name %> <%= @customer.last_name %> ; société: <%= @customer.company_name %></h2>
 
 <p>Bonjour <%=@customer.first_name %> ! Vous avez reçu une demande de paiement de la part de <%= @user.first_name %> <%= @user.last_name %> de la société : <%= @user.company_name %>.</p>
 
@@ -19,7 +19,7 @@
 <!-- Quote total amount -->
 <h3>Le total s'élève à : <%=@quote.amount %>€ </h3>
 
-<p>Vous pouvez directement payer <%=@user.first_name %> <%=user.last_name %> en cliquant sur le lien sécurisé ci-dessous 👇</p>
+<p>Vous pouvez directement payer <%=@user.first_name %> <%=@user.last_name %> en cliquant sur le lien sécurisé ci-dessous 👇</p>
 <p> <%= @url %></p>
 
 <%#= image_tag attachments['image.jpg'].url %>

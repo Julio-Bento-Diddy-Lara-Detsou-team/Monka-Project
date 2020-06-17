@@ -9,7 +9,5 @@ class QuoteMailer < ApplicationMailer
     mail(to: @customer.email, subject: "Demande de paiement #{@quote.quote_number}",
          cc: @user.email)
     # attachments['filename.jpg'] = File.read('/path/to/filename.jpg')
-    flash[:success] = "Votre document a bien été envoyé par mail !"
-    redirect_back(fallback_location: quotes_path)
   end
 end

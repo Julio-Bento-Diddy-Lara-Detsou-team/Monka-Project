@@ -21,11 +21,5 @@ class Quote < ApplicationRecord
 
   # validates :is_invoice
 
-#   Action Mailer method to send email to customer
-
-  #
-  def payment_send
-    QuoteMailer.payment_email(self).deliver_now
-  end
 
 end
