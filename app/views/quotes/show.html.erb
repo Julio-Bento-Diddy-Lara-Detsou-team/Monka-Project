@@ -13,9 +13,10 @@
       <button type="submit" class="btn btn-outline-secondary mr-3"><i class="material-icons">arrow_forward</i> Transformer en Facture</button>
 <%end %>
       <!--Button to send mail to customer from the app-->
-      <%#= button_to [:payment_send, @quote], class: "btn btn-outline-secondary" do%>
-<!--        <i class="material-icons">attach_email</i>Envoyer le devis par mail-->
-      <%# end %>
+      <%= button_to [:payment_send, @quote], class: "btn btn-outline-secondary" ,
+                    data: {confirm: "Êtes-vous sûr de vouloir envoyer ce document ?"} do%>
+        <i class="material-icons">attach_email</i>Envoyer le devis par mail
+      <% end %>
 
 
 
