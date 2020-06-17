@@ -59,6 +59,7 @@ class GoodsController < ApplicationController
         redirect_to goods_path
         flash[:success] = "Le produit/service a bien été supprimé."
       }
+      format.js {}
     end
   end
 
