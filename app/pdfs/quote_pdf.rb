@@ -14,10 +14,17 @@ class QuotePdf < Prawn::Document
   end
 
   def quote_number
+    if @quote.is_invoice == false
     text_box "Devis #{@quote.quote_number}",
              :at => [0, 650],
              :height => 100,
              :width => 150
+    else
+      text_box "Facture #{@quote.invoice_number}",
+               :at => [0, 650],
+               :height => 100,
+               :width => 150
+      end
   end
 
   def destination_address
