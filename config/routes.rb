@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources 'users', only: [:show, :edit, :update]
   resources :customers
   resources :charges
+  get :payment_send, to: 'quotes#payment_send', as: :payment_send
 end
+

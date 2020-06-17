@@ -1,11 +1,11 @@
 Demande de paiement de la part de <%= @user.first_name %> <%= @user.last_name %> ; société : <%= @user.company_name %> :
-  à destination de <%= @customer.first_name %> <%= customer.last_name %> ; société: <%= @customer.company_name %>
+  à destination de <%= @customer.first_name %> <%= @customer.last_name %> ; société: <%= @customer.company_name %>
 
 ==========================================================
 
-Bonjour <%=@customer.first_name %> ! Vous avez reçu une demande de paiement de la part de <%= @user.first_name %> <%= @user.last_name %> de la société : <%= @user.company_name %>.
+Bonjour <%= @customer.first_name %> ! Vous avez reçu une demande de paiement de la part de <%= @user.first_name %> <%= @user.last_name %> de la société : <%= @user.company_name %>.
 
-Il s'agit du devis : <%=@quote.quote_number %> pour la prestation :
+Il s'agit du devis : <%= @quote.quote_number %> pour la prestation :
 
 ==========================================================
 
@@ -17,9 +17,9 @@ Il s'agit du devis : <%=@quote.quote_number %> pour la prestation :
 
 ==========================================================
 <!-- Quote total amount -->
-Le total s'élève à : <%=@quote.amount %>€
+Le total s'élève à : <%= @quote.amount %>€
 
-Vous pouvez directement payer <%=@user.first_name %> <%=user.last_name %> en cliquant sur le lien sécurisé ci-dessous 👇</p>
+Vous pouvez directement payer <%= @user.first_name %> <%= @user.last_name %> en cliquant sur le lien sécurisé ci-dessous 👇</p>
 <%= @url %>
 
 <!-- Add a method to show the good link to pay the adequate sum correlated to a specific quote + do the same for invoice-->

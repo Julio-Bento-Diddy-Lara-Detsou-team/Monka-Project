@@ -12,14 +12,8 @@
     <%= form_tag quote_path(@quote.id, convert_to_invoice: true), method: "put" do %>
       <button type="submit" class="btn btn-outline-secondary mr-3"><i class="material-icons">arrow_forward</i> Transformer en Facture</button>
 <%end %>
-      <!--Button to send mail to customer from the app-->
-      <%= button_to [:payment_send, @quote], class: "btn btn-outline-secondary" ,
-                    data: {confirm: "Êtes-vous sûr de vouloir envoyer ce document ?"} do%>
-        <i class="material-icons">attach_email</i>Envoyer le devis par mail
-      <% end %>
 
-
-
+    <%= link_to "Envoyer par mail", { :controller => "quotes", :action => "payment_send", :id => @quote.id }, class:"btn btn-outline-secondary" %>
 
       <!--Button link to PDF-->
       <%#link_to image_path: "Devis_FS0501202012.pdf", target: "_blank" , class:"btn btn-outline-secondary"%>
