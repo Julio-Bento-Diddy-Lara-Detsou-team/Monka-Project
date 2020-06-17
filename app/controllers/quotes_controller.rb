@@ -67,6 +67,7 @@ class QuotesController < ApplicationController
     @quote.destroy
     respond_to do |format|
       format.html { redirect_to quotes_url, notice: 'Le devis ou la facture a bien été supprimé.' }
+      format.js {}
     end
   end
 
