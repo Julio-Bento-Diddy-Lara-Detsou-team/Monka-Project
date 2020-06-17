@@ -5,7 +5,7 @@ ActiveAdmin.register Good do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :title, :description, :quantity, :price, :user_id
+  permit_params :title, :description, :quantity, :price, :user_id
   #
   # or
   #

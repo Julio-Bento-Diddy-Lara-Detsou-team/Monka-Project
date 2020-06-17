@@ -8,11 +8,11 @@ ActiveAdmin.register Customer do
   # permit_params :first_name, :last_name, :company_name, :company_id, :email, :is_professional, :address, :zip_code, :country, :phone_number, :user_id
   #
   # or
-  #
-  # permit_params do
-  #   permitted = [:first_name, :last_name, :company_name, :company_id, :email, :is_professional, :address, :zip_code, :country, :phone_number, :user_id]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
+
+  permit_params do
+    permitted = [:first_name, :last_name, :company_name, :company_id, :email, :is_professional, :address, :zip_code, :country, :phone_number, :user_id]
+    permitted << :other if params[:action] == 'create' && current_user.admin?
+    permitted
+  end
   
 end

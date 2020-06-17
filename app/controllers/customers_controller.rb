@@ -76,6 +76,6 @@ class CustomersController < ApplicationController
   end
 
   def customer_to_current_user
-    @customer.update(user: current_user, country: params[:customer][:country])
+    @customer.update(user: current_user, country: "FRANCE")
   end
 end
