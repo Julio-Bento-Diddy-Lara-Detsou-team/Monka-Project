@@ -5,9 +5,8 @@ class QuoteMailer < ApplicationMailer
     @user = quote.user
     @quote = quote
     @customer = quote.customer
-    @url = 'https://monsite.com/'
+    @url = "https://monka-project.herokuapp.com/quotes/#{@quote.id}/charges/new"
     mail(to: @customer.email, subject: "Demande de paiement #{@quote.quote_number}",
          cc: @user.email)
-    # attachments['filename.jpg'] = File.read('/path/to/filename.jpg')
   end
 end
