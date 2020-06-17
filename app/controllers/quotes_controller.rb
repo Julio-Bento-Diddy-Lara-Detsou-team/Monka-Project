@@ -45,6 +45,7 @@ class QuotesController < ApplicationController
           invoice_number: @quote.invoice_number = "#{@quote.customer.first_name[0]}#{@quote.customer.last_name[0]}#{DateTime.now.strftime("%d%m%Y")}",
           invoice_sending_date: @quote.quote_sending_date
       )
+    end
 
     respond_to do |format|
       if @quote.save
@@ -86,6 +87,7 @@ class QuotesController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_quote
     @quote = Quote.find(params[:id])
@@ -109,7 +111,6 @@ class QuotesController < ApplicationController
         goods_attributes: [:id, :title, :description, :quantity, :price, :user_id],
         )
   end
-end
 
   # Get a Quote object with data selected by the user and allocated on wether
   # he has choosen to create a quote or an invoice
@@ -153,3 +154,6 @@ end
     quote
   end
 end
+
+
+
