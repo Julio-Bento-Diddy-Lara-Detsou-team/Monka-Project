@@ -1,33 +1,33 @@
-<div class="container">
-  <div class="container-fluid page__heading-container">
-    <div class="page__heading d-flex align-items-center">
+<div class="container-fluid page__heading-container">
+  <div class="page__heading d-flex align-items-center">
 
-      <div class="flex">
-        <!-- Breadcrumb-->
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="<%= root_path %>">Accueil</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Liste de mes clients</li>
-          </ol>
-        </nav>
-        <!-- Page Title -->
-        <h1 class="mt-3">Editer le client</h1>
-      </div>
-      <!-- Button "Back to customer index" -->
-      <div class="nav justify-content-end">
-        <a href="<%= customers_path %>" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Retour accueil</a>
-      </div>
+    <div class="flex">
+      <!-- Breadcrumb-->
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><%= link_to root_path do %><i class="material-icons icon-20pt">home</i><% end %></li>
+          <li class="breadcrumb-item active" aria-current="page">Liste de mes clients</li>
+        </ol>
+      </nav>
+      <!-- Page Title -->
+      <h1 class="mt-3">Editer le client</h1>
+    </div>
+    <!-- Button "Back to customer index" -->
+    <div class="nav justify-content-end">
+      <%= link_to customers_path, class: "btn btn-secondary" do %>
+        <i class="fa fa-arrow-left"></i> Retour
+      <% end %>
     </div>
   </div>
+</div>
 
-  <div class="container-fluid page__container">
+<div class="container-fluid page__container">
 
-    <p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
-    <div class="row justify-content-lg-center">
-      <!-- Customer form -->
-      <%= render 'form', customer: @customer %>
-    </div>
-
+  <div class="row justify-content-lg-center">
+    <!-- Customer form -->
+    <%= render 'form', customer: @customer %>
   </div>
+
 </div>

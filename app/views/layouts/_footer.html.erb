@@ -1,114 +1,63 @@
-
 <!-- Footer -->
 <footer class="page-footer font-small bg-dark text-white">
 
-
-    <div class="container text-white">
-
-      <!-- Grid row-->
-      <div class="row py-2 d-flex align-items-center">
-
-        <!-- Grid column -->
-        <div class="col-md-6 col-lg-5 text-center text-white text-md-left mb-4 mb-md-0">
-          <p class=" text-white mb-0 mt-5">Retrouvez les aventures de <span class="greenblue">Monka sur les réseaux sociaux !</span></p>
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-6 col-lg-7 text-center text-md-right">
-
-          <!-- Twitter -->
-          <a class="tw-ic">
-            <i class="fa fa-twitter text-white mr-4"> </i>
-          </a>
-
-          <!-- Facebook -->
-          <a class="fb-ic">
-            <i class="fa fa-facebook-f text-white mr-4"> </i>
-          </a>
-
-          <!--Linkedin -->
-<!--          <a class="li-ic">-->
-<!--            <i class="fa fa-linkedin-in text-white mr-4"> </i>-->
-<!--          </a>-->
-          <!--Instagram-->
-          <a href="#" class="ins-ic">
-            <i class="fa fa-instagram text-white"> </i>
-          </a>
-
-        </div>
-        <!-- Grid column -->
-
+  <!-- Social medias -->
+  <div class="container text-white">
+    <div class="row py-2 d-flex align-items-center">
+      <div class="col-md-6 col-lg-5 text-center text-white text-md-left mb-4 mb-md-0">
+        <p class=" text-white mb-0 mt-5">Retrouvez les aventures de <span class="greenblue">Monka sur les réseaux sociaux !</span></p>
       </div>
-      <!-- Grid row-->
 
+      <div class="col-md-6 col-lg-7 text-center text-md-right">
+        <!-- Twitter -->
+        <i class="fa fa-twitter text-white mr-4"></i>
+        <!-- Facebook -->
+        <i class="fa fa-facebook-f text-white mr-4"></i>
+        <!-- Instagram -->
+        <i class="fa fa-instagram text-white"></i>
+      </div>
     </div>
+  </div>
 
-
-  <!-- Footer Links -->
+  <!-- Three columns -->
   <div class="container text-center text-md-left mt-5">
 
-    <!-- Grid row -->
     <div class="row mt-3 text-white">
 
-      <!-- Grid column -->
+      <!-- Left column -->
       <div class="col-12 col-md-4 mb-4 px-5">
-
-        <!-- Content -->
         <h6 class="greenfoot text-uppercase font-weight-bold">Monka</h6>
         <hr class="hrw teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-
-        <p>Une appli <span class="greenblue">100% made in France</span> pour les auto-entrepreneurs qui recherchent l'efficacité ! Développé avec fougue par
+        <p>
+          Une appli <span class="greenblue">100% made in France</span> pour les auto-entrepreneurs qui recherchent l'efficacité ! Développé avec fougue par
           <a href="//github.com/Julio-Bento-Diddy-Lara-Detsou-team/The-not-loosing-a-joker-because-of-a-kitty-Project">
-            <span class="greenblue">The Monka Team </span></a>pour <a href="//www.thehackingproject.org/fr"><span class="greenblue">THP</span></a></p>
-
-
+            <span class="greenblue">The Monka Team </span>
+          </a>
+          pour <a href="//www.thehackingproject.org/fr"><span class="greenblue">THP</span></a>
+        </p>
       </div>
-      <!-- Grid column -->
 
-      <!-- Grid column -->
+      <!-- Middle column -->
       <div class="col-md-4 mx-auto mb-4 px-5">
-
-        <!-- Links -->
         <h6 class=" greenfoot text-uppercase font-weight-bold">Mentions légales</h6>
         <hr class="hrw teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>
-          <a class="text-white" href="#!">Politique de confidentialité</a>
-        </p>
-        <p>
-          <a class="text-white" href="#!">Conditions générales de vente</a>
-        </p>
-
+        <p><%= link_to "Politique de confidentialité", root_path, class: "text-white" %></p>
+        <p><%= link_to "Conditions générales de vente", root_path, class: "text-white" %></p>
       </div>
-      <!-- Grid column -->
 
-      <!-- Grid column -->
+      <!-- Right column -->
       <div class="col-md-4 mx-auto mb-md-0 mb-4 px-5">
-
-        <!-- Links -->
         <h6 class=" greenfoot text-uppercase font-weight-bold">Contact</h6>
         <hr class="hrw teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>
-          <i class="fa fa-home mr-3"></i>8 du Poitou 75003, Paris</p>
-        <p>
-          <i class="fa fa-envelope mr-3"></i> moufaca755@gmail.com</p>
-        <p>
-          <i class="fa fa-phone mr-3"></i> +33 6 19 76 78 56</p>
-
+        <p><i class="fa fa-home mr-3"></i>8 rue du Poitou 75003, Paris</p>
+        <p><i class="fa fa-envelope mr-3"></i>contact@monka.com</p>
+        <p><i class="fa fa-phone mr-3"></i> +33 6 19 76 78 56</p>
       </div>
-      <!-- Grid column -->
-
     </div>
-    <!-- Grid row -->
-
   </div>
-  <!-- Footer Links -->
 
   <!-- Copyright -->
-  <div class=" footer-copyright text-center text-white-50 py-3">© 2020 Copyright:
-    <a class="greenblue" href="https://monka-project.herokuapp.com/"> Monka.com</a>
+  <div class=" footer-copyright text-center text-white-50 py-3 small">© 2020 Copyright:
+    <%= link_to "Monka.com", root_path, class: "greenblue" %>
   </div>
-  <!-- Copyright -->
-
 </footer>
-<!-- Footer -->

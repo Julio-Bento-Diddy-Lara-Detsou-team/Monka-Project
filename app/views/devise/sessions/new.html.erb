@@ -1,59 +1,59 @@
 <div class="row justify-content-center">
-<% @body_class = 'layout-login-centered-boxed' %>
+  <% @body_class = 'layout-login-centered-boxed' %>
 
-<div class="layout-login-centered-boxed__form card">
-  <div class="d-flex flex-column justify-content-center align-items-center mt-2 mb-5 navbar-light">
-    <a href="<%= root_path %>" class="navbar-brand flex-column mb-2 align-items-center mr-0" style="min-width: 0">
-      <img class="navbar-brand-icon mr-0 mb-2" src="<%= image_path('calculate_vert.png')%>" width="25" alt="Monka logo">
-      <span>Se connecter</span>
-    </a>
-  </div>
-
-  <% if alert.present? %>
-    <div class="alert alert-soft-danger d-flex" role="alert">
-      <i class="material-icons mr-3 align-self-center">error</i>
-      <span><%= alert %></span>
+  <div class="layout-login-centered-boxed__form card">
+    <div class="d-flex flex-column justify-content-center align-items-center mt-2 mb-5 navbar-light">
+      <%= link_to root_path, class: "navbar-brand flex-column mb-2 align-items-center mr-0", style: "min-width: 0" do %>
+        <img class="navbar-brand-icon mr-0 mb-2" src="<%= image_path('calculate_vert.png')%>" width="25" alt="Monka logo">
+        <span>Se connecter</span>
+      <% end %>
     </div>
-  <% end %>
 
-
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="form-group">
-      <label class="text-label" for="email_2">Adresse mail :</label>
-      <div class="input-group input-group-merge">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control form-control-prepended', placeholder: "Entrez votre adresse mail"%>
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <span class="fa fa-envelope"></span>
-          </div>
-        </div>
+    <% if alert.present? %>
+      <div class="alert alert-soft-danger d-flex" role="alert">
+        <i class="material-icons mr-3 align-self-center">error</i>
+        <span><%= alert %></span>
       </div>
-    </div>
-    <div class="form-group">
-      <label class="text-label" for="password_2">Mot de passe :</label>
-      <div class="input-group input-group-merge">  
-        <%= f.password_field :password, autocomplete: "current-password", class: 'form-control form-control-prepended', placeholder: 'Entrez votre mot de passe' %>
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <span class="fa fa-key"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="form-group">
-      <button class="btn btn-block btn-primary" type="submit">Connexion</button>
-    </div>
-    <% if devise_mapping.rememberable? %>
-    <div class="form-group text-center">
-      <div class="custom-control custom-checkbox">
-        <%= f.check_box :remember_me, class:'custom-control-input' %>
-        <%= f.label :remember_me, "Se souvenir de moi", class: 'custom-control-label' %>
-      </div>
-    </div>
     <% end %>
-    <div class="form-group text-center">
-      <%= render "devise/shared/links" %>
-    </div>
-  <% end %>
-</div>
+
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-group">
+        <label class="text-label" for="email_2">Adresse mail :</label>
+        <div class="input-group input-group-merge">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control form-control-prepended', placeholder: "Entrez votre adresse mail"%>
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <span class="fa fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="text-label" for="password_2">Mot de passe :</label>
+        <div class="input-group input-group-merge">
+          <%= f.password_field :password, autocomplete: "current-password", class: 'form-control form-control-prepended', placeholder: 'Entrez votre mot de passe' %>
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <span class="fa fa-key"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-block btn-primary" type="submit">Connexion</button>
+      </div>
+      <% if devise_mapping.rememberable? %>
+        <div class="form-group text-center">
+          <div class="custom-control custom-checkbox">
+            <%= f.check_box :remember_me, class:'custom-control-input' %>
+            <%= f.label :remember_me, "Se souvenir de moi", class: 'custom-control-label' %>
+          </div>
+        </div>
+      <% end %>
+      <div class="form-group text-center">
+        <%= render "devise/shared/links" %>
+      </div>
+    <% end %>
+  </div>
 </div>

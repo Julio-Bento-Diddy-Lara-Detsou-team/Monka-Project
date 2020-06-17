@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  include ApplicationHelper
 
   before_action :authenticate_user!, only: [:show, :edit, :update]
 

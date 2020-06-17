@@ -1,70 +1,72 @@
-<div class="container">
-  <div class="container-fluid page__heading-container">
-    <div class="page__heading d-flex align-items-center">
+<div class="container-fluid page__heading-container">
+  <div class="page__heading d-flex align-items-center">
 
-      <div class="flex">
-        <!-- Breadcrumb-->
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="<%= root_path %>">Accueil</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Liste de mes clients</li>
-          </ol>
-        </nav>
-        <!-- Page Title -->
-        <h1 class="mt-3">Liste de mes clients</h1>
-      </div>
-      <!-- Button add Customer-->
-      <a href="<%= new_customer_path %>" class="btn btn-primary ml-3">Nouveau client</a>
+    <div class="flex">
+      <!-- Breadcrumb-->
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><%= link_to root_path do %><i class="material-icons icon-20pt">home</i><% end %></li>
+          <li class="breadcrumb-item active" aria-current="page">Liste de mes clients</li>
+        </ol>
+      </nav>
+      <!-- Page Title -->
+      <h1 class="mt-3">Liste de mes clients</h1>
     </div>
+    <!-- Button add Customer-->
+    <%= link_to "Nouveau client", new_customer_path, class: "btn btn-primary ml-3" %>
   </div>
+</div>
 
-  <div class="container-fluid page__container">
+<div class="container-fluid page__container">
 
-    <div class="col-lg-12 card-form__body">
-      <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
-        <table class="table mb-0 thead-border-top-0">
-          <thead>
+  <div class="col-lg-12 card-form__body">
+    <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
+      <table class="table mb-0 thead-border-top-0">
+        <thead>
+        <tr>
+          <th>Nom complet</th>
+          <th>Entreprise</th>
+          <th>Email</th>
+          <th>Voir</th>
+          <th>Editer</th>
+          <th>Supprimer</th>
+        </tr>
+        </thead>
+        <tbody class="list" id="blah">
+        <% @customers.each do |customer| %>
           <tr>
-            <th>Nom complet</th>
-            <th>Entreprise</th>
-            <th>Email</th>
-            <th>Voir</th>
-            <th>Editer</th>
-            <th>Supprimer</th>
-          </tr>
-          </thead>
-          <tbody class="list" id="blah">
-          <% @customers.each do |customer| %>
-            <tr>
-              <td>
-                <div class="media align-items-center">
+            <td>
+              <div class="media align-items-center">
 
-                  <div class="media-body">
-                    <span class="js-lists-values-employee-name"><%= customer.last_name.upcase %> <%= customer.first_name %></span>
-                  </div>
+                <div class="media-body">
+                  <span class="js-lists-values-employee-name"><%= customer.last_name.upcase %> <%= customer.first_name %></span>
                 </div>
-              </td>
+              </div>
+            </td>
 
-              <td><%= customer.company_name %></td>
-              <td><%= customer.email %></td>
+            <td><%= customer.company_name %></td>
+            <td><%= customer.email %></td>
 
-              <td class="text-center">
-                <a href="<%= customer_path(customer.id) %>" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-              </td>
-              <td class="text-center">
-                <a href="<%= edit_customer_path(customer.id) %>" class="btn btn-info"><i class="fa fa-pen"> Editer</i></a>
-              </td>
-              <td class="text-center">
-                <%= form_tag customer_path(customer.id), method: "delete" do %>
-                  <button class="btn btn-danger"><i class="fa fa-trash-alt"></i> Supprimer</button>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
-      </div>
-
+            <td class="text-center">
+              <%= link_to customer_path(customer.id), class: "btn btn-primary" do %>
+                <i class="fa fa-eye"></i>
+              <% end %>
+            </td>
+            <td class="text-center">
+              <%= link_to edit_customer_path(customer.id), class: "btn btn-info" do %>
+                <i class="fa fa-pen">Editer</i>
+              <% end %>
+            </td>
+            <td class="text-center">
+              <%= link_to customer_path(customer.id), method: :delete, class:"btn btn-danger" do %>
+                <i class="fa fa-trash-alt">Supprimer</i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
     </div>
+
   </div>
 </div>
