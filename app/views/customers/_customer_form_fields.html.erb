@@ -55,7 +55,7 @@
       <fieldset disabled>
         <%= label_tag 'Pays :' %>
         <%#= text_field_tag 'title', customer.country, {class: 'form-control', placeholder: "pays", value: 'FRANCE'} %>
-        <%= field.text_field :country, class: 'form-control', placeholder: "pays", value: 'FRANCE' %>
+        <%= field.text_field :country, class: 'form-control', placeholder: "pays", as: :select, collection: country_dropdown %>
       </fieldset>
     </div>
   </div>
