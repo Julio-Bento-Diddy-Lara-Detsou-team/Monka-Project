@@ -68,7 +68,7 @@ end
   customer_of_user = user.customers.sample
 
   quotes << Quote.create!(
-      quote_number: "#{customer_of_user.first_name[0]}#{customer_of_user.last_name[0]}#{random_date.strftime("%d%m%Y")}#{i}",
+      quote_number: "#{customer_of_user.first_name[0]}#{customer_of_user.last_name[0]}#{random_date.strftime("%d%m%Y")}",
       invoice_number: nil,
       amount: 0,
       discount: 0,
@@ -78,6 +78,7 @@ end
       invoice_sending_counter: 0,
       is_invoice: false,
       is_paid: false,
+      paid_date: nil,
       user: user,
       customer: customer_of_user)
 
@@ -91,15 +92,16 @@ end
 
   quotes << Quote.create!(
       quote_number: nil,
-      invoice_number: "#{customer_of_user.first_name[0]}#{customer_of_user.last_name[0]}#{random_date.strftime("%d%m%Y")}#{i}",
+      invoice_number: "#{customer_of_user.first_name[0]}#{customer_of_user.last_name[0]}#{random_date.strftime("%d%m%Y")}",
       amount: 0,
       discount: 0,
       quote_sending_date: nil,
-      invoice_sending_date: random_date,
+      invoice_sending_date: random_date - 7.days,
       quote_sending_counter: 0,
       invoice_sending_counter: 0,
       is_invoice: true,
       is_paid: true,
+      paid_date: random_date + 7.days,
       user: user,
       customer: customer_of_user)
 
@@ -113,15 +115,16 @@ end
 
   quotes << Quote.create!(
       quote_number: nil,
-      invoice_number: "#{customer_of_user.first_name[0]}#{customer_of_user.last_name[0]}#{random_date.strftime("%d%m%Y")}#{i}",
+      invoice_number: "#{customer_of_user.first_name[0]}#{customer_of_user.last_name[0]}#{random_date.strftime("%d%m%Y")}",
       amount: 0,
       discount: 0,
       quote_sending_date: nil,
-      invoice_sending_date: random_date,
+      invoice_sending_date: random_date - 4.days,
       quote_sending_counter: 0,
       invoice_sending_counter: 0,
       is_invoice: true,
       is_paid: true,
+      paid_date: random_date + 3.days,
       user: user,
       customer: customer_of_user)
 
@@ -135,7 +138,7 @@ end
 
   quotes << Quote.create!(
       quote_number: nil,
-      invoice_number: "#{customer_of_user.first_name[0]}#{customer_of_user.last_name[0]}#{random_date.strftime("%d%m%Y")}#{i}",
+      invoice_number: "#{customer_of_user.first_name[0]}#{customer_of_user.last_name[0]}#{random_date.strftime("%d%m%Y")}",
       amount: 0,
       discount: 0,
       quote_sending_date: nil,
@@ -144,6 +147,7 @@ end
       invoice_sending_counter: 0,
       is_invoice: true,
       is_paid: false,
+      paid_date: nil,
       user: user,
       customer: customer_of_user)
 

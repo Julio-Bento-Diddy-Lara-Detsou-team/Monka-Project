@@ -1,5 +1,4 @@
 class Quote < ApplicationRecord
-  # Relations with other tables
   belongs_to :user
   belongs_to :customer
   has_many :join_goods_quotes_tables
@@ -12,13 +11,4 @@ class Quote < ApplicationRecord
 
   validates :amount,
             presence: true
-
-  # validates :discount
-
-  # validates :sent
-
-  # validates :sending_counter
-
-  # validates :is_invoice
-
 end

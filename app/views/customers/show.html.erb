@@ -1,50 +1,50 @@
-<div class="container">
-  <div class="container-fluid page__heading-container">
-    <div class="page__heading d-flex align-items-center">
+<div class="container-fluid page__heading-container">
+  <div class="page__heading d-flex align-items-center">
 
-      <div class="flex">
-        <!-- Breadcrumb-->
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="<%= root_path %>">Accueil</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="<%= customers_path %>">Liste de mes clients</a></li>
-          </ol>
-        </nav>
-        <!-- Page Title -->
-        <h1 class="mt-3">Mon client</h1>
-      </div>
-      <!-- Button "Back to customer index" -->
-      <div class="nav justify-content-end">
-        <a href="<%= customers_path %>" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Retour accueil</a>
-      </div>
+    <div class="flex">
+      <!-- Breadcrumb-->
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><%= link_to root_path do %><i class="material-icons icon-20pt">home</i><% end %></li>
+          <li class="breadcrumb-item active" aria-current="page">Mon client</li>
+        </ol>
+      </nav>
+      <!-- Page Title -->
+      <h1 class="mt-3">Mon client</h1>
+    </div>
+    <!-- Button "Back to customer index" -->
+    <div class="nav justify-content-end">
+      <%= link_to customers_path, class: "btn btn-secondary" do %>
+        <i class="fa fa-arrow-left"></i> Retour
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid page__container">
+
+  <div class="row justify-content-start">
+    <div class="col-6">
+      <p><strong>Nom : </strong><%= @customer.first_name %> <%= @customer.last_name.upcase %></p>
+      <p><strong>Entreprise : </strong> <%= @customer.company_name %></p>
+      <p><strong>SIRET / SIREN : </strong><%= @customer.company_id %></p>
+      <p><strong>Professionel : </strong><% if @customer.is_professional %>Oui <% else %>Non<%end %></p>
+      <p><strong>Email : </strong><%= @customer.email %></p>
+      <p><strong>Téléphone : </strong><%= @customer.phone_number %></p>
+      <p><strong>Adresse : </strong><%= @customer.address %> <%= @customer.zip_code %> <%= @customer.country.upcase %></p>
     </div>
   </div>
 
-  <div class="container-fluid page__container">
-
-    <div class="row justify-content-start">
-      <div class="col-6">
-        <p><strong>Nom : </strong><%= @customer.first_name %> <%= @customer.last_name.upcase %></p>
-        <p><strong>Entreprise : </strong> <%= @customer.company_name %></p>
-        <p><strong>SIRET / SIREN : </strong><%= @customer.company_id %></p>
-        <p><strong>Professionel : </strong><% if @customer.is_professional %>Oui <% else %>Non<%end %></p>
-        <p><strong>Email : </strong><%= @customer.email %></p>
-        <p><strong>Téléphone : </strong><%= @customer.phone_number %></p>
-        <p><strong>Adresse : </strong><%= @customer.address %> <%= @customer.zip_code %> <%= @customer.country.upcase %></p>
+  <!-- Buttons action -->
+  <div class="row justify-content-center my-5">
+    <div class="row justify-content-center">
+      <div class="col">
+        <%= link_to "Editer", edit_customer_path(@customer), class: "btn btn-info btn-block" %>
       </div>
-    </div>
-
-    <!-- Buttons action -->
-    <div class="row justify-content-center my-5">
-      <div class="row justify-content-center">
-        <div class="col">
-          <a class='btn btn-info btn-block' href="<%= edit_customer_path(@customer) %>">Editer</a>
-        </div>
-        <div class="col">
-          <%= form_tag customer_path(@customer.id), method: "delete" do %>
-            <button class="btn btn-danger">Supprimer</button>
-          <% end %>
-        </div>
+      <div class="col">
+        <%= form_tag customer_path(@customer.id), method: "delete" do %>
+          <button class="btn btn-danger">Supprimer</button>
+        <% end %>
       </div>
     </div>
   </div>

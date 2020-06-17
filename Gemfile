@@ -71,5 +71,6 @@ gem 'devise'
 gem 'stripe'
 gem 'letter_opener'
 gem 'font-awesome-sass', '~> 4.4.0'
-
 gem "jquery-rails", "~> 4.4"
+gem 'prawn'
+gem 'prawn-table'

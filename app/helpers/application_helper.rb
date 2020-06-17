@@ -1,4 +1,5 @@
 module ApplicationHelper
+
   def bootstrap_class_for_flash(type)
     case type
     when 'notice' then "alert-info"
@@ -8,6 +9,14 @@ module ApplicationHelper
     else
       "alert-info"
     end
+  end
+
+  def is_nav_link_active(controller, action)
+    controller_name === controller && action_name === action ? 'active' : nil
+  end
+
+  def is_nav_link_current(controller, action)
+    controller_name === controller && action_name === action ? "<span class='sr-only'>(current)</span>" : nil
   end
 
   def calculate_total_quote(goods)
@@ -34,9 +43,7 @@ module ApplicationHelper
     turnover = 0
 
     invoices.each do |invoice|
-      if DateTime.now.strftime("%m") === invoice.invoice_sending_date.strftime("%m")
-        turnover += invoice.amount
-      end
+      turnover += invoice.amount if DateTime.now.strftime("%m") === invoice.invoice_sending_date.strftime("%m")
     end
 
     turnover
@@ -46,9 +53,7 @@ module ApplicationHelper
     turnover = 0
 
     invoices.each do |invoice|
-      if month === invoice.invoice_sending_date.strftime("%m")
-        turnover += invoice.amount
-      end
+      turnover += invoice.amount if month === invoice.invoice_sending_date.strftime("%m")
     end
 
     turnover

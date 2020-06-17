@@ -1,8 +1,8 @@
 <%= form_with(model: customer, local: true) do |form| %>
+
   <% if customer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
-
       <ul>
         <% customer.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -13,53 +13,53 @@
 
   <div class="form-row">
     <div class="form-group col-md-6">
-      <%= label_tag :first_name, "Prénom" %>
+      <%= form.label :first_name, "Prénom" %>
       <%= form.text_field :first_name, class: "form-control", placeholder: "John", autofocus: true %>
     </div>
     <div class="form-group col-md-6">
-      <%= label_tag :last_name, "Nom" %>
+      <%= form.label :last_name, "Nom" %>
       <%= form.text_field :last_name, class: "form-control", placeholder: "Doe" %>
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-6">
-      <%= label_tag :email, "Email" %>
+      <%= form.label :email, "Email :" %>
       <%= form.email_field :email, class: "form-control", placeholder: "john.doe@monka.com" %>
     </div>
     <div class="form-group col-md-6">
-      <%= label_tag :phone_number, "Téléphone" %>
+      <%= form.label :phone_number, "Téléphone" %>
       <%= form.phone_field :phone_number, class: "form-control", placeholder: "06 27 65 78 90" %>
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-6">
-      <%= label_tag :company_name, "Entreprise" %>
+      <%= form.label :company_name, "Entreprise" %>
       <%= form.text_field :company_name, class: "form-control", placeholder: "Monka & Co" %>
     </div>
     <div class="form-group col-md-6">
-      <%= label_tag :company_id, "SIRET / SIREN" %>
+      <%= form.label :company_id, "SIRET / SIREN" %>
       <%= form.text_field :company_id, class: "form-control", placeholder: "26252759805008" %>
     </div>
   </div>
 
   <div class="form-group form-row">
     <%= form.check_box :is_professional, class: "form-control ml-3", value: true, :style => "width: 20px; height: 20px;" %>
-    <%= form.label :is_professional, "Cocher si professionnel", class: "ml-2" %>
+    <%= form.label :is_professional, "Ce client est un professionnel", class: "ml-2" %>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-8">
-      <%= label_tag :address, "Adresse" %>
+      <%= form.label :address, "Adresse" %>
       <%= form.text_field :address, class: "form-control", placeholder: "27 Rue des marroniers Villeurbanne" %>
     </div>
     <div class="form-group col-md-2">
-      <%= label_tag :zip_code, "Code postal" %>
+      <%= form.label :zip_code, "Code postal" %>
       <%= form.text_field :zip_code, class: "form-control", placeholder: "69100" %>
     </div>
     <div class="form-group col-md-2">
-        <%= label_tag :country, "Pays" %>
+        <%= form.label :country, "Pays" %>
         <%= form.text_field :country, class: "form-control", value: "FRANCE" %>
     </div>
   </div>

@@ -1,0 +1,26 @@
+Bonjour <%= @customer.first_name %> !
+
+Vous avez reçu une demande de paiement de la part de <%= @user.first_name %> <%= @user.last_name %> de la société : <%= @user.company_name %>.
+
+Il s'agit du devis : <%= @quote.quote_number %> pour la prestation décrite ci-dessous:
+
+
+  <% @quote.goods.each do |good| %>
+   Description : <%= good.title %>
+    Quantité : <%= good.quantity %>
+    Prix unitaire : <%= good.price %>€
+
+  =====
+  <% end %>
+
+<!-- Quote total amount -->
+
+Le total s'élève donc à : <%=@quote.amount %>€
+
+Vous pouvez directement payer <%= @user.first_name %> <%= @user.last_name %> en cliquant sur le lien sécurisé ci-dessous 👇
+<%= @url %>.
+<%#= image_tag attachments['image.jpg'].url %>
+
+À très vite,
+
+La Team Monka 🌈

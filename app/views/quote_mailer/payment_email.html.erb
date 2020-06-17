@@ -1,0 +1,31 @@
+<br>
+
+<p>Bonjour <%= @customer.first_name %> !</p>
+<br>
+Vous avez reçu une demande de paiement de la part de <%= @user.first_name %> <%= @user.last_name %> de la société : <%= @user.company_name %>.</p>
+<br>
+<p>Il s'agit du devis : <%= @quote.quote_number %> pour la prestation décrite ci-dessous:</p>
+<br>
+
+<ul>
+<% @quote.goods.each do |good| %>
+  <li>Description : <%= good.title %></li>
+    <li>Quantité : <%= good.quantity %></li>
+    <li>Prix unitaire : <%= good.price %>€</li>
+    <br>
+    =====
+<% end %>
+</ul>
+
+<!-- Quote total amount -->
+<br>
+<p>Le total s'élève donc à : <%=@quote.amount %>€ </p>
+<br>
+<p>Vous pouvez directement payer <%= @user.first_name %> <%= @user.last_name %> en cliquant sur le lien sécurisé ci-dessous 👇</p>
+<p> <%= @url %>.</p>
+
+<%#= image_tag attachments['image.jpg'].url %>
+<br>
+<p> À très vite,</p>
+<br>
+<p> La Team Monka 🌈</p>
