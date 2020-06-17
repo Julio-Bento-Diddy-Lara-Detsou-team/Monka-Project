@@ -1,45 +1,46 @@
-<!--monka home button -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="<%= root_path %>">monka</a>
+  <!-- Monka home button -->
+  <%= link_to "monka", root_path, class: "navbar-brand" %>
+
+  <!-- Toggle button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-
-  <!--navigation -->
+  <!-- Navigation -->
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <% if user_signed_in? %>
-        <!--change color for user -->
-        <a class="nav-item nav-link <%= "active" if controller_name === 'users' && action_name === 'show' %>" href="<%= user_path(current_user) %>">
-          Mon profil
-          <% if controller_name === 'users' && action_name === 'show' %>
-            <span class="sr-only">(current)</span>
-          <% end %>
-        </a>
-        <!--change color for view index customer -->
-        <a class="nav-item nav-link <%= "active" if controller_name === 'customers' && action_name === 'index' %>" href="<%= customers_path %>">
-          Mes clients
-          <% if controller_name === 'customers' && action_name === 'index' %>
-            <span class="sr-only">(current)</span>
-          <% end %>
-        </a>
-        <!--change color for view index quotes -->
-        <a class="nav-item nav-link <%= "active" if controller_name === 'quotes' && action_name === 'index' %>" href="<%= quotes_path %>">
-          Mes devis & factures </a>
-        <% if controller_name === 'quotes' && action_name === 'index' %>
-          <span class="sr-only">(current)</span>
+        <!-- USER CONNECTED-->
+        <%= link_to user_path(current_user), class: "nav-item nav-link #{is_nav_link_active("users", "show")}" do %>
+          Mon profil <%= raw is_nav_link_current("users", "show") %>
         <% end %>
-        </a>
-        <!--log out -->
-        <%= link_to 'Déconnexion', destroy_user_session_path, :method => :delete, class:"nav-item nav-link" %>
+
+        <%= link_to customers_path, class: "nav-item nav-link #{is_nav_link_active("customers", "index")}" do %>
+          Mes clients <%= raw is_nav_link_current("customers", "index") %>
+        <% end %>
+
+        <%= link_to quotes_path, class: "nav-item nav-link #{is_nav_link_active("quotes", "index")}" do %>
+          Mes devis & factures <%= raw is_nav_link_current("quotes", "index") %>
+        <% end %>
+
+        <!-- Sign out -->
+        <%= link_to 'Déconnexion', destroy_user_session_path, method: :delete, class:"nav-item nav-link" %>
       <% else %>
+        <!-- USER NOT CONNECTED -->
         <li class="nav-item nav-link active">
-          <a class="nav-item nav-link active" href="<%= root_path %>">Accueil <span class="sr-only">(current)</span></a>
-          <%= link_to "Inscription", new_user_registration_path, class:"nav-item nav-link" %>
-          <%= link_to "Connexion", new_user_session_path, class:"nav-item nav-link" %>
+          <%= link_to root_path, class: "nav-item nav-link #{is_nav_link_active("home", "index")}" do %>
+            Accueil <%= raw is_nav_link_current("home", "index") %>
+          <% end %>
+
+          <%= link_to new_user_registration_path, class: "nav-item nav-link #{is_nav_link_active("registrations", "new")}" do %>
+            Inscription <%= raw is_nav_link_current("registrations", "new") %>
+          <% end %>
+
+          <%= link_to new_user_session_path, class: "nav-item nav-link #{is_nav_link_active("sessions", "new")}" do %>
+            Connexion <%= raw is_nav_link_current("sessions", "new") %>
+          <% end %>
       <% end %>
     </div>
   </div>
 </nav>
-

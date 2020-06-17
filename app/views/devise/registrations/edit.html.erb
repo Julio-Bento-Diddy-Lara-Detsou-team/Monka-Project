@@ -3,7 +3,7 @@
     <div class="page__heading">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
-          <li class="breadcrumb-item"><a href="#"><i class="material-icons icon-20pt">Accueil</i></a></li>
+          <li class="breadcrumb-item"><%= link_to root_path do %><i class="material-icons icon-20pt">Accueil</i><% end %></li>
           <li class="breadcrumb-item active" aria-current="page"><%= resource_name.to_s.humanize %></li>
         </ol>
       </nav>

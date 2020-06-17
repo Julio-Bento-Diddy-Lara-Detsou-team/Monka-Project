@@ -3,7 +3,7 @@
   <div class="page__heading">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb mb-0">
-        <li class="breadcrumb-item"><a href="#"><i class="material-icons icon-20pt">home</i></a></li>
+        <li class="breadcrumb-item"><%= link_to root_path do %><i class="material-icons icon-20pt">home</i><% end %></li>
         <li class="breadcrumb-item active" aria-current="page">Mon profil</li>
       </ol>
     </nav>
@@ -17,18 +17,21 @@
       <div class="col-lg-4 card-body mt-5 ">
         <p><span class="greentitle">Mes informations</span></p>
       </div>
-      <!--section-->
+
+      <!-- Display user's logo -->
       <div class="col-lg-8 card-form__body card-body my-5">
         <div class="row my-1">
-        <% if @user.logo.attached? %>
-          <%= image_tag @user.logo, alt: 'logo', width: '100' %>
-       <%end%>
+          <% if @user.logo.attached? %>
+            <%= image_tag @user.logo, alt: 'logo', width: '100' %>
+          <%end%>
 
-        <%= form_tag user_logo_index_path(@user), multipart: true do %>
-          <%= file_field_tag :logo %>
-          <%= submit_tag "mettre à jour" %>
-        <% end %>
+          <!-- Update logo form -->
+          <%= form_tag user_logo_index_path(@user), multipart: true do %>
+            <%= file_field_tag :logo %>
+            <%= submit_tag "mettre à jour" %>
+          <% end %>
         </div>
+
         <div class="row my-1">
           <p class="text-muted">Prénom : </p>
           <p class="ml-3 text-right"><%= @user.first_name %></p>
