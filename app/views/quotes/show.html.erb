@@ -11,8 +11,12 @@
     </div>
     <%= form_tag quote_path(@quote.id, convert_to_invoice: true), method: "put" do %>
       <button type="submit" class="btn btn-outline-secondary mr-3"><i class="material-icons">arrow_forward</i> Transformer en Facture</button>
+    <%end %>
+    <%= link_to "Envoyer par mail", { :controller => "quotes", :action => "payment_send", :id => @quote.id }, class:"btn btn-outline-secondary" %>
+    <!--Button link to PDF-->
+    <%= link_to image_path("Devis_FS0501202012.pdf"), target: "_blank", class:"btn btn-outline-secondary ml-3" do %>
+      Télécharger <i class='material-icons'>file_download</i>
     <% end %>
-    <a href="<%= image_path "Devis_FS0501202012.pdf" %>" target="_blank" class="btn btn-primary"><i class="material-icons">file_download</i> Télécharger</a>
   </div>
 </div>
 
@@ -23,18 +27,20 @@
       <div class="card">
         <div class="card-body">
           <%# if @quote.is_invoice %>
-            <%# if DateTime.now > @quote.invoice_sending_date + 3.days %>
-<!--              <div class="badge badge-danger">EN RETARD</div>-->
-            <%# end %>
+          <%# if DateTime.now > @quote.invoice_sending_date + 3.days %>
+          <!--              <div class="badge badge-danger">EN RETARD</div>-->
+          <%# end %>
           <%# else %>
-            <%# if DateTime.now > @quote.quote_sending_date + 3.days %>
-<!--              <div class="badge badge-danger">EN RETARD</div>-->
-            <%# end %>
+          <%# if DateTime.now > @quote.quote_sending_date + 3.days %>
+          <!--              <div class="badge badge-danger">EN RETARD</div>-->
+          <%# end %>
           <%# end %>
           <div class="px-3">
             <div class="d-flex justify-content-center flex-column text-center my-5 navbar-light">
               <div class="navbar-brand d-flex flex-column m-0" style="min-width: 0">
-                <img class="navbar-brand-icon mb-2" src="<%= image_path('calculate_vert.png')%>" width="25" alt="Logo de la compagnie">
+                <% if @user.logo.attached? %>
+                  <%= image_tag @user.logo, alt: 'logo', width: "100" %>
+                  <%end %>
                 <span><% if @quote.is_invoice %>Facture<% else %>Devis<% end %></span>
               </div>
             </div>
@@ -58,7 +64,7 @@
                   <%= current_user.address %><br>
                   <%= current_user.zip_code %> <%= current_user.country %><br>
                 </p>
-<!--                <div class="text-label">Date d'échéance</div>-->
+                <!--                <div class="text-label">Date d'échéance</div>-->
                 <%# if @quote.is_invoice %><%#= @quote.invoice_sending_date + 3.days %><%# else %><%#= @quote.quote_sending_date + 3.days %><%# end %>
               </div>
             </div>
@@ -72,6 +78,7 @@
                   <th class="text-right">Prix</th>
                 </tr>
                 </thead>
+                <!--Quote content : goods quantity, title description ---------->
                 <tbody>
                 <% @quote.goods.each do |good| %>
                   <tr>
@@ -86,17 +93,23 @@
                 </tbody>
               </table>
             </div>
+            <!--Quote total amount ---------->
             <div class="bg-dark rounded">
               <h3 class="text-white text-right mr-5 pb-3 pt-4">Total : <%= calculate_total_quote(@goods) %>€</h3>
             </div>
-
+            <!--Terms and conditions ---------->
             <div class="text-label mt-4">Termes et conditions</div>
             <p class="text-muted small mx-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse facilisis feugiat erat, sed porta lacus pellentesque mattis. Suspendisse id vulputate mi. Nunc posuere varius sapien et commodo. Praesent pharetra nibh nulla, vitae cursus tellus semper ut. Sed nisl diam, ultrices id maximus in, mollis eu sapien.</p>
             <%= link_to "Télécharger en pdf", quote_path(@quote, format: "pdf") %>
           </div>
         </div>
       </div>
+      <!-- Create order Button -->
+      <div class="row justify-content-center mt-3 mb-5 ">
+        <%= render 'quotes/stripe_form', {quote_amount: @quote.amount} %>
+      </div>
     </div>
   </div>
-
 </div>
+
+
