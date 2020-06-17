@@ -20,7 +20,7 @@
           Mes clients <%= raw is_nav_link_current("customers", "index") %>
         <% end %>
 
-        <%= link_to customers_path, class: "nav-item nav-link #{is_nav_link_active("quotes", "index")}" do %>
+        <%= link_to quotes_path, class: "nav-item nav-link #{is_nav_link_active("quotes", "index")}" do %>
           Mes devis & factures <%= raw is_nav_link_current("quotes", "index") %>
         <% end %>
 
