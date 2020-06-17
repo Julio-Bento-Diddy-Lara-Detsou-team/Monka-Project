@@ -34,18 +34,8 @@ class QuotesController < ApplicationController
   def create
     @quote = Quote.new(quote_params)
 
-    # Get a Quote object with data selected by the user and allocated on wether
-    # he has choosen to create a quote or an invoice
+    # Update the Quote object on wether it is a quote or an invoice
     @quote = save_quote_in_db(@quote)
-
-    # Convert a quote into an invoice
-    if params[:convert_to_invoice] === "true" && @quote.is_invoice === false
-      @quote.update(
-          is_invoice: @quote.is_invoice = true,
-          invoice_number: @quote.invoice_number = "#{@quote.customer.first_name[0]}#{@quote.customer.last_name[0]}#{DateTime.now.strftime("%d%m%Y")}",
-          invoice_sending_date: @quote.quote_sending_date
-      )
-    end
 
     respond_to do |format|
       if @quote.save
@@ -60,6 +50,9 @@ class QuotesController < ApplicationController
     if params[:convert_to_invoice] === "true" && @quote.is_invoice === false
       convert_quote_to_invoice(@quote)
     else
+      # Update the Quote object on wether it is a quote or an invoice
+      @quote = save_quote_in_db(@quote)
+
       respond_to do |format|
         if @quote.update(quote_params)
           format.html { redirect_to @quote, notice: 'Le devis ou la facture a bien été mise à jour.' }
@@ -81,7 +74,7 @@ class QuotesController < ApplicationController
   def payment_send
     @quote = Quote.find(params[:id])
     QuoteMailer.payment_email(@quote).deliver_now
-    flash[:success] = "Votre document a bien été envoyé par mail !"
+    flash[:success] = "Votre document a bien été envoyé par mail au client !"
     redirect_back(fallback_location: quotes_path)
   end
 
@@ -107,12 +100,12 @@ class QuotesController < ApplicationController
         :is_paid,
         :user_id,
         :customer_id,
-        goods_attributes: [:id, :title, :description, :quantity, :price, :user_id],
+        :goods,
+        goods_attributes: [:id, :title, :description, :quantity, :price, :user_id]
         )
   end
 
-  # Get a Quote object with data selected by the user and allocated on wether
-  # he has choosen to create a quote or an invoice
+  # Update the Quote object on wether it is a quote or an invoice
   def save_quote_in_db(quote)
     # Allocate the current user creating the quote
     quote.user = current_user
@@ -155,11 +148,13 @@ class QuotesController < ApplicationController
 
   def convert_quote_to_invoice(quote)
     quote.update(
-        is_invoice: quote.is_invoice = true,
-        invoice_number: quote.invoice_number = "#{current_user.first_name[0]}#{current_user.last_name[0]}#{DateTime.now.strftime("%d%m%Y%H%M")}"
+        is_invoice: true,
+        invoice_number: "#{quote.customer.first_name[0]}#{quote.customer.last_name[0]}#{DateTime.now.strftime("%d%m%Y")}",
+        invoice_sending_date: @quote.quote_sending_date
     )
 
     flash[:success] = "Le devis a été transformé en facture"
+
     redirect_to :quotes
   end
 end
