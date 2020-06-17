@@ -12,6 +12,7 @@ class QuotesController < ApplicationController
 
   def show
     @goods = @quote.goods
+    @user = current_user
   end
 
   def new
@@ -32,7 +33,8 @@ class QuotesController < ApplicationController
     if params[:convert_to_invoice] === "true" && @quote.is_invoice === false
       @quote.update(
           is_invoice: @quote.is_invoice = true,
-          invoice_number: @quote.invoice_number = "#{current_user.first_name[0]}#{current_user.last_name[0]}#{DateTime.now.strftime("%d%m%Y%H%M")}"
+          invoice_number: @quote.invoice_number = "#{@quote.customer.first_name[0]}#{@quote.customer.last_name[0]}#{DateTime.now.strftime("%d%m%Y")}",
+          invoice_sending_date: @quote.quote_sending_date
       )
 
       flash[:success] = "Le devis a été transformé en facture"
@@ -47,6 +49,7 @@ class QuotesController < ApplicationController
     redirect_to :quotes
   end
 
+  #Send mail to customer
   def payment_send
     @quote = Quote.find(params[:id])
     QuoteMailer.payment_email(@quote).deliver_now

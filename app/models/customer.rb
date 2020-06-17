@@ -1,7 +1,7 @@
 class Customer < ApplicationRecord
   # Relations with other tables
   belongs_to :user, optional: true
-  has_many :quotes
+  has_many :quotes, dependent: :destroy
 
   # Validations
   # validates :first_name,

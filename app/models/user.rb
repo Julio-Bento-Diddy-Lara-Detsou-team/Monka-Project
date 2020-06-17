@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :customers
   has_many :quotes
   has_many :goods
-
+  has_one_attached :logo
   # Validations
   # validates :first_name,
   #           presence: true,

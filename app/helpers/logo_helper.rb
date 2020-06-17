@@ -1,0 +1,2 @@
+module LogoHelper
+end
