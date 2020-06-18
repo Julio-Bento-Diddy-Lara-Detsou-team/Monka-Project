@@ -1,0 +1,42 @@
+<div class="container-fluid page__heading-container">
+  <div class="page__heading d-flex align-items-center">
+
+    <div class="flex">
+      <!-- Breadcrumb-->
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><%= link_to root_path do %><i class="material-icons icon-20pt">home</i><% end %></li>
+          <li class="breadcrumb-item active" aria-current="page">Mon produit/service</li>
+        </ol>
+      </nav>
+      <!-- Page Title -->
+      <h1 class="mt-3">Mon produit/service</h1>
+    </div>
+    <!-- Button "Back to customer index" -->
+    <div class="nav justify-content-end">
+      <%= link_to goods_path, class: "btn btn-secondary" do %>
+        <i class="fa fa-arrow-left"></i> Retour
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid page__container">
+
+  <div class="row justify-content-start">
+    <div class="col-6">
+      <p><strong>Titre : </strong><%= @good.title %></p>
+      <p><strong>Description : </strong> <%= @good.description %></p>
+      <p><strong>Quantité : </strong><%= @good.quantity %></p>
+      <p><strong>Prix : </strong><%= @good.price %></p>
+    </div>
+  </div>
+
+  <!-- Buttons action -->
+  <div class="row justify-content-center my-5">
+    <div class="row justify-content-center">
+      <div class="col"><%= link_to "Editer", edit_good_path(@good), class: "btn btn-info btn-block text-white" %></div>
+      <div class="col"><%= link_to "Supprimer", good_path(@good.id), method: :delete, class: "btn btn-danger btn-block text-white" %></div>
+    </div>
+  </div>
+</div>

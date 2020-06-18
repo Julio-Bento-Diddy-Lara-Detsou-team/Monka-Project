@@ -26,6 +26,10 @@
           Mes devis & factures <%= raw is_nav_link_current("quotes", "index") %>
         <% end %>
 
+        <%= link_to goods_path, class: "nav-item nav-link #{is_nav_link_active("goods", "index")}" do %>
+          Mes produits & services <%= raw is_nav_link_current("quotes", "index") %>
+        <% end %>
+
         <!-- Sign out -->
         <%= link_to 'Déconnexion', destroy_user_session_path, method: :delete, class:"nav-item nav-link" %>
       <% else %>

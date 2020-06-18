@@ -81,3 +81,27 @@ footer {
     border-top: 1px solid white;
 }
 
+/* Small and large containers. */
+@media (min-width: 768px) {
+    .container-small {
+        width: 300px;
+        margin: auto;
+    }
+}
+@media (min-width: 992px) {
+    .container-small {
+        width: 500px;
+        margin: auto;
+    }
+}
+@media (min-width: 1200px) {
+    .container-small {
+        width: 700px;
+        margin: auto;
+    }
+}
+
+.container-small {
+    max-width: 100%;
+    margin: auto;
+}

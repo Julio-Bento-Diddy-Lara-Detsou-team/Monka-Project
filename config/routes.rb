@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources 'users', only: [:show, :edit, :update] do
     resources :logo, only: [:create]
   end
+  resources 'goods'
   resources :customers
   resources :contacts, only: [:index]
 

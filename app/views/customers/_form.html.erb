@@ -2,7 +2,7 @@
 
   <% if customer.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+      <h2><%= pluralize(customer.errors.count, "erreurs") %> empêchent ce formulaire d'être envoyé :</h2>
       <ul>
         <% customer.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -70,7 +70,7 @@
 
   <div class="form-group">
     <div class="row">
-      <button type="submit" class="btn btn-primary mx-auto">Envoyer</button>
+      <%= form.submit "Envoyer", class: "btn btn-primary mx-auto" %>
     </div>
   </div>
 <% end %>
