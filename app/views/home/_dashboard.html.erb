@@ -58,11 +58,29 @@
   <div class="card-header card-header-large bg-white">
     <h4 class="card-header__title">Mes Devis/Factures - Juin 2020</h4>
   </div>
-  <div class="card-body">
-    <div class="chart">
-      <canvas id="devicesChart" class="chart-canvas"></canvas>
+
+  <!-- If chart is empty-->
+  <% if !current_user.quotes.first %>
+    <div class="row justify-content-center">
+    <div class="card-body">
+      <h6 class="h6 text-center mt-5">Psst...Vous n'avez pas encore créé de facture ou de devis<br />
+        Par-ici les ajouter ...</h6>
+      <%= image_tag 'add_icon_dashboard.svg', size: "300", class: "row justify-content-center mx-auto" %>
+      <div class=" row justify-content-center col-lg-4 mx-auto mb-5">
+      <%= link_to new_quote_path, class:"btn btn-primary btn-block p-3 font-weight-bold" do %>
+        <i class="fas fa-folder-plus mr-3">Ajouter des devis et des factures</i>
+      <% end %>
+      </div>
+      </div>
     </div>
-  </div>
+  <% else %>
+<!--    ========================-->
+    <div class="card-body">
+      <div class="chart">
+        <canvas id="devicesChart" class="chart-canvas"></canvas>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <% content_for :footer_scripts do %>
