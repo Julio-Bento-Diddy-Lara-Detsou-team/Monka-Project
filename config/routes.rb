@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources 'goods'
   resources :customers
   resources :contacts, only: [:index]
+  resources :general_conditions_of_use, only: [:index]
 
   get :payment_send, to: 'quotes#payment_send', as: :payment_send
 end
