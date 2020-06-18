@@ -11,12 +11,20 @@ module ApplicationHelper
     end
   end
 
-  def is_nav_link_active(controller, action)
+  def is_nav_home_active(controller, action)
     controller_name === controller && action_name === action ? 'active' : nil
   end
 
-  def is_nav_link_current(controller, action)
+  def is_nav_link_active(controller)
+    controller_name === controller ? 'active' : nil
+  end
+
+  def is_nav_home_current(controller, action)
     controller_name === controller && action_name === action ? "<span class='sr-only'>(current)</span>" : nil
+  end
+
+  def is_nav_link_current(controller)
+    controller_name === controller ? "<span class='sr-only'>(current)</span>" : nil
   end
 
   def calculate_total_quote(goods)
