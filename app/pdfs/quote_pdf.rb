@@ -14,10 +14,17 @@ class QuotePdf < Prawn::Document
   end
 
   def quote_number
+    if @quote.is_invoice == false
     text_box "Devis #{@quote.quote_number}",
              :at => [0, 650],
              :height => 100,
              :width => 150
+    else
+      text_box "Facture #{@quote.invoice_number}",
+               :at => [0, 650],
+               :height => 100,
+               :width => 150
+      end
   end
 
   def destination_address
@@ -65,7 +72,7 @@ class QuotePdf < Prawn::Document
     total_price = 0
     @quote.goods.each do |good|
       [good.quantity, good.price]
-      total_price = good.price * good.quantity
+      total_price += good.price * good.quantity
     end
     text "Prix Total:  #{price(total_price)}"
   end

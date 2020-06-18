@@ -23,9 +23,10 @@
     <%= link_to "Envoyer par mail", { :controller => "quotes", :action => "payment_send", :id => @quote.id }, class:"btn btn-outline-secondary" %>
 
     <!--Button link to PDF-->
-    <%= link_to quote_path(@quote, format: "pdf"), target: "_blank", class:"btn btn-outline-secondary ml-3" do %>
-      <i class='material-icons'>file_download</i> Télécharger
-    <% end %>
+
+    <%= link_to quote_path(@quote, format: "pdf"), class:"btn btn-outline-secondary ml-3" do %>
+      Télécharger <i class='material-icons'>file_download</i>
+      <% end %>
   </div>
   <div class="row">
     <div class="col-md-8 offset-md-2">
