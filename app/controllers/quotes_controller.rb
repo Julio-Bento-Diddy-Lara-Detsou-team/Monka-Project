@@ -1,6 +1,8 @@
 class QuotesController < ApplicationController
 
   before_action :set_quote, only: [:show, :edit, :update, :destroy]
+  before_action :client_exist?, only: [:new]
+  before_action :good_exist?, only: [:new]
 
   def index
     @quote_table = current_user.quotes.all
@@ -103,7 +105,7 @@ class QuotesController < ApplicationController
         :customer_id,
         :good,
         goods_attributes: [:id, :title, :description, :quantity, :price, :user_id]
-        )
+    )
   end
 
   # Update the Quote object on wether it is a quote or an invoice
@@ -116,12 +118,14 @@ class QuotesController < ApplicationController
     quote.discount = 0
 
     # Allocate a quote_number or an invoice_invoice depending on user's choice
-    quote_or_invoice_number = "#{current_user.first_name[0]}#{current_user.last_name[0]}#{DateTime.now.strftime("%d%m%Y%H%M")}"
+    quote_or_invoice_number = "#{quote.customer.first_name[0]}#{quote.customer.last_name[0]}#{DateTime.now.strftime("%d%m%Y%H%M")}"
 
     if quote.is_invoice === false
       quote.quote_number = quote_or_invoice_number
+      quote.quote_sending_date = DateTime.now
     else
       quote.invoice_number = quote_or_invoice_number
+      quote.invoice_sending_date = DateTime.now
     end
 
     # Allocate goods to the quotes
@@ -153,11 +157,25 @@ class QuotesController < ApplicationController
   def convert_quote_to_invoice(quote)
     quote.update(
         is_invoice: true,
-        invoice_number: "#{quote.customer.first_name[0]}#{quote.customer.last_name[0]}#{DateTime.now.strftime("%d%m%Y")}",
-        invoice_sending_date: @quote.quote_sending_date
+        invoice_number: "#{quote.customer.first_name[0]}#{quote.customer.last_name[0]}#{DateTime.now.strftime("%d%m%Y%H%M")}",
+        invoice_sending_date: DateTime.now
     )
 
     flash[:success] = "Le devis a été transformé en facture."
     redirect_back(fallback_location: quotes_path)
+  end
+
+  def client_exist?
+    if current_user.customers.empty?
+      flash[:error] = "Vous devez obligatoirement créer un client afin de pouvoir éditer un devis ou facturer"
+      redirect_to quotes_url
+    end
+  end
+
+  def good_exist?
+    if current_user.goods.empty?
+      flash[:error] = "Vous devez obligatoirement créer un produit / service afin de pouvoir éditer un devis ou facturer"
+      redirect_to quotes_url
+    end
   end
 end
