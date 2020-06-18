@@ -64,6 +64,7 @@ class CustomersController < ApplicationController
         :is_professional,
         :address,
         :zip_code,
+        :city,
         :country,
         :phone_number,
         current_user)

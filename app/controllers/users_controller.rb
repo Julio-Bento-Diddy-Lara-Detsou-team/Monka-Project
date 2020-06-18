@@ -20,7 +20,8 @@ class UsersController < ApplicationController
         :zip_code,
         :phone_number,
         :company_id,
-        :country
+        :country,
+        :city
         )
     )
     redirect_to user_path(@user)
