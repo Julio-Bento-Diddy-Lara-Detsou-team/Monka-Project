@@ -44,6 +44,7 @@ class CustomersController < ApplicationController
     @customer.destroy
     respond_to do |format|
       format.html { redirect_to customers_url, notice: 'Le client a été supprimé avec succès.' }
+      format.js {}
     end
   end
 
@@ -64,12 +65,13 @@ class CustomersController < ApplicationController
         :is_professional,
         :address,
         :zip_code,
+        :city,
         :country,
         :phone_number,
         current_user)
   end
 
   def customer_to_current_user
-    @customer.update(user: current_user, country: params[:customer][:country])
+    @customer.update(user: current_user, country: "FRANCE")
   end
 end

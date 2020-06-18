@@ -10,6 +10,7 @@ Customer.destroy_all
 Quote.destroy_all
 Good.destroy_all
 JoinGoodsQuotesTable.destroy_all
+AdminUser.destroy_all
 
 random_boolean = [true, false].sample
 
@@ -82,7 +83,7 @@ end
       user: user,
       customer: customer_of_user)
 
-  puts "Preview #{i+1} quotes generated"
+  puts "Preview #{i+1} quotes_old generated"
 end
 
 6.times do |i|
@@ -159,7 +160,7 @@ end
       good: user.goods.sample,
       quote: user.quotes.sample)
 
-  puts "Preview #{i+1} joints between goods and quotes generated"
+  puts "Preview #{i+1} joints between goods and quotes_old generated"
 end
 
 Quote.all.each do |quote|
@@ -174,3 +175,4 @@ Quote.all.each do |quote|
 
   puts "Preview quote amount updated depending on the joint table"
 end
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

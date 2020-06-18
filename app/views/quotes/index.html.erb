@@ -13,14 +13,14 @@
   </div>
 </div>
 
-<div class="container-fluid page__container">
+<div class="container-fluid page__container mb-5">
 
   <h3 class="text-dark-gray d-flex align-items-center mt-3 ml-4">
     <strong>Mes devis</strong>
   </h3>
 
   <% @quotes.order(quote_sending_date: :asc).each do |quote| %>
-    <div class="row projects-item mb-1">
+    <div class="row projects-item mb-1" id="<%= quote.id %>">
       <div class="col-sm">
         <div class="card m-0">
           <div class="px-4 py-3">
@@ -34,12 +34,8 @@
                 <%= link_to quote.quote_number, quote_path(quote.id), class: "text-body" %>
               </div>
               <div class="col-auto d-flex align-items-center" style="min-width: 140px;">
-                <%= link_to quote_path(quote.id), class: "btn btn-secondary mr-2" do %>
-                  <i class="fa fa-eye" aria-hidden="true"></i>
-                <% end %>
-                <%= link_to quote_path(quote.id), method: :delete, class: "btn btn-danger text-white" do %>
-                  <i class="material-icons">close</i>
-                <% end %>
+                <%= link_to quote_path(quote.id), class: "btn btn-secondary mr-2" do %><i class="fa fa-eye" aria-hidden="true"></i><% end %>
+                <%= link_to quote, method: :delete, class: "btn btn-danger text-white", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %><i class="material-icons">close</i><% end %>
               </div>
             </div>
           </div>
@@ -54,7 +50,7 @@
 
   <% @invoices.order(invoice_sending_date: :asc).each do |invoice| %>
 
-    <div class="row align-items-center projects-item mb-1">
+    <div class="row align-items-center projects-item mb-1" id="<%= invoice.id %>">
       <div class="col-sm">
         <div class="card m-0">
           <div class="px-4 py-3">
@@ -68,12 +64,8 @@
                 <%= link_to invoice.invoice_number, quote_path(invoice.id), class: "text-body" %>
               </div>
               <div class="col-auto d-flex align-items-center" style="min-width: 140px;">
-                <%= link_to quote_path(invoice.id), class: "btn btn-secondary mr-2" do %>
-                  <i class="fa fa-eye" aria-hidden="true"></i>
-                <% end %>
-                <%= link_to quote_path(invoice.id), method: :delete, class: "btn btn-danger text-white" do %>
-                  <i class="material-icons">close</i>
-                <% end %>
+                <%= link_to quote_path(invoice.id), class: "btn btn-secondary mr-2" do %><i class="fa fa-eye" aria-hidden="true"></i><% end %>
+                <%= link_to invoice, method: :delete, class: "btn btn-danger text-white", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %><i class="material-icons">close</i><% end %>
               </div>
             </div>
           </div>
