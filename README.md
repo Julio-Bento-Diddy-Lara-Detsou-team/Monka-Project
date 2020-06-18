@@ -5,13 +5,19 @@
 
 ## Online visit👉
 
-## **[Click here to test the app on Heroku !](https://monka-project.herokuapp.com/)**
+## [Click here to test the app on Heroku !](https://monka-project.herokuapp.com/)
 
-### Preview Account
+#### Preview Account
 
-Sign in with :  \
-login : monka@yopmail.com  \
-password : azerty
+Sign in with :
+
+- **login :** monka@yopmail.com  \
+- **password :** azerty
+
+### Preview Admin Acount
+
+- **login :** admin@example.com
+- **password :** password
 
 # Description
 
@@ -76,7 +82,7 @@ Monka comes from the French “Mon CA”. “CA” being short for “Chiffre d�
 
  Once signed up, the user is sent a welcome mail with a recap of his Monka plan that he just paid with Stripe.
 
-##  🔧 Local installation
+## Local installation
 
 # Configuration
 
@@ -109,10 +115,11 @@ Monka comes from the French “Mon CA”. “CA” being short for “Chiffre d�
 
 ### Sign in with...
 
-> **login :** monka@yopmail.com  \
-> **password :** azerty
+- **login :** monka@yopmail.com
+- **password :** azerty
 
  *Enjoy the tour !*
+
 
 ## Authors
 
