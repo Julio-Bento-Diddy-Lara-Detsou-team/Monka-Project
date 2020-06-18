@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :users
   root 'home#index'
 
@@ -12,6 +14,7 @@ Rails.application.routes.draw do
   end
   resources 'goods'
   resources :customers
+  resources :contacts, only: [:index]
 
   get :payment_send, to: 'quotes#payment_send', as: :payment_send
 end

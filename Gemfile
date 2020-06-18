@@ -71,6 +71,7 @@ gem 'devise'
 gem 'stripe'
 gem 'letter_opener'
 gem 'font-awesome-sass', '~> 4.4.0'
-gem "jquery-rails", "~> 4.4"
+gem 'activeadmin'
+gem 'country_select', '~> 4.0'
 gem 'prawn'
 gem 'prawn-table'

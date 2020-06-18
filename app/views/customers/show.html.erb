@@ -31,7 +31,7 @@
       <p><strong>Professionel : </strong><% if @customer.is_professional %>Oui <% else %>Non<%end %></p>
       <p><strong>Email : </strong><%= @customer.email %></p>
       <p><strong>Téléphone : </strong><%= @customer.phone_number %></p>
-      <p><strong>Adresse : </strong><%= @customer.address %> <%= @customer.zip_code %> <%= @customer.country.upcase %></p>
+      <p><strong>Adresse : </strong><%= @customer.address %> <%= @customer.zip_code %> <%= @customer.city %> <%= @customer.country.upcase %></p>
     </div>
   </div>
 
