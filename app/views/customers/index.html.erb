@@ -20,7 +20,7 @@
 <div class="container-fluid page__container">
 
   <!-- If chart is empty-->
-  <% if !current_user.customers.first %>
+  <% if current_user.customers.empty? %>
     <h6 class="h6 text-center mt-5">Psst...Vous n'avez pas encore créé de clients<br />
       Par-ici pour les ajouter...</h6>
     <%= image_tag 'add_icon_dashboard.svg', size: "300", class: "row justify-content-center mx-auto" %>

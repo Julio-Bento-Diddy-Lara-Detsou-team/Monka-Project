@@ -16,7 +16,7 @@
 
 <div class="container-fluid page__container mb-5">
 
-  <% if !current_user.quotes.first %>
+  <% if current_user.quotes.empty? %>
     <h6 class="h6 text-center mt-5">Psst...Vous n'avez pas encore créé de devis ou de facture<br />
       Par-ici pour les ajouter...</h6>
     <%= image_tag 'add_icon_dashboard.svg', size: "300", class: "row justify-content-center mx-auto" %>
