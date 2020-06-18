@@ -120,8 +120,10 @@ class QuotesController < ApplicationController
 
     if quote.is_invoice === false
       quote.quote_number = quote_or_invoice_number
+      quote.quote_sending_date = DateTime.now
     else
       quote.invoice_number = quote_or_invoice_number
+      quote.invoice_sending_date = DateTime.now
     end
 
     # Allocate goods to the quotes
@@ -154,7 +156,7 @@ class QuotesController < ApplicationController
     quote.update(
         is_invoice: true,
         invoice_number: "#{quote.customer.first_name[0]}#{quote.customer.last_name[0]}#{DateTime.now.strftime("%d%m%Y")}",
-        invoice_sending_date: @quote.quote_sending_date
+        invoice_sending_date: DateTime.now
     )
 
     flash[:success] = "Le devis a été transformé en facture."
