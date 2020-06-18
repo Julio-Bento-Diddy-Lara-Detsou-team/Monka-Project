@@ -12,6 +12,8 @@ ActiveAdmin.register User do
                 :country,
                 :phone_number,
                 :company_id,
-                :is_admin
+                :is_admin,
+                :city
+
   
 end

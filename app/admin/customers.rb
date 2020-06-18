@@ -10,6 +10,7 @@ ActiveAdmin.register Customer do
                 :zip_code,
                 :country,
                 :phone_number,
-                :user_id
+                :user_id,
+                :city
 
 end
