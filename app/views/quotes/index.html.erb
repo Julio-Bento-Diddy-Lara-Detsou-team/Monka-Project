@@ -15,60 +15,69 @@
 </div>
 
 <div class="container-fluid page__container mb-5">
-  <div class="col-lg-12 card-form__body">
-    <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
-      <table class="table mb-0 thead-border-top-0">
-        <h3 class="text-dark-gray d-flex align-items-center mt-3 ml-4">
-          <strong>Mes devis</strong>
-        </h3>
-        <thead>
-        <tr>
-          <th>Numéro du devis</th>
-          <th>Entreprise</th>
-          <th>Nom du client</th>
-          <th class="text-center">Voir</th>
-          <th class="text-center">Supprimer</th>
-        </tr>
-        </thead>
-        <tbody class="list" id="blah">
-        <% @quotes.order(quote_sending_date: :asc).each do |quote| %>
-          <tr id="<%= quote.id %>">
-            <td>
-              <%= link_to quote_path(quote.id) do %>
-                <%= quote.quote_number %>
-              <% end %>
-            </td>
-            <td>
-              <%= quote.customer.company_name %>
-            </td>
-            <td>
-              <%= link_to customer_path(quote.customer.id) do %>
-                <%= quote.customer.last_name.upcase %> <%= quote.customer.first_name %>
-              <% end %>
-            </td>
-            <td class="text-center">
-              <%= link_to quote_path(quote.id), class:"btn btn-primary btn-sm" do %>
-                Voir
-              <% end %>
-            </td>
-            <td class="text-center">
-              <%= link_to quote, method: :delete, class: "btn btn-danger text-white btn-sm", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %>
-                Supprimer
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
+
+  <% if !current_user.quotes.first %>
+    <h6 class="h6 text-center mt-5">Psst...Vous n'avez pas encore créé de devis ou de facture<br />
+      Par-ici pour les ajouter...</h6>
+    <%= image_tag 'add_icon_dashboard.svg', size: "300", class: "row justify-content-center mx-auto" %>
+    <div class=" row justify-content-center col-lg-4 mx-auto mb-5">
+      <%= link_to new_quote_path, class:"btn btn-primary btn-block p-3 font-weight-bold" do %>
+        <i class="fas fa-folder-plus mr-3">Ajouter des devis & factures</i>
+      <% end %>
     </div>
-  </div>
-  <div class="col-lg-12 card-form__body mt-5">
-    <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
-      <table class="table mb-0 thead-border-top-0">
-        <h3 class="text-dark-gray d-flex align-items-center mt-3 ml-4">
-          <strong>Mes factures</strong>
-        </h3>
-        <thead>
+  <% else %>
+    <div class="col-lg-12 card-form__body">
+      <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
+        <h3 class="text-dark-gray d-flex align-items-center mt-3 ml-4"><strong>Mes devis</strong></h3>
+        <table class="table mb-0 thead-border-top-0">
+          <thead>
+          <tr>
+            <th>Numéro du devis</th>
+            <th>Entreprise</th>
+            <th>Nom du client</th>
+            <th class="text-center">Voir</th>
+            <th class="text-center">Supprimer</th>
+          </tr>
+          </thead>
+          <tbody class="list" id="blah">
+          <% @quotes.order(quote_sending_date: :asc).each do |quote| %>
+            <tr id="<%= quote.id %>">
+              <td>
+                <%= link_to quote_path(quote.id) do %>
+                  <%= quote.quote_number %>
+                <% end %>
+              </td>
+              <td>
+                <%= quote.customer.company_name %>
+              </td>
+              <td>
+                <%= link_to customer_path(quote.customer.id) do %>
+                  <%= quote.customer.last_name.upcase %> <%= quote.customer.first_name %>
+                <% end %>
+              </td>
+              <td class="text-center">
+                <%= link_to quote_path(quote.id), class:"btn btn-primary btn-sm" do %>
+                  Voir
+                <% end %>
+              </td>
+              <td class="text-center">
+                <%= link_to quote, method: :delete, class: "btn btn-danger text-white btn-sm", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %>
+                  Supprimer
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-lg-12 card-form__body mt-5">
+      <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
+        <table class="table mb-0 thead-border-top-0">
+          <h3 class="text-dark-gray d-flex align-items-center mt-3 ml-4">
+            <strong>Mes factures</strong>
+          </h3>
+          <thead>
           <tr>
             <th>Numéro de la facture</th>
             <th>Entreprise</th>
@@ -76,8 +85,8 @@
             <th class="text-center">Voir</th>
             <th class="text-center">Supprimer</th>
           </tr>
-        </thead>
-        <tbody class="list" id="blah">
+          </thead>
+          <tbody class="list" id="blah">
           <% @invoices.order(invoice_sending_date: :asc).each do |invoice| %>
             <tr id="<%= invoice.id %>">
               <td>
@@ -105,8 +114,9 @@
               </td>
             </tr>
           <% end %>
-        </tbody>
-      </table>
-    </div>
+          </tbody>
+        </table>
+      </div>
+  <% end %>
   </div>
 </div>
