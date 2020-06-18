@@ -35,9 +35,17 @@ body {
   margin: auto;
 }
 
-/*step images*/
 
-.step {
-  max-width: 267px;
-  max-height: 150px;
+.bg-wave {
+  height: 100%;
+  opacity: 60%;
+  background-image: url("wave.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+
+.card-monka {
+  border-radius: 30px;
 }
