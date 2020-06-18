@@ -14,20 +14,13 @@
     </div>
     <!-- Button "Back to customer index" -->
     <div class="nav justify-content-end">
-      <%= link_to customers_path, class: "btn btn-secondary" do %>
-        <i class="fa fa-arrow-left"></i> Retour
-      <% end %>
+      <%= link_to customers_path, class: "btn btn-secondary" do %><i class="fa fa-arrow-left"></i> Retour<% end %>
     </div>
   </div>
 </div>
 
 <div class="container-fluid page__container">
-
-  <p id="notice"><%= notice %></p>
-
   <div class="row justify-content-lg-center">
-    <!-- Customer form -->
     <%= render 'form', customer: @customer %>
   </div>
-
 </div>

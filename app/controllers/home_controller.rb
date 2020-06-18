@@ -8,4 +8,8 @@ class HomeController < ApplicationController
       @unpaid_invoices = current_user.quotes.where(is_paid: false, is_invoice: true).count
     end
   end
+
+  def show
+
+  end
 end

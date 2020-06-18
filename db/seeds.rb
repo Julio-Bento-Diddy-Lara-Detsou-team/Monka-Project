@@ -83,7 +83,7 @@ end
       user: user,
       customer: customer_of_user)
 
-  puts "Preview #{i+1} quotes generated"
+  puts "Preview #{i+1} quotes_old generated"
 end
 
 6.times do |i|
@@ -160,7 +160,7 @@ end
       good: user.goods.sample,
       quote: user.quotes.sample)
 
-  puts "Preview #{i+1} joints between goods and quotes generated"
+  puts "Preview #{i+1} joints between goods and quotes_old generated"
 end
 
 Quote.all.each do |quote|

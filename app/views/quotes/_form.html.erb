@@ -1,0 +1,98 @@
+<%= form_with(model: quote, local: true) do |form| %>
+
+  <!-- Display errors-->
+  <% if quote.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(quote.errors.count, "erreurs") %> empêchent ce produit/service d'être créé :</h2>
+      <ul>
+        <% quote.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card card-form__body card-body">
+    <div class="d-flex justify-content-center flex-column text-center my-5 navbar-light">
+      <div class="navbar-brand d-flex flex-column m-0" style="min-width: 0">
+        <% if current_user.logo.attached? %>
+          <%= image_tag current_user.logo, alt: 'logo', width: "100" %>
+        <%end %>
+        <span><% if quote.is_invoice %>Facture<% else %>Devis<% end %></span>
+      </div>
+    </div>
+
+    <div class="form-group btn-group-lg mb-4">
+      <%= form.label :is_invoice, "Type de document :" %><br />
+
+      <div class="form-check form-check-inline">
+        <%= form.radio_button :is_invoice, false, checked: true, class: "form-check-input" %>
+        <%= form.label :is_invoice, "Devis", value: false, class: "form-check-label" %>
+      </div>
+
+      <div class="form-check form-check-inline">
+        <%= form.radio_button :is_invoice, true, class: "form-check-input" %>
+        <%= form.label :is_invoice, "Facture", value: true, class: "form-check-label" %>
+      </div>
+    </div>
+
+    <%#= quote.customer.id if quote.customer  %>
+    <div class="row">
+      <div class="field col-lg-6">
+        <% current_customer = [] << quote.customer.id if quote.customer %>
+
+        <%= form.label :customer_id, "À destination de :" %><br/>
+        <%= form.select :customer_id,
+                        options_for_select(
+                            Customer.order(:last_name).collect{ |u| [u.fullname, u.id] },
+                            current_customer
+                        ),
+                        class: "form-control" %>
+      </div>
+
+      <div class="col-lg-6 text-right">
+        <%= form.label :user_id, "De la part de :" %><br/>
+        <%= form.hidden_field :user_id, value: current_user.id %>
+        <p class="mb-4">
+          <strong class="text-body"><%= current_user.first_name %> <%= current_user.last_name %></strong><br>
+          <%= current_user.company_name %><br>
+          <%= current_user.address %><br>
+          <%= current_user.zip_code %> <%= current_user.country %><br>
+        </p>
+      </div>
+    </div>
+
+    <p class="lead">Numéro de devis : <span class="small">INITIALES-<%= DateTime.now.strftime("%d%m%Y") %>-01</span> </p>
+    <p class="lead">Date d'échéance : <span class="small"><%= 3.days.from_now.strftime("%d/%m/%Y") %></span> </p>
+
+    <hr/>
+
+    <div class="form-group">
+      <%= form.label :good, "Produits ou services :" %><br/>
+      <%= form.select :good,
+                      options_for_select(
+                          Good.order(:title).collect{ |u| ["#{u.title} #{u.price}€", u.id] },
+                          quote.goods.map {|good| good.id}
+                      ),
+                      { :prompt => "Sélectionner un produit ou un service"}, { :multiple => true, :size => 5, class: "form-control"} %>
+    </div>
+
+    <%= form.hidden_field :amount, value: 0 %>
+
+    <fieldset disabled>
+      <label for="CGV">Termes et conditions :</label>
+      <input type="text" class="form-control" id="CGV" value="Conditions générales de vente n°1">
+    </fieldset>
+
+    <div class="row justify-content-center">
+      <%= form.submit "Valider", class: "btn btn-primary btn-lg mt-4 mb-5" %>
+    </div>
+  </div>
+
+  <!-- CODE SMELL :
+  This JS code below should be in the assets but this is currently making Heroku deployment crash and
+  I don't have time to fix it properly right now. Sorry to the person who will have to fix this in the futur...
+  -->
+  <%= render "javascript" %>
+<% end %>
+
