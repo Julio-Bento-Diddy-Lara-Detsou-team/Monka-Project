@@ -107,20 +107,8 @@
   <!-- Buttons action -->
   <div class="row justify-content-center my-5">
     <div class="row justify-content-center">
-      <div class="col">
-        <%= link_to 'Éditer', edit_quote_path(@quote), class: "btn btn-info btn-block" %>
-      </div>
-      <div class="col">
-        <%= link_to 'Supprimer', quote_path(@quote), method: "delete", class: "btn btn-outline-danger btn-block" %>
-      </div>
-      <div class="col">
-        <%= form_tag quote_path(@quote.id, convert_to_invoice: true), method: "put" do %>
-          <button type="submit" class="btn btn-outline-secondary btn-block mx-3"><i class="material-icons">arrow_forward</i> Transformer en Facture</button>
-        <% end %>
-      </div>
-      <div class="col">
-        <a href="<%= image_path "Devis_FS0501202012.pdf" %>" target="_blank" class="btn btn-primary"><i class="material-icons">file_download</i> Télécharger</a>
-      </div>
+      <div class="col"><%= link_to 'Éditer', edit_quote_path(@quote), class: "btn btn-info btn-lg btn-block text-white" %></div>
+      <div class="col"><%= link_to 'Supprimer', quote_path(@quote), method: "delete", class: "btn btn-outline-danger btn-lg btn-block" %></div>
     </div>
   </div>
 
