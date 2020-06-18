@@ -2,7 +2,7 @@ class GoodsController < ApplicationController
   before_action :set_good, only: [:show, :edit, :update, :destroy]
 
   def index
-    @goods = Good.all
+    @goods = current_user.goods
   end
 
   def show

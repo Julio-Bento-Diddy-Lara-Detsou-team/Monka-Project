@@ -44,7 +44,7 @@
         <%= form.label :customer_id, "À destination de :" %><br/>
         <%= form.select :customer_id,
                         options_for_select(
-                            Customer.order(:last_name).collect{ |u| [u.fullname, u.id] },
+                            current_user.customers.order(:last_name).collect{ |u| [u.fullname, u.id] },
                             current_customer
                         ),
                         class: "form-control" %>
@@ -71,7 +71,7 @@
       <%= form.label :good, "Produits ou services :" %><br/>
       <%= form.select :good,
                       options_for_select(
-                          Good.order(:title).collect{ |u| ["#{u.title} #{u.price}€", u.id] },
+                          current_user.goods.order(:title).collect{ |u| ["#{u.title} #{u.price}€", u.id] },
                           quote.goods.map {|good| good.id}
                       ),
                       { :prompt => "Sélectionner un produit ou un service"}, { :multiple => true, :size => 5, class: "form-control"} %>

@@ -21,32 +21,44 @@
 
   <div class="col-lg-12 card-form__body">
     <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
-      <table class="table mb-0 thead-border-top-0 mb-5">
-        <thead>
-        <tr>
-          <th>Title</th>
-          <th>Description</th>
-          <th class="text-center">Quantity</th>
-          <th class="text-center">Price</th>
-          <th class="text-center">Afficher</th>
-          <th class="text-center">Editer</th>
-          <th class="text-center">Supprimer</th>
-        </tr>
-        </thead>
-        <tbody class="list">
-        <% @goods.each do |good| %>
-          <tr id="<%= good.id %>">
-            <td><%= good.title %></td>
-            <td><%= good.description %></td>
-            <td class="text-center"><%= good.quantity %></td>
-            <td class="text-center"><%= number_to_currency(good.price, :locale => :fr) %></td>
-            <td class="text-center"><%= link_to good, class: "btn btn-primary" do %><i class="fa fa-eye"></i><% end %></td>
-            <td class="text-center"><%= link_to edit_good_path(good), class: "btn btn-info" do %>Editer<% end %></td>
-            <td class="text-center"><%= link_to good, method: :delete, class:"btn btn-danger", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %>Supprimer<% end %></td>
+      <!-- If chart is empty-->
+      <% if current_user.goods.empty? %>
+        <h6 class="h6 text-center mt-5">Psst...Vous n'avez pas encore créé de clients<br />
+          Par-ici pour les ajouter...</h6>
+        <%= image_tag 'add_icon_dashboard.svg', size: "300", class: "row justify-content-center mx-auto" %>
+        <div class=" row justify-content-center col-lg-4 mx-auto mb-5">
+          <%= link_to new_customer_path, class:"btn btn-primary btn-block p-3 font-weight-bold" do %>
+            <i class="fas fa-folder-plus mr-3">Ajouter des clients</i>
+          <% end %>
+        </div>
+      <% else %>
+        <table class="table mb-0 thead-border-top-0 mb-5">
+          <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th class="text-center">Quantity</th>
+            <th class="text-center">Price</th>
+            <th class="text-center">Afficher</th>
+            <th class="text-center">Editer</th>
+            <th class="text-center">Supprimer</th>
           </tr>
-        <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody class="list">
+          <% @goods.each do |good| %>
+            <tr id="<%= good.id %>">
+              <td><%= good.title %></td>
+              <td><%= good.description %></td>
+              <td class="text-center"><%= good.quantity %></td>
+              <td class="text-center"><%= number_to_currency(good.price, :locale => :fr) %></td>
+              <td class="text-center"><%= link_to good, class: "btn btn-primary" do %><i class="fa fa-eye"></i><% end %></td>
+              <td class="text-center"><%= link_to edit_good_path(good), class: "btn btn-info" do %>Editer<% end %></td>
+              <td class="text-center"><%= link_to good, method: :delete, class:"btn btn-danger", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %>Supprimer<% end %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      <% end %>
     </div>
   </div>
 </div>

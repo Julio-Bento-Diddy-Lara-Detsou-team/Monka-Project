@@ -19,31 +19,42 @@
 
 <div class="container-fluid page__container">
 
-  <div class="col-lg-12 card-form__body">
-    <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
-      <table class="table mb-0 thead-border-top-0 mb-5">
-        <thead>
-        <tr>
-          <th>Nom complet</th>
-          <th>Entreprise</th>
-          <th>Email</th>
-          <th class="text-center">Editer</th>
-          <th class="text-center">Supprimer</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% @customers.each do |customer| %>
-          <tr id="<%= customer.id %>">
-            <td><%= link_to customer_path(customer.id) do %><%= customer.last_name.upcase %> <%= customer.first_name %><% end %></td>
-            <td><%= customer.company_name %></td>
-            <td><%= customer.email %></td>
-            <td class="text-center"><%= link_to "Editer", edit_customer_path(customer.id), class: "btn btn-primary btn-sm" %></td>
-            <td class="text-center"><%= link_to "Supprimer", customer_path(customer.id), method: :delete, class:"btn btn-danger text-white btn-sm", data: {confirm: 'Supprimer cet élément ?'}, remote: true %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
+  <!-- If chart is empty-->
+  <% if current_user.customers.empty? %>
+    <h6 class="h6 text-center mt-5">Psst...Vous n'avez pas encore créé de clients<br />
+      Par-ici pour les ajouter...</h6>
+    <%= image_tag 'add_icon_dashboard.svg', size: "300", class: "row justify-content-center mx-auto" %>
+    <div class=" row justify-content-center col-lg-4 mx-auto mb-5">
+      <%= link_to new_customer_path, class:"btn btn-primary btn-block p-3 font-weight-bold" do %>
+        <i class="fas fa-folder-plus mr-3">Ajouter des clients</i>
+      <% end %>
     </div>
-
+  <% else %>
+    <div class="col-lg-12 card-form__body">
+      <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
+        <table class="table mb-0 thead-border-top-0 mb-5">
+          <thead>
+          <tr>
+            <th>Nom complet</th>
+            <th>Entreprise</th>
+            <th>Email</th>
+            <th class="text-center">Editer</th>
+            <th class="text-center">Supprimer</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @customers.each do |customer| %>
+            <tr id="<%= customer.id %>">
+              <td><%= link_to customer_path(customer.id) do %><%= customer.last_name.upcase %> <%= customer.first_name %><% end %></td>
+              <td><%= customer.company_name %></td>
+              <td><%= customer.email %></td>
+              <td class="text-center"><%= link_to "Editer", edit_customer_path(customer.id), class: "btn btn-primary btn-sm" %></td>
+              <td class="text-center"><%= link_to "Supprimer", customer_path(customer.id), method: :delete, class:"btn btn-danger text-white btn-sm", data: {confirm: 'Supprimer cet élément ?'}, remote: true %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+  <% end %>
   </div>
 </div>
