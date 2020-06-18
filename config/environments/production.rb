@@ -95,5 +95,4 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { :host => 'monka-project.herokuapp.com' }
 
-
 end
