@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'home#index'
 
-  resources 'home', only: [:index]
+  resources 'home', only: [:index, :show]
   resources 'quotes' do
     resources :charges
   end
