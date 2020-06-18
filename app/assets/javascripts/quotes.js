@@ -1,3 +1,3 @@
-document.getElementById("quote_goods").setAttribute("data-toggle", "select")
+document.getElementById("quote_good").setAttribute("data-toggle", "select")
 
-quote_goods = document.getElementById("quote_goods");
+quote_goods = document.getElementById("quote_good");

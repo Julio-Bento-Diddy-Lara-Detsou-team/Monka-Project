@@ -101,7 +101,7 @@ class QuotesController < ApplicationController
         :is_paid,
         :user_id,
         :customer_id,
-        :goods,
+        :good,
         goods_attributes: [:id, :title, :description, :quantity, :price, :user_id]
         )
   end
@@ -125,16 +125,19 @@ class QuotesController < ApplicationController
     end
 
     # Allocate goods to the quotes
-    if params[:quote][:goods]
+    if params[:quote][:good]
       quote_amount = 0
 
-      params[:quote][:goods].each do |good|
+      p quote.goods.destroy_all
+      p quote.save
+
+      params[:quote][:good].each do |good|
         good if good.empty? === false
         if good.empty? === false
-          current_good = Good.find(good)
+          p current_good = Good.find(good)
 
           # insert good into the list of goods
-          quote.goods << current_good
+          p quote.goods << current_good
 
           # Line used to calculate total price of all goods
           quote_amount += current_good.price * current_good.quantity
