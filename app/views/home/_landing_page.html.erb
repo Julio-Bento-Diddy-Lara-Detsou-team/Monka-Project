@@ -34,47 +34,63 @@
   </div>
 
   <!-- How it works -->
-  <hr class="featurette-divider text-white my-5">
 
-  <div class="row featurette">
-    <div class="col-md-7">
-      <h2 class="featurette-heading">Editer des factures depuis votre smartphone<span class="green-new"> n'importe où, n'importe quand, ne perdez plus de temps!</span></h2>
-      <p class="lead">Quand on est auto-entrepreneur, c'est pour aller à l'essentiel sans trop de complication. Pour cette raison, Monka s'est concentré sur les tâches les plus chronophages de votre quotidien, comme l'édition de devis et de factures. Et hop ! moins d'administratif, plus de temps de loisirs !</p>
-    </div>
+<section class="my-5">
+  <div class="row featurette my-5">
     <div class="col-md-5">
-      <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="700" height="700" src="<%= image_path "biased.png" %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" alt="">
+      <span class="display-3 mb-2 green-new">01</span>
+      <h2 class="featurette-heading">Tableau de bord</h2>
+      <p>Accédez rapidement à l'essentiel de votre activité avec Monka. Finis l'approximatif et les mauvaises surprises en fin de mois</p>
+      <ul>
+        <li>Quel est mon chiffre d'affaire sur l'année ? Au mois ?</li>
+        <li> Combien de factures envoyées en attente de paiement ?</li>
+      </ul>
+      <p>La réponse grâce à Monka...</p>
     </div>
-  </div>
-
-  <hr class="featurette-divider my-5">
-
-  <div class="row featurette">
-    <div class="col-md-7 order-md-2">
-      <h2 class="featurette-heading">Tout sur son CA en un clic<span class="green-new"> pour aller à l'essentiel</span></h2>
-      <p class="lead">Pas besoin d'être comptable pour savoir combien vous devez faire de chiffre avant d'atteindre votre pflafond, ou de faire des additions de CA. Néanmoins, il faut le temps et la disponibilité et Monka est là pour vous en faire gagner !</p>
-    </div>
-    <div class="col-md-5 order-md-1">
-      <img class="shadow mb-5 bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="<%= image_path "iphone_mup_CA_smarties.jpg" %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" alt="">
-    </div>
-  </div>
-
-  <hr class="featurette-divider my-5">
-
-  <div class="row featurette">
     <div class="col-md-7">
-      <h2 class="featurette-heading">Intuitive et pratique<span class="green-new"> pour vous suivre partout au quotidien.</span></h2>
-      <p class="lead">Certains sont plus à l'aise que d'autres quand il s'agit de technologies, mais cela ne devrait jamais interférer avec la gestion de son activité, déjà suffisamment compliquée. Alors chez Monka, c'est aussi simple que de griffonner sur un papier. On crée un client, on ajoute une prestation et le tour est joué !</p>
+      <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="900" height="900" src="<%= image_path "step1.png" %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" alt="">
     </div>
-    <div class="col-md-5">
-      <img class="shadow mb-5 bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="<%= image_path "ipad-pro-on-white-table.png" %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" alt="">
+  </div>
+  <br>
+  <br>
+  <br>
+  <!--==============-->
+
+  <div class="row featurette my-5">
+    <div class="col-md-5 order-md-2">
+      <span class=" display-3 mb-2 green-new">02</span>
+      <h2 class="featurette-heading">Ajoutez vos clients, prestations ou produits</h2>
+      <p>Créez facilement vos clients, vos produits ou prestations selon les cas. Modifiez et actualisez à l'envie pour vous simplifier la vie !</p>
+    </div>
+    <div class="col-md-7 order-md-1">
+      <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="700" height="700" src="<%= image_path "step2.png" %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" alt="">
     </div>
   </div>
 
-  <hr class="featurette-divider">
-
+  <!--===============-->
+  <br>
+  <br>
+  <br>
+  <div class="row featurette my-5">
+    <div class="col-md-5">
+      <span class=" display-3 mb-2 green-new">03</span>
+      <h2 class="featurette-heading">Créez vos devis et vos factures</h2>
+      <p>Générez en un clic autant de devis que désirés, transformez-les en factures et envoyez-les, dans la foulée à vos clients !</p>
+    </div>
+    <div class="col-md-7">
+      <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="900" height="900" src="<%= image_path "step3.png" %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" alt="">
+    </div>
+  </div>
+</section>
+  <br>
+  <br>
+  <br>
+  <!--========call to action button=============-->
   <div class="text-center my-5">
     <%= link_to "Connexion", new_user_session_path, class: 'btn btn-jumbo2 m-2 p-3 shadow mb-5' %>
     <%= link_to "Inscription", new_user_registration_path, class: 'btn btn-jumbo2 m-2 p-3 shadow mb-5' %>
   </div>
+
+
 </div>
 
