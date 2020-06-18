@@ -22,8 +22,8 @@
       </div>
     </div>
 
-    <div class="form-group btn-group-lg mb-5">
-      <%= form.label :is_invoice, "Quel est le type de document ?" %><br />
+    <div class="form-group btn-group-lg mb-4">
+      <%= form.label :is_invoice, "Type de document :" %><br />
 
       <div class="form-check form-check-inline">
         <%= form.radio_button :is_invoice, false, checked: true, class: "form-check-input" %>
@@ -38,7 +38,6 @@
 
 
     <div class="row">
-
       <div class="field col-lg-6">
         <%= form.label :customer_id, "À destination de :" %><br/>
         <%= form.select :customer_id, options_for_select(Customer.order(:last_name).collect{ |u| [u.fullname, u.id] }), class: "form-control" %>
@@ -61,44 +60,17 @@
 
     <hr/>
 
+    <% pre_selected_goods = [] %>
+    <%  %>
+
     <div class="form-group">
       <%= form.label :goods, "Produits ou services :" %><br/>
-      <%= form.select :goods, options_for_select(Good.order(:title).collect{ |u| [u.title, u.id] }, class: "form-control") ,{ :prompt => "Select"}, { :multiple => true, :size => 5 } %>
-      <hr />
-    </div>
-
-<!--    <div class="form-group">-->
-<!--      <label for="select03">Multiple</label>-->
-<!--      <select id="select03" data-toggle="select" multiple class="form-control">-->
-<!--        <option selected>CSS</option>-->
-<!--        <option selected>HTML</option>-->
-<!--        <option>JavaScript</option>-->
-<!--        <option>Bootstrap</option>-->
-<!--      </select>-->
-<!--    </div>-->
-
-<!--    <div class="form-group">-->
-<!--      <label>Liste des produits/services :</label>-->
-      <%#= form.fields_for :goods do |f| %>
-<!--        <div id="goods_input_form">-->
-          <%#= render 'good_fields', f: f %>
-<!--        </div>-->
-        <%#= button_to "Ajouter un produit/service", { action: "create" }, remote: true, class: " btn btn-outline-secondary my-3" %>
-        <%#= button_to "Ajouter un produit/service", remote: true, class: "btn btn-outline-secondary my-3", id: "add_new_good_btn" %>
-      <%# end %>
-
-      <%#= link_to_add_fields "Ajouter un produit/service", form, :goods %>
-<!--    </div>-->
-
-    <hr/>
-
-    <div class="bg-dark rounded">
-      <h5 class="text-white text-right mr-5 pt-3">Réduction : 00%</h5>
-      <hr class="white-hr mx-5">
-      <div class="field text-right mr-4 mb-3">
-        <%= form.label :amount, "Total :" %><br/>
-        <%= form.text_field :amount, value: 500 %> <span class="text-white lead"> €</span>
-      </div>
+      <%= form.select :goods,
+                      options_for_select(
+                          Good.order(:title).collect{ |u| ["#{u.title} #{u.price}€", u.id] },
+                          quote.goods.map {|good| good.id}
+                      ),
+                      { :prompt => "Select"}, { :multiple => true, :size => 5, class: "form-control"} %>
     </div>
 
     <fieldset disabled>
@@ -107,16 +79,8 @@
     </fieldset>
 
     <div class="row justify-content-center">
-      <%= form.submit "Valider", class: "btn btn-primary btn-lg mt-4" %>
+      <%= form.submit "Valider", class: "btn btn-primary btn-lg mt-4 mb-5" %>
     </div>
   </div>
 
 <% end %>
-
-<script type="text/javascript" charset="utf-8">
-    let add_new_good_btn = document.getElementById("add_new_good_btn");
-
-    add_new_good_btn.addEventListener("click", function() {
-        document.getElementById('goods_input_form').insertAdjacentHTML("beforeend", "<j render 'good_fields', good: @good %>");
-    })
-</script>
