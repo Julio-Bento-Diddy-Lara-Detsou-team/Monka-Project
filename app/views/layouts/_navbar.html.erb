@@ -10,6 +10,8 @@
   <!-- Navigation -->
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
+      <%= link_to "Contact", contacts_path, class: "nav-item nav-link"%>
+
       <% if user_signed_in? %>
         <!-- USER CONNECTED-->
         <%= link_to user_path(current_user), class: "nav-item nav-link #{is_nav_link_active("users", "show")}" do %>
