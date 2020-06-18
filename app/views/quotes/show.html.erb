@@ -49,7 +49,7 @@
                   <strong class="text-body"><%= @quote.customer.first_name %> <%= @quote.customer.last_name %></strong><br>
                   <%= @quote.customer.company_name %><br>
                   <%= @quote.customer.address %><br>
-                  <%= @quote.customer.zip_code %> <%= @quote.customer.country %><br>
+                  <%= @quote.customer.zip_code %> <%= @quote.customer.city %>, <%= @quote.customer.country %>
                 </p>
                 <div class="text-label">Numéro de <% if @quote.is_invoice %>facture<% else %>devis<% end %></div>
                 <% if @quote.is_invoice %><%= @quote.invoice_number %><% else %><%= @quote.quote_number %><% end %>
@@ -60,7 +60,7 @@
                   <strong class="text-body"><%= current_user.first_name %> <%= current_user.last_name %></strong><br>
                   <%= current_user.company_name %><br>
                   <%= current_user.address %><br>
-                  <%= current_user.zip_code %> <%= current_user.country %><br>
+                  <%= current_user.zip_code %> <%= current_user.city %>, <%= current_user.country %>
                 </p>
                 <div class="text-label">Date d'échéance</div>
                 <% if @quote.is_invoice %><%= @quote.invoice_sending_date + 3.days %><% else %><%= @quote.quote_sending_date + 3.days %><% end %>
