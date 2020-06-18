@@ -3,8 +3,9 @@
     <div class="flex">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
-          <li class="breadcrumb-item"><%= link_to root_path do %><i class="material-icons icon-20pt">home</i><% end %></li>
-          <li class="breadcrumb-item active" aria-current="page">Mes devis et factures</li>
+          <li class="breadcrumb-item"><%= link_to "Accueil", root_path %></li>
+
+          <li class="breadcrumb-item" aria-current="page"><%= link_to "Mes devis et factures", quotes_path, class: "active"%></li>
         </ol>
       </nav>
       <h1 class="mt-3">Mes devis et factures</h1>
@@ -14,63 +15,98 @@
 </div>
 
 <div class="container-fluid page__container mb-5">
-
-  <h3 class="text-dark-gray d-flex align-items-center mt-3 ml-4">
-    <strong>Mes devis</strong>
-  </h3>
-
-  <% @quotes.order(quote_sending_date: :asc).each do |quote| %>
-    <div class="row projects-item mb-1" id="<%= quote.id %>">
-      <div class="col-sm">
-        <div class="card m-0">
-          <div class="px-4 py-3">
-            <div class="row align-items-center">
-              <div class="col" style="min-width: 300px">
-                <div class="d-flex align-items-center">
-                  <strong class="text-15pt mr-2"><%= quote.customer.company_name %></strong>
-                </div>
-              </div>
-              <div class="col">
-                <%= link_to quote.quote_number, quote_path(quote.id), class: "text-body" %>
-              </div>
-              <div class="col-auto d-flex align-items-center" style="min-width: 140px;">
-                <%= link_to quote_path(quote.id), class: "btn btn-secondary mr-2" do %><i class="fa fa-eye" aria-hidden="true"></i><% end %>
-                <%= link_to quote, method: :delete, class: "btn btn-danger text-white", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %><i class="material-icons">close</i><% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="col-lg-12 card-form__body">
+    <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
+      <table class="table mb-0 thead-border-top-0">
+        <h3 class="text-dark-gray d-flex align-items-center mt-3 ml-4">
+          <strong>Mes devis</strong>
+        </h3>
+        <thead>
+        <tr>
+          <th>Numéro du devis</th>
+          <th>Entreprise</th>
+          <th>Nom du client</th>
+          <th class="text-center">Voir</th>
+          <th class="text-center">Supprimer</th>
+        </tr>
+        </thead>
+        <tbody class="list" id="blah">
+        <% @quotes.order(quote_sending_date: :asc).each do |quote| %>
+          <tr id="<%= quote.id %>">
+            <td>
+              <%= link_to quote_path(quote.id) do %>
+                <%= quote.quote_number %>
+              <% end %>
+            </td>
+            <td>
+              <%= quote.customer.company_name %>
+            </td>
+            <td>
+              <%= link_to customer_path(quote.customer.id) do %>
+                <%= quote.customer.last_name.upcase %> <%= quote.customer.first_name %>
+              <% end %>
+            </td>
+            <td class="text-center">
+              <%= link_to quote_path(quote.id), class:"btn btn-primary btn-sm" do %>
+                Voir
+              <% end %>
+            </td>
+            <td class="text-center">
+              <%= link_to quote, method: :delete, class: "btn btn-danger text-white btn-sm", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %>
+                Supprimer
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
     </div>
-  <% end %>
-
-  <h3 class="text-dark-gray d-flex align-items-center mt-3 ml-4">
-    <strong>Mes factures</strong>
-  </h3>
-
-  <% @invoices.order(invoice_sending_date: :asc).each do |invoice| %>
-
-    <div class="row align-items-center projects-item mb-1" id="<%= invoice.id %>">
-      <div class="col-sm">
-        <div class="card m-0">
-          <div class="px-4 py-3">
-            <div class="row align-items-center">
-              <div class="col" style="min-width: 300px">
-                <div class="d-flex align-items-center">
-                  <strong class="text-15pt mr-2"><%= invoice.customer.company_name %></strong>
-                </div>
-              </div>
-              <div class="col">
-                <%= link_to invoice.invoice_number, quote_path(invoice.id), class: "text-body" %>
-              </div>
-              <div class="col-auto d-flex align-items-center" style="min-width: 140px;">
-                <%= link_to quote_path(invoice.id), class: "btn btn-secondary mr-2" do %><i class="fa fa-eye" aria-hidden="true"></i><% end %>
-                <%= link_to invoice, method: :delete, class: "btn btn-danger text-white", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %><i class="material-icons">close</i><% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+  </div>
+  <div class="col-lg-12 card-form__body mt-5">
+    <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
+      <table class="table mb-0 thead-border-top-0">
+        <h3 class="text-dark-gray d-flex align-items-center mt-3 ml-4">
+          <strong>Mes factures</strong>
+        </h3>
+        <thead>
+          <tr>
+            <th>Numéro de la facture</th>
+            <th>Entreprise</th>
+            <th>Nom du client</th>
+            <th class="text-center">Voir</th>
+            <th class="text-center">Supprimer</th>
+          </tr>
+        </thead>
+        <tbody class="list" id="blah">
+          <% @invoices.order(invoice_sending_date: :asc).each do |invoice| %>
+            <tr id="<%= invoice.id %>">
+              <td>
+                <%= link_to quote_path(invoice.id) do %>
+                  <%= invoice.invoice_number %>
+                <% end %>
+              </td>
+              <td>
+                <%= invoice.customer.company_name %>
+              </td>
+              <td>
+                <%= link_to customer_path(invoice.customer.id) do %>
+                  <%= invoice.customer.last_name.upcase %> <%= invoice.customer.first_name %>
+                <% end %>
+              </td>
+              <td class="text-center">
+                <%= link_to quote_path(invoice.id), class:"btn btn-primary btn-sm" do %>
+                  Voir
+                <% end %>
+              </td>
+              <td class="text-center">
+                <%= link_to invoice, method: :delete, class: "btn btn-danger text-white btn-sm", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %>
+                  Supprimer
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
-  <% end %>
+  </div>
 </div>

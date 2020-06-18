@@ -157,8 +157,7 @@ class QuotesController < ApplicationController
         invoice_sending_date: @quote.quote_sending_date
     )
 
-    flash[:success] = "Le devis a été transformé en facture"
-
-    redirect_to :quotes
+    flash[:success] = "Le devis a été transformé en facture."
+    redirect_back(fallback_location: quotes_path)
   end
 end
