@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <!-- Monka home button -->
-  <%= link_to "monka", root_path, class: "navbar-brand" %>
+  <%= link_to root_path, class: "navbar-brand #{is_nav_home_active("home", "index")}" do %>
+    monka<%= raw is_nav_home_current("home", "index") %>
+  <% end %>
 
   <!-- Toggle button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,59 +11,74 @@
 
   <!-- Navigation -->
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <%= link_to "Contact", contacts_path, class: "nav-item nav-link"%>
-
-      <% if user_signed_in? %>
+    <% if user_signed_in? %>
+      <div class="navbar-nav">
         <!-- USER CONNECTED-->
-        <%= link_to user_path(current_user), class: "nav-item nav-link #{is_nav_link_active("users", "show")}" do %>
-          Mon profil <%= raw is_nav_link_current("users", "show") %>
+        <li class="nav-item nav-link px-0">
+        <%= link_to user_path(current_user), class: "nav-item nav-link #{is_nav_link_active("users")}" do %>
+          Profil<%= raw is_nav_link_current("users") %>
         <% end %>
+        </li>
 
-        <%= link_to customers_path, class: "nav-item nav-link #{is_nav_link_active("customers", "index")}" do %>
-          Mes clients <%= raw is_nav_link_current("customers", "index") %>
+        <li class="nav-item nav-link px-0">
+        <%= link_to customers_path, class: "nav-item nav-link #{is_nav_link_active("customers")}" do %>
+          Clients<%= raw is_nav_link_current("customers") %>
         <% end %>
+        </li>
 
-        <%= link_to quotes_path, class: "nav-item nav-link #{is_nav_link_active("quotes", "index")}" do %>
-          Mes devis & factures <%= raw is_nav_link_current("quotes", "index") %>
+        <li class="nav-item nav-link px-0">
+        <%= link_to quotes_path, class: "nav-item nav-link #{is_nav_link_active("quotes")}" do %>
+          Devis & Factures<%= raw is_nav_link_current("quotes") %>
         <% end %>
+        </li>
 
-        <%= link_to goods_path, class: "nav-item nav-link #{is_nav_link_active("goods", "index")}" do %>
-          Mes produits & services <%= raw is_nav_link_current("quotes", "index") %>
+        <li class="nav-item nav-link px-0">
+        <%= link_to goods_path, class: "nav-item nav-link #{is_nav_link_active("goods")}" do %>
+          Produits & Services<%= raw is_nav_link_current("goods") %>
         <% end %>
+        </li>
+      </div>
+      <!-- Sign out -->
+      <div class="navbar-nav ml-auto">
+        <li class="nav-item nav-link">
+          <%= link_to contacts_path, class: "nav-item nav-link #{is_nav_link_active("contacts")}" do %>
+            Contact<%= raw is_nav_link_current("contacts") %>
+          <% end %>
+        </li>
 
-        <!-- Sign out -->
+        <li class="nav-item nav-link px-0">
         <%= link_to 'Déconnexion', destroy_user_session_path, method: :delete, class:"nav-item nav-link" %>
-      <% else %>
-        <!-- USER NOT CONNECTED -->
-        <li class="nav-item nav-link active">
-          <%= link_to root_path, class: "nav-item nav-link #{is_nav_link_active("home", "index")}" do %>
-            Accueil <%= raw is_nav_link_current("home", "index") %>
+        </li>
+      </div>
+    <% else %>
+      <!-- USER NOT CONNECTED -->
+      <div class="navbar-nav">
+        <li class="nav-item nav-link px-0 active">
+        <%= link_to new_user_registration_path, class: "nav-item nav-link #{is_nav_link_active("registrations")}" do %>
+            Inscription<%= raw is_nav_link_current("registrations") %>
           <% end %>
         </li>
 
-        <li class="nav-item nav-link active">
-        <%= link_to new_user_registration_path, class: "nav-item nav-link #{is_nav_link_active("registrations", "new")}" do %>
-            Inscription <%= raw is_nav_link_current("registrations", "new") %>
+        <li class="nav-item nav-link px-0">
+        <%= link_to new_user_session_path, class: "nav-item nav-link #{is_nav_link_active("sessions")}" do %>
+            Connexion<%= raw is_nav_link_current("sessions") %>
+          <% end %>
+        </li>
+      </div>
+      <div class="navbar-nav ml-auto">
+        <li class="nav-item nav-link">
+          <%= link_to contacts_path, class: "nav-item nav-link #{is_nav_link_active("contacts")}" do %>
+            Contact<%= raw is_nav_link_current("contacts") %>
           <% end %>
         </li>
 
-        <li class="nav-item nav-link active">
-        <%= link_to new_user_session_path, class: "nav-item nav-link #{is_nav_link_active("sessions", "new")}" do %>
-            Connexion <%= raw is_nav_link_current("sessions", "new") %>
+        <li class="nav-item nav-link px-0">
+          <%= link_to home_path(1), class: "nav-item nav-link #{is_nav_home_active("home", "show")} " do %>
+            Notre Équipe<%= raw is_nav_home_current("home", "show") %>
           <% end %>
         </li>
-
-
-      <% end %>
-    </div>
-    <div class="navbar-nav ml-auto">
-      <li class="nav-item nav-link active mr-auto">
-        <%= link_to home_path(1), class: "nav-item nav-link #{is_nav_link_active("home", "show")} " do %>
-          Qui sommes-nous?  <%= raw is_nav_link_current("home", "show") %>
-        <% end %>
-      </li>
-    </div>
+      </div>
+    <% end %>
   </div>
 </nav>
 
