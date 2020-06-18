@@ -39,7 +39,7 @@
             <td><%= customer.email %></td>
             <td class="text-center"><%= link_to customer_path(customer.id), class: "btn btn-primary" do %><i class="fa fa-eye"></i><% end %></td>
             <td class="text-center"><%= link_to edit_customer_path(customer.id), class: "btn btn-info" do %><i class="fa fa-pen">Editer</i><% end %></td>
-            <td class="text-center"><%= link_to customer_path(customer.id), method: :delete, class:"btn btn-danger", remote: true do %><i class="fa fa-trash-alt">Supprimer</i><% end %></td>
+            <td class="text-center"><%= link_to customer_path(customer.id), method: :delete, class:"btn btn-danger", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %><i class="fa fa-trash-alt">Supprimer</i><% end %></td>
           </tr>
         <% end %>
         </tbody>

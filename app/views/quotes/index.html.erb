@@ -35,7 +35,7 @@
               </div>
               <div class="col-auto d-flex align-items-center" style="min-width: 140px;">
                 <%= link_to quote_path(quote.id), class: "btn btn-secondary mr-2" do %><i class="fa fa-eye" aria-hidden="true"></i><% end %>
-                <%= link_to quote_path(quote.id), method: :delete, class: "btn btn-danger text-white", remote: true do %><i class="material-icons">close</i><% end %>
+                <%= link_to quote, method: :delete, class: "btn btn-danger text-white", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %><i class="material-icons">close</i><% end %>
               </div>
             </div>
           </div>
@@ -65,7 +65,7 @@
               </div>
               <div class="col-auto d-flex align-items-center" style="min-width: 140px;">
                 <%= link_to quote_path(invoice.id), class: "btn btn-secondary mr-2" do %><i class="fa fa-eye" aria-hidden="true"></i><% end %>
-                <%= link_to quote, method: :delete, class: "btn btn-danger text-white", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %><i class="material-icons">close</i><% end %>
+                <%= link_to invoice, method: :delete, class: "btn btn-danger text-white", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %><i class="material-icons">close</i><% end %>
               </div>
             </div>
           </div>
