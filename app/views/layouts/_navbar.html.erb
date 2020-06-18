@@ -32,15 +32,30 @@
           <%= link_to root_path, class: "nav-item nav-link #{is_nav_link_active("home", "index")}" do %>
             Accueil <%= raw is_nav_link_current("home", "index") %>
           <% end %>
+        </li>
 
-          <%= link_to new_user_registration_path, class: "nav-item nav-link #{is_nav_link_active("registrations", "new")}" do %>
+        <li class="nav-item nav-link active">
+        <%= link_to new_user_registration_path, class: "nav-item nav-link #{is_nav_link_active("registrations", "new")}" do %>
             Inscription <%= raw is_nav_link_current("registrations", "new") %>
           <% end %>
+        </li>
 
-          <%= link_to new_user_session_path, class: "nav-item nav-link #{is_nav_link_active("sessions", "new")}" do %>
+        <li class="nav-item nav-link active">
+        <%= link_to new_user_session_path, class: "nav-item nav-link #{is_nav_link_active("sessions", "new")}" do %>
             Connexion <%= raw is_nav_link_current("sessions", "new") %>
           <% end %>
+        </li>
+
+
       <% end %>
+    </div>
+    <div class="navbar-nav ml-auto">
+      <li class="nav-item nav-link active mr-auto">
+        <%= link_to home_path(1), class: "nav-item nav-link #{is_nav_link_active("home", "show")} " do %>
+          Qui sommes-nous?  <%= raw is_nav_link_current("home", "show") %>
+        <% end %>
+      </li>
     </div>
   </div>
 </nav>
+
