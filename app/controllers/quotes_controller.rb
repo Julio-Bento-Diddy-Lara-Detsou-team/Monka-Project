@@ -1,5 +1,6 @@
 class QuotesController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :set_quote, only: [:show, :edit, :update, :destroy]
   before_action :user_data_is_filled?, only: [:new]
   before_action :client_exist?, only: [:new]
