@@ -3,6 +3,7 @@ class QuotesController < ApplicationController
   before_action :set_quote, only: [:show, :edit, :update, :destroy]
   before_action :client_exist?, only: [:new]
   before_action :good_exist?, only: [:new]
+  before_action :user_data_is_filled?, only: [:new]
 
   def index
     @quote_table = current_user.quotes.all
@@ -187,6 +188,13 @@ class QuotesController < ApplicationController
   def good_exist?
     if current_user.goods.empty?
       flash[:error] = "Vous devez obligatoirement créer un produit / service afin de pouvoir éditer un devis ou facturer"
+      redirect_to quotes_url
+    end
+  end
+
+  def user_data_is_filled?
+    if current_user.first_name.present? || current_user.last_name.present? ||current_user.address.present? ||current_user.zip_code.present? ||current_user.city.present? || current_user.country.present? ||current_user.company_id.present? || current_user.phone_number.present?
+      flash[:error] = "Vous devez obligatoirement remplir votre profil afin de pouvoir éditer un devis ou facturer"
       redirect_to quotes_url
     end
   end
