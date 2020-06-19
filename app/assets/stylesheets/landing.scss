@@ -45,8 +45,29 @@ body {
 
 .landing{
   border: 1px solid #e7e7fc;
+  width:75%;
+  display: flex;
+  justify-content: space-around;
 }
 
 .blue-light{
   color: #e7e7fc;
+}
+
+.card {
+  color: var(--grey-color)!important;
+  background-color: #e7e7fc!important;
+}
+
+.card1 {
+  color: #e7e7fc!important;
+  background-color: var(--grey-color)!important;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.card1:hover {
+  transform: scale(1.1);
 }
