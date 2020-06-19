@@ -52,8 +52,8 @@
               <td class="text-center"><%= good.quantity %></td>
               <td class="text-center"><%= number_to_currency(good.price, :locale => :fr) %></td>
               <td class="text-center"><%= link_to good, class: "btn btn-primary" do %><i class="fa fa-eye"></i><% end %></td>
-              <td class="text-center"><%= link_to edit_good_path(good), class: "btn btn-info" do %>Editer<% end %></td>
-              <td class="text-center"><%= link_to good, method: :delete, class:"btn btn-danger", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %>Supprimer<% end %></td>
+              <td class="text-center"><%= link_to edit_good_path(good), class: "btn btn-primary" do %>Editer<% end %></td>
+              <td class="text-center"><%= link_to good, method: :delete, class:"btn btn-danger text-white", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %>Supprimer<% end %></td>
             </tr>
           <% end %>
           </tbody>
