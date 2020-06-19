@@ -1,27 +1,41 @@
 <div class="row justify-content-center">
-  <h2>Changer mon mot de passe</h2>
 
-  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-    <%= f.hidden_field :reset_password_token %>
-
-    <div class="field">
-      <%= f.label :password, "nouveau mot de passe" %><br />
-      <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-      <% end %>
-      <%= f.password_field :password, autofocus: true, autocomplete: "nouveau mot de passe" %>
+  <div class="layout-login-centered-boxed__form card">
+    <div class="d-flex flex-column justify-content-center align-items-center mt-2 mb-5 navbar-light">
+      <h2>Changer mon mot de passe</h2>
     </div>
 
-    <div class="field">
-      <%= f.label :password_confirmation, "Confirmer le nouveau mot de passe" %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <%= f.hidden_field :reset_password_token %>
+      <div class="form-group">
+        <div class="col-lg-8 card-form__body card-body my-5">
+
+          <div class="field">
+            <%= f.label :password, "Nouveau mot de passe" %><br />
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> caractères minimum)</em><br />
+            <% end %>
+            <%= f.password_field :password, autofocus: true, autocomplete: "nouveau mot de passe" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-lg-8 card-form__body card-body my-5">
+            <div class="field">
+              <%= f.label :password_confirmation, "Confirmer le nouveau mot de passe" %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "off" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit "Je valide ", class:"btn btn-block btn-primary" %>
+        </div>
+    <% end %>
     </div>
 
-    <div class="actions">
-      <%= f.submit "Je valide " %>
-    </div>
-  <% end %>
+    <%= render "devise/shared/links" %>
+  </div>
 
-  <%= render "devise/shared/links" %>
 </div>
