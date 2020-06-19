@@ -1,21 +1,12 @@
 
 .jumbotron-hero {
-  height: 700px;
+  height: 100%;
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
   background-image: url("jumbotron.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-}
-
-.backgound-wavy {
-  height: 700px;
-  background-image: url("wave2.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  opacity: 50%;
+  margin-bottom: 15px;
 }
 
 
@@ -28,27 +19,82 @@
   box-shadow: #2E2F30;
   box-sizing: border-box;
   width: 200px;
+  border-radius:30px;
 }
 
 .btn-jumbo:hover {
   color: rgba(255, 255, 255, 0.54);
+  transform: scale(1.1);
 }
 
 .btn-jumbo2{
   background-color: var(--primary-color);
   color: #FFFFFF;
-  box-shadow: aliceblue;
   font-size: 18px;
-  font-width: bold;
+  font-weight: bold;
   width: 200px;
+  border-radius:30px;
 }
 
 .btn-jumbo2:hover {
   color: #FFFFFF;
   background-color: #12ccab !important;
+  transform: scale(1.1);
+}
+
+.btn-jumbo3{
+  background-color: var(--grey-color)!important;
+  color: #FFFFFF;
+  font-size: 18px;
+  font-width: bold;
+  box-sizing: border-box;
+  width: 200px;
+  border-radius:30px;
+}
+
+.btn-jumbo3:hover {
+  color: #FFFFFF;
+  background-color: var(--primary-color)!important;
+  transform: scale(1.1);
+}
+
+.btn-jumbo4{
+  background-color: var(--grey-color);
+  color: #e7e7fc;
+  font-size: 18px;
+  font-width: bold;
+  box-sizing: border-box;
+  width: 200px;
+  border-radius:30px;
+}
+
+.btn-jumbo4:hover {
+  color: var(--grey-color);
+  background-color: #e7e7fc;
+  transform: scale(1.1);
+}
+
+.btn-jumbo5:hover {
+  color: #e7e7fc;
+  background-color: var(--grey-color)!important;
+  transform: scale(1.1);
+}
+.btn-jumbo5{
+  background-color: #e7e7fc;
+  color: var(--grey-color);
+  font-size: 18px;
+  font-width: bold;
+  box-sizing: border-box;
+  width: 200px;
+  border-radius:30px;
 }
 
 /*Jumbotron*/
+
 .jumbo-text{
   color: #FFFFFF;
+}
+
+.blue-darken{
+  color :#b6b6fa;
 }
