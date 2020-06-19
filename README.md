@@ -16,6 +16,7 @@ Sign in with :
 
 ### Preview Admin Acount
 
+For the Admin dashboard : https://monka-project.herokuapp.com/admin/login
 - **login :** admin@example.com
 - **password :** password
 
@@ -44,7 +45,7 @@ We want to be your business buddy and help you to focus on your activity. We’l
 Monka is an app for cunning freelancers who want to go “straight to the point! Our stance: “basic needs, quick digits”! Monka empowers you through a succinct, structured and above all SIMPLE analysis of crucial business insights. You’ll quickly know your turnover, your sales limit before taxes, your performances, your best clients, your quotes and invoices. No need to be in front of a desk nor having specific accountant skills!
 
 ## Why Monka ? Where does it come from ?
-Monka comes from the French “Mon CA”. “CA” being short for “Chiffre d’Affaire”, which is the equivalent of “Turnover”. The name itself is very revealing as you probably noticed, and above all, aligned with our brand values: “simple and straight to the point”.
+Monka comes from the French “Mon CA”. “CA” being short for “Chiffre d’Affaires”, which is the equivalent of “Turnover”. The name itself is very revealing as you probably noticed, and above all, aligned with our brand values: “simple and straight to the point”.
 
 ## Main benefits
 

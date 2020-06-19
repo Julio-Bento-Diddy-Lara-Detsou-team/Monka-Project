@@ -8,8 +8,8 @@ class QuotesController < ApplicationController
   def index
     @quote_table = current_user.quotes.all
     @quotes = current_user.quotes.where(is_invoice: false)
-    @invoices = current_user.quotes.where(is_invoice: true , is_paid: false)
-    @paid_invoices = current_user.quotes.where(is_paid: true)
+    @unpaid_invoices = current_user.quotes.where(is_invoice: true, is_paid: false)
+    @paid_invoices = current_user.quotes.where(is_invoice: true, is_paid: true)
   end
 
   def show
