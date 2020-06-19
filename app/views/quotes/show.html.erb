@@ -46,6 +46,15 @@
               <div class="h2 mt-3">
                 <strong class="text-body"><% if @quote.is_invoice %>Facture<% else %>Devis<% end %></strong>
               </div>
+              <% if @quote.is_invoice === true %>
+                <div>
+                  <% if @quote.is_paid === false %>
+                    <span class="badge badge-danger">Non payée</span>
+                  <% else %>
+                    <span class="badge badge-success">Payée</span>
+                  <% end %>
+                </div>
+              <% end %>
             </div>
             <div class="row mb-5">
               <div class="col-lg">
