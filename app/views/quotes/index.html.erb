@@ -86,7 +86,7 @@
           </tr>
           </thead>
           <tbody class="list" id="blah">
-          <% @invoices.order(invoice_sending_date: :asc).each do |invoice| %>
+          <% @unpaid_invoices.order(invoice_sending_date: :asc).each do |invoice| %>
             <tr id="<%= invoice.id %>">
               <td>
                 <%= link_to quote_path(invoice.id) do %>
