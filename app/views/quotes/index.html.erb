@@ -57,12 +57,12 @@
               </td>
               <td class="text-center">
                 <%= link_to quote_path(quote.id), class:"btn btn-primary btn-sm" do %>
-                  Voir
+                  <i class="fa fa-eye"></i>
                 <% end %>
               </td>
               <td class="text-center">
                 <%= link_to quote, method: :delete, class: "btn btn-danger text-white btn-sm", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %>
-                  Supprimer
+                  <i class="fa fa-times"></i>
                 <% end %>
               </td>
             </tr>
@@ -76,7 +76,6 @@
       <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
         <h3 class="text-dark-gray d-flex align-items-center mt-3 font-weight-bold">Mes factures &nbsp<span class="text-danger">non payées</span></h3>
         <table class="table mb-0 thead-border-top-0">
-          <!--          ++++++++-->
           <thead>
           <tr>
             <th>Numéro de la facture</th>
@@ -104,12 +103,12 @@
               </td>
               <td class="text-center">
                 <%= link_to quote_path(invoice.id), class:"btn btn-primary btn-sm" do %>
-                  Voir
+                  <i class="fa fa-eye"></i>
                 <% end %>
               </td>
               <td class="text-center">
                 <%= link_to invoice, method: :delete, class: "btn btn-danger text-white btn-sm", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %>
-                  Supprimer
+                  <i class="fa fa-times"></i>
                 <% end %>
               </td>
             </tr>
@@ -151,12 +150,12 @@
                   </td>
                   <td class="text-center">
                     <%= link_to quote_path(invoice.id), class:"btn btn-primary btn-sm" do %>
-                      Voir
+                      <i class="fa fa-eye"></i>
                     <% end %>
                   </td>
                   <td class="text-center">
                     <%= link_to invoice, method: :delete, class: "btn btn-danger text-white btn-sm", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %>
-                      Supprimer
+                      <i class="fa fa-times"></i>
                     <% end %>
                   </td>
                 </tr>
