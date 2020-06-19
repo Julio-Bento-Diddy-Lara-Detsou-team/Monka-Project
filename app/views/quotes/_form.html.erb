@@ -43,7 +43,7 @@
                             current_user.customers.order(:last_name).collect{ |u| [u.fullname, u.id] },
                             current_customer
                         ),
-                        class: "form-control"
+                        {}, class: "form-control"
         %>
       </div>
 
@@ -84,7 +84,7 @@
                           current_user.goods.order(:title).collect{ |u| ["#{u.title} #{u.price}€", u.id] },
                           quote.goods.map {|good| good.id}
                       ),
-                      { :multiple => true, :size => 5, class: "form-control"}
+                      {}, { :multiple => true, :size => 5, class: "form-control"}
       %>
     </div>
     <hr/>

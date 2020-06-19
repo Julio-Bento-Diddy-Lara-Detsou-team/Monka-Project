@@ -21,9 +21,6 @@ class GoodsController < ApplicationController
     @good = Good.new(good_params)
     @good.user_id = current_user.id
 
-    # Get the selected quote by its id
-    quote = Quote.first
-
     # Insert the created good into the list of goods related to the quote
     quote.goods << @good
 
