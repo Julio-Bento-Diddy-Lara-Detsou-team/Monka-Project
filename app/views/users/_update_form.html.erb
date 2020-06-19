@@ -1,35 +1,48 @@
-<%= form_with(model: user, local: true, method: :put) do |update| %>
+<%= form_with(model: user, local: true, method: :put) do |form| %>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= form.label :first_name, "Prénom" %>
+      <%= form.text_field :first_name, class: "form-control", autofocus: true %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= form.label :last_name, "Nom" %>
+      <%= form.text_field :last_name, class: "form-control" %>
+    </div>
+  </div>
+
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= form.label :company_name, "Nom de l'entreprise" %>
+      <%= form.text_field :company_name, class:"form-control", placeholder:"Nom de l'entreprise" %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= form.label :company_id, "N° de SIRET" %>
+      <%= form.text_field :company_id, class:"form-control", placeholder:"N° de SIRET" %>
+    </div>
+  </div>
+
 
   <div class="form-group">
-    <%= update.text_field :first_name, class:"form-control", placeholder:"Prénom" %>
+    <%= form.label :address, "Adresse" %>
+    <%= form.text_field :address, class:"form-control", placeholder:"Adresse" %>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= form.label :zip_code, "Code postal" %>
+      <%= form.text_field :zip_code, class:"form-control", placeholder:"Code postal" %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= form.label :city, "Ville" %>
+      <%= form.text_field :city, class:"form-control", placeholder:"Ville" %>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= update.text_field :last_name, class:"form-control", placeholder:"Nom" %>
-  </div>
-
-  <div class="form-group">
-    <%= update.text_field :company_name, class:"form-control", placeholder:"Nom de l'entreprise" %>
-  </div>
-
-  <div class="form-group">
-    <%= update.text_area :address, class:"form-control", placeholder:"Adresse" %>
-  </div>
-
-  <div class="form-group">
-    <%= update.text_field :zip_code, class:"form-control", placeholder:"Code postal" %>
-  </div>
-
-  <div class="form-group">
-    <%= update.text_field :city, class:"form-control", placeholder:"Ville" %>
-  </div>
-
-  <div class="form-group">
-    <%= update.text_field :phone_number, class:"form-control", placeholder:"N° de téléphone" %>
-  </div>
-
-  <div class="form-group">
-    <%= update.text_field :company_id, class:"form-control", placeholder:"N° de SIRET" %>
+    <%= form.label :address, "N° de téléphone" %>
+    <%= form.text_field :phone_number, class:"form-control", placeholder:"N° de téléphone" %>
   </div>
 
   <div class="actions text-center">

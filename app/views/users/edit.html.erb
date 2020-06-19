@@ -1,8 +1,19 @@
-<br class="container">
-<div class="row justify-content-center">
-  <div class="col-6">
-    <h1 class="display-4-selection text-center">Editez votre profil</h1>
+<div class="container-fluid page__heading-container">
+  <div class="page__heading d-flex align-items-center">
+    <div class="flex">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><%= link_to "Accueil", root_path %></li>
+          <li class="breadcrumb-item"><%= link_to "Mon profil", user_path, class: "active"%></li>
+        </ol>
+      </nav>
+      <h1 class="mt-3">Editez votre profil</h1>
+    </div>
+  </div>
+</div>
 
+<div class="container-fluid page__container">
+  <div class="row justify-content-lg-center">
     <%= render 'update_form', user: @user %>
   </div>
 </div>
