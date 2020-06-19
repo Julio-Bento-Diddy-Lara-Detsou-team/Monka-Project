@@ -180,21 +180,21 @@ class QuotesController < ApplicationController
 
   def client_exist?
     if current_user.customers.empty?
-      flash[:error] = "Vous devez obligatoirement créer un client afin de pouvoir éditer un devis ou facturer"
+      flash[:error] = "Vous devez obligatoirement avoir au moins un client afin de pouvoir modifier un devis ou facturer"
       redirect_to quotes_url
     end
   end
 
   def good_exist?
     if current_user.goods.empty?
-      flash[:error] = "Vous devez obligatoirement créer un produit / service afin de pouvoir éditer un devis ou facturer"
+      flash[:error] = "Vous devez obligatoirement avoir au moins un produit / service afin de pouvoir modifier un devis ou facturer"
       redirect_to quotes_url
     end
   end
 
   def user_data_is_filled?
-    if current_user.first_name.present? || current_user.last_name.present? ||current_user.address.present? ||current_user.zip_code.present? ||current_user.city.present? || current_user.country.present? ||current_user.company_id.present? || current_user.phone_number.present?
-      flash[:error] = "Vous devez obligatoirement remplir votre profil afin de pouvoir éditer un devis ou facturer"
+    if current_user.first_name.present? || current_user.last_name.present? || current_user.address.present? || current_user.zip_code.present? || current_user.city.present? || current_user.country.present? || current_user.company_id.present? || current_user.phone_number.present?
+      flash[:error] = "Vous devez obligatoirement avoir rempli votre profil afin de pouvoir modifier un devis ou facturer"
       redirect_to quotes_url
     end
   end
