@@ -1,20 +1,13 @@
 <div class="container-fluid page__heading-container">
   <div class="page__heading d-flex align-items-center">
-
     <div class="flex">
-      <!-- Breadcrumb-->
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
-          <li class="breadcrumb-item"><%= link_to root_path do %><i class="material-icons icon-20pt">home</i><% end %></li>
-          <li class="breadcrumb-item active" aria-current="page">Liste de mes clients</li>
+          <li class="breadcrumb-item"><%= link_to "Accueil", root_path %></li>
+          <li class="breadcrumb-item"><%= link_to "Mes clients", customers_path, class: "active"%></li>
         </ol>
       </nav>
-      <!-- Page Title -->
-      <h1 class="mt-3">Editer le client</h1>
-    </div>
-    <!-- Button "Back to customer index" -->
-    <div class="nav justify-content-end">
-      <%= link_to customers_path, class: "btn btn-secondary" do %><i class="fa fa-arrow-left"></i> Retour<% end %>
+      <h1 class="mt-3">Modification du client</h1>
     </div>
   </div>
 </div>

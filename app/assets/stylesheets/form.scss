@@ -18,3 +18,14 @@
 .select2-selection {
   overflow: auto
 }
+
+.zipcode {
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: rgba(147, 159, 173, 0.84);
+  line-height: .9375rem;
+  margin-bottom: .5rem;
+  font-weight: bold;
+  white-space: nowrap !important;
+}
