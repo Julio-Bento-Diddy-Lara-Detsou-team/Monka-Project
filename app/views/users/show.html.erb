@@ -35,7 +35,7 @@
               </div>
             <% end %>
 
-            <p class="text-left"><span class="text-muted">Nom : </span><%= @user.first_name %> <%= @user.last_name.upcase %></p>
+            <p class="text-left"><span class="text-muted">Nom : </span><%= @user.first_name %> <span style="text-transform: uppercase;"><%= @user.last_name %></span></p>
             <p class="text-left"><span class="text-muted">Email : </span><%= @user.email %></p>
             <p class="text-left"><span class="text-muted">Téléphone : </span><%= @user.phone_number %></p>
             <p class="text-left"><span class="text-muted">Entreprise : </span> <%= @user.company_name %></p>
