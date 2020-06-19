@@ -16,41 +16,40 @@
   <div class="card card-form my-5">
     <div class="row no-gutters">
       <!-- Display user's logo -->
-      <div class="col card-form__body card-body my-5">
-        <div class="row justify-content-center my-1">
-          <% if @user.logo.attached? %>
-            <%= image_tag @user.logo, alt: 'logo', width: '100' %>
-          <%end%>
-
-          <!-- Update logo form -->
-            <%= form_tag user_logo_index_path(@user), multipart: true do %>
-            <div class="justify-content-center">
-              <%= file_field_tag :logo %>
-            </div>
-            <div class="justify-content-center">
-              <%= submit_tag "Mettre à jour", class: "btn btn-outline-secondary" %>
-            </div>
-            <% end %>
-        </div>
-
+      <div class="col card-form__body card-body my-4">
         <div class="row justify-content-center">
-          <div class="col-6">
-            <p><span class="text-muted">Nom : </span><%= @user.first_name %> <%= @user.last_name.upcase %></p>
-            <p><span class="text-muted">Email : </span><%= @user.email %></p>
-            <p><span class="text-muted">Téléphone : </span><%= @user.phone_number %></p>
-            <p><span class="text-muted">Entreprise : </span> <%= @user.company_name %></p>
-            <p><span class="text-muted">Siret / Siren : </span><%= @user.company_id %></p>
-            <p><span class="text-muted">Adresse : </span><br/><%= @user.address %> <%= @user.zip_code %> <%= @user.city %> <%= @user.country.upcase %></p>
+          <div class="text-center">
+            <div class="mt-2 text-center">
+              <% if @user.logo.attached? %>
+                <%= image_tag @user.logo, alt: 'logo', width: '100' %>
+              <%end%>
+            </div>
+
+            <!-- Update logo form -->
+            <%= form_tag user_logo_index_path(@user), multipart: true do %>
+              <div class="mt-2 text-center">
+                <%= file_field_tag :logo, class: "btn btn-outline-secondary" %>
+              </div>
+              <div class="mt-2 mb-5 text-center">
+                <%= submit_tag "Valider", class: "btn btn-outline-secondary" %>
+              </div>
+            <% end %>
+
+            <p class="text-left"><span class="text-muted">Nom : </span><%= @user.first_name %> <%= @user.last_name.upcase %></p>
+            <p class="text-left"><span class="text-muted">Email : </span><%= @user.email %></p>
+            <p class="text-left"><span class="text-muted">Téléphone : </span><%= @user.phone_number %></p>
+            <p class="text-left"><span class="text-muted">Entreprise : </span> <%= @user.company_name %></p>
+            <p class="text-left"><span class="text-muted">Siret / Siren : </span><%= @user.company_id %></p>
+            <p class="text-muted text-left mb-2">Adresse : </p><p class="text-left"><%= @user.address %> <%= @user.zip_code %> <%= @user.city %> <%= @user.country.upcase %></p>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-<div class="text-center">
-  <%= link_to "Editer mon profil", edit_user_path(current_user), class: "btn btn-jumbo2 mr-5 p-3 my-5" %>
-  <%= link_to "Changer de mot de passe", edit_user_registration_path, class:"btn btn-jumbo2 mr-5 p-3 my-5" %>
-  <%= link_to 'Retour Accueil', root_path, class:"btn btn-jumbo p-3 my-5" %>
-  <br><br><br>
+  <div class="row justify-content-center mb-5 mt-3">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-6"><%= link_to 'Mes informations', edit_user_path(current_user), class: "btn btn-primary text-nowrap my-2" %></div>
+      <div class="col-lg-6"><%= link_to 'Mon compte', edit_user_registration_path, class: "btn btn-outline-danger my-2" %></div>
+    </div>
+  </div>
 </div>
