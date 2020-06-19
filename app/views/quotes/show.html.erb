@@ -17,16 +17,20 @@
     <% if @quote.is_invoice === false %>
       <%= link_to quote_path(@quote.id, convert_to_invoice: true), method: "put", class: "btn btn-outline-secondary mr-3" do %>
         <i class="material-icons">arrow_forward</i> Transformer en Facture
-      <%end %>
+      <% end %>
+    <% end %>
+    <% if @quote.is_invoice === true && @quote.is_paid === false %>
+      <%= link_to quote_path(@quote.id, mark_as_paid: true), method: "put", class: "btn btn-outline-secondary mr-3" do %>
+        <i class="material-icons">done</i> Marquer comme payée
+      <% end %>
     <% end %>
 
     <%= link_to "Envoyer par mail", { :controller => "quotes", :action => "payment_send", :id => @quote.id }, class:"btn btn-outline-secondary" %>
 
     <!--Button link to PDF-->
-
     <%= link_to quote_path(@quote, format: "pdf"), class:"btn btn-outline-secondary ml-3" do %>
       Télécharger <i class='material-icons'>file_download</i>
-      <% end %>
+    <% end %>
   </div>
   <div class="row">
     <div class="col-md-8 offset-md-2">
@@ -42,6 +46,15 @@
               <div class="h2 mt-3">
                 <strong class="text-body"><% if @quote.is_invoice %>Facture<% else %>Devis<% end %></strong>
               </div>
+              <% if @quote.is_invoice === true %>
+                <div>
+                  <% if @quote.is_paid === false %>
+                    <span class="badge badge-danger">Non payée</span>
+                  <% else %>
+                    <span class="badge badge-success">Payée</span>
+                  <% end %>
+                </div>
+              <% end %>
             </div>
             <div class="row mb-5">
               <div class="col-lg">
