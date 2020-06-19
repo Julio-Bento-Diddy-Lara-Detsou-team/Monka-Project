@@ -1,9 +1,9 @@
 class QuotesController < ApplicationController
 
   before_action :set_quote, only: [:show, :edit, :update, :destroy]
+  before_action :user_data_is_filled?, only: [:new]
   before_action :client_exist?, only: [:new]
   before_action :good_exist?, only: [:new]
-  before_action :user_data_is_filled?, only: [:new]
 
   def index
     @quote_table = current_user.quotes.all
