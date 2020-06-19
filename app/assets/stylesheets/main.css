@@ -10,6 +10,10 @@ body {
 main {
     display: flex;
     flex: 1;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 footer {
@@ -34,9 +38,9 @@ footer {
 }
 
 :root {
-    --primary-color: #16e5c0;
+    --primary-color: rgba(72, 241, 214, 0.91);
     --secondary-color: #AAE9E2;
-    --grey-color: #2F3240;
+    --grey-color: #2f3240;
 }
 
 .bg-dark {
