@@ -23,6 +23,8 @@ class ChargesController < ApplicationController
             currency: 'EUR'
         })
 
+    @quote.update!(is_paid: true)
+
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_quote_charge_path

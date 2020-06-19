@@ -51,6 +51,8 @@ class QuotesController < ApplicationController
   def update
     if params[:convert_to_invoice] === "true" && @quote.is_invoice === false
       convert_quote_to_invoice(@quote)
+    elsif params[:mark_as_paid] === "true" && @quote.is_invoice === true && @quote.is_paid === false
+      mark_as_paid(@quote)
     else
       # Update the Quote object on wether it is a quote or an invoice
       @quote = save_quote_in_db(@quote)
@@ -117,6 +119,9 @@ class QuotesController < ApplicationController
     # TODO : Code a bonus feature allowing to add a discount to a quote
     quote.discount = 0
 
+    # A new quote is always mark as unpaid
+    quote.is_paid = false
+
     # Allocate a quote_number or an invoice_invoice depending on user's choice
     quote_or_invoice_number = "#{quote.customer.first_name[0]}#{quote.customer.last_name[0]}#{DateTime.now.strftime("%d%m%Y%H%M")}"
 
@@ -157,11 +162,18 @@ class QuotesController < ApplicationController
   def convert_quote_to_invoice(quote)
     quote.update(
         is_invoice: true,
+        is_paid: false,
         invoice_number: "#{quote.customer.first_name[0]}#{quote.customer.last_name[0]}#{DateTime.now.strftime("%d%m%Y%H%M")}",
         invoice_sending_date: DateTime.now
     )
 
     flash[:success] = "Le devis a été transformé en facture."
+    redirect_back(fallback_location: quotes_path)
+  end
+
+  def mark_as_paid(quote)
+    quote.update(is_paid: true)
+    flash[:success] = "Le devis a bien été marqué comme payé."
     redirect_back(fallback_location: quotes_path)
   end
 
