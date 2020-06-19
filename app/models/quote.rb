@@ -5,6 +5,5 @@ class Quote < ApplicationRecord
   has_many :goods, through: :join_goods_quotes_tables
   accepts_nested_attributes_for :goods
 
-  validates :amount,
-            presence: true
+  validates :amount, presence: true
 end

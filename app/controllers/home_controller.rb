@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-
   def index
     @invoices = Quote.all
 
@@ -10,6 +9,5 @@ class HomeController < ApplicationController
   end
 
   def show
-
   end
 end

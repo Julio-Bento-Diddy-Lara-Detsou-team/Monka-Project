@@ -12,5 +12,4 @@ ActiveAdmin.register Customer do
                 :phone_number,
                 :user_id,
                 :city
-
 end

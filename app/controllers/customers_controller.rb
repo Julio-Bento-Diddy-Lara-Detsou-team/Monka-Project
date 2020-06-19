@@ -1,5 +1,4 @@
 class CustomersController < ApplicationController
-
   before_action :authenticate_user!
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
   after_action :customer_to_current_user, only: [:create]
@@ -23,7 +22,10 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to @customer, notice: 'Le client a été créé avec succès.' }
+        format.html {
+          redirect_to @customer
+          flash[:success] = 'Le client a été créé avec succès.'
+        }
       else
         format.html { render :new }
       end
@@ -33,7 +35,9 @@ class CustomersController < ApplicationController
   def update
     respond_to do |format|
       if @customer.update(customer_params)
-        format.html { redirect_to @customer, notice: 'Le client a été mis à jour avec succès.' }
+        format.html { redirect_to @customer
+        flash[:success] = 'Le client a été mis à jour avec succès.'
+        }
       else
         format.html { render :edit }
       end
@@ -42,8 +46,12 @@ class CustomersController < ApplicationController
 
   def destroy
     @customer.destroy
+
     respond_to do |format|
-      format.html { redirect_to customers_url, notice: 'Le client a été supprimé avec succès.' }
+      format.html {
+        redirect_to customers_url
+        flash[:success] = 'Le client a été supprimé avec succès.'
+      }
       format.js {}
     end
   end

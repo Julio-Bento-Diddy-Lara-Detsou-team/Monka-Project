@@ -1,5 +1,4 @@
 class GoodsController < ApplicationController
-
   before_action :authenticate_user!
   before_action :set_good, only: [:show, :edit, :update, :destroy]
 
@@ -23,7 +22,6 @@ class GoodsController < ApplicationController
     @good.user_id = current_user.id
 
     # Get the selected quote by its id
-    # quote = Quote.find(params[:quote_id])
     quote = Quote.first
 
     # Insert the created good into the list of goods related to the quote

@@ -1,5 +1,4 @@
 class QuotesController < ApplicationController
-
   before_action :authenticate_user!
   before_action :set_quote, only: [:show, :edit, :update, :destroy]
   before_action :user_data_is_filled?, only: [:new]
@@ -21,7 +20,8 @@ class QuotesController < ApplicationController
       format.html
       format.pdf do
         pdf = QuotePdf.new(@quote, @user, view_context)
-        send_data pdf.render, filename: "Doc_#{@quote.quote_number}.pdf",
+        send_data pdf.render,
+                  filename: "Doc_#{@quote.quote_number}.pdf",
                   type: "application/pdf",
                   disposition: "inline"
       end
@@ -30,7 +30,6 @@ class QuotesController < ApplicationController
 
   def new
     @quote = Quote.new
-    @quote.goods.build
   end
 
   def edit
