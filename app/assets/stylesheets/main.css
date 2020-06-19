@@ -83,6 +83,10 @@ footer {
     color: var(--primary-color) !important;
 }
 
+a:hover {
+    text-decoration: none !important;
+}
+
 /* Small and large containers. */
 @media (min-width: 768px) {
     .container-small {
