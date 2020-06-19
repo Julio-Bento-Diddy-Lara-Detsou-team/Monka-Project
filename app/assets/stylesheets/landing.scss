@@ -37,6 +37,11 @@ body {
 }
 
 
+.circle-blue {
+  border: solid 1px #b6b6fa;
+}
+
+
 .card-img-top {
   object-fit: cover;
   height:15rem;
@@ -71,3 +76,4 @@ body {
 .card1:hover {
   transform: scale(1.1);
 }
+
