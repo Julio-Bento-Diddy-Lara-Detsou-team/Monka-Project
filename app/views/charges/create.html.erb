@@ -1,1 +1,10 @@
-<h2>Thanks, you paid <%= number_to_currency(@quote.amount, locale: :fr) %> !</h2>
+<h1 class="text-center my-5">Merci pour votre paiement !</h1>
+<p class="lead text-center">Vous venez de régler un montant de  <%= number_to_currency(@quote.amount, locale: :fr) %></p>
+
+<%= image_tag 'undraw_a_whole_year_vnfm.svg', size: "300", class: "row justify-content-center mx-auto" %>
+
+<p class="lead text-center">Ce paiement a été rendu possible grâce à Monka, l'appli de facturation n°1 de l'auto-entrepreneur !</p>
+
+<div class="row justify-content-center mb-5">
+  <%= link_to "On ne se connait pas encore ? Cliquez-ici pour nous rendre visite !", root_path, class: "btn btn-primary btn-lg p-3" %>
+</div>
