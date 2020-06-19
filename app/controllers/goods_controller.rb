@@ -21,9 +21,6 @@ class GoodsController < ApplicationController
     @good = Good.new(good_params)
     @good.user_id = current_user.id
 
-    # Insert the created good into the list of goods related to the quote
-    quote.goods << @good
-
     respond_to do |format|
       if @good.save
         format.html {
