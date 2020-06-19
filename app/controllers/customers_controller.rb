@@ -35,8 +35,9 @@ class CustomersController < ApplicationController
   def update
     respond_to do |format|
       if @customer.update(customer_params)
-        format.html { redirect_to @customer
-        flash[:success] = 'Le client a été mis à jour avec succès.'
+        format.html {
+          redirect_to @customer
+          flash[:success] = 'Le client a été mis à jour avec succès.'
         }
       else
         format.html { render :edit }
