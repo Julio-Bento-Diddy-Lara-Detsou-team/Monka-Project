@@ -108,24 +108,30 @@
               <h3 class="text-white text-right mr-4 py-3">Total : <%= number_to_currency(calculate_total_quote(@goods), :locale => :fr) %></h3>
             </div>
             <!--Terms and conditions ---------->
-            <div class="text-label mt-4">Termes et conditions</div>
-            <p class="text-muted small mx-3 text-justify">
-              Les sommes étant arrondies, le total des sommes unitaires peut différer du montant total prélevé.
-              Sans escompte.
-              En cas de retard de paiement, application d’un taux égal à trois fois le taux d’intérêt et légal calculé sur le montant des sommes dues TTC à compter du 1er jour de retard suivant la date de paiement portée sur la facture et comprenant un minimum de perception de 7.50€, et pour les professionnels, application d’une indemnité forfaitaire pour frais de recouvrement de 40€.
-            </p>
-          </div>
-        </div>
-      </div>
+            <%if @quote.is_invoice == true %>
+              <div class="text-label mt-4">Termes et conditions</div>
+              <p class="text-muted small mx-3 text-justify">
+                Les sommes étant arrondies, le total des sommes unitaires peut différer du montant total prélevé.
+                Sans escompte.
+                En cas de retard de paiement, application d’un taux égal à trois fois le taux d’intérêt et légal calculé sur le montant des sommes dues TTC à compter du 1er jour de retard suivant la date de paiement portée sur la facture et comprenant un minimum de perception de 7.50€, et pour les professionnels, application d’une indemnité forfaitaire pour frais de recouvrement de 40€.
+              </p>
+              </div>
+            <% else %>
+              <div class="text-label mt-4">Termes et conditions</div>
+              <p class="text-muted small mx-3 text-justify">
+                Ce devis est valable 30 jours à compté de sa réception.
+              </p>
+              </div>
+            <% end %>
+            </div>
     </div>
   </div>
+</div>
 
-  <!-- Buttons action -->
-  <div class="row justify-content-center mb-5 mt-3">
-    <div class="row justify-content-center">
-      <div class="col-lg-6 px-0"><%= link_to 'Éditer', edit_quote_path(@quote), class: "btn btn-primary" %></div>
-      <div class="col-lg-6 px-0"><%= link_to 'Supprimer', quote_path(@quote), method: "delete", class: "btn btn-outline-danger" %></div>
-    </div>
+<!-- Buttons action -->
+<div class="row justify-content-center mb-5 mt-3">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 px-0"><%= link_to 'Éditer', edit_quote_path(@quote), class: "btn btn-primary" %></div>
+    <div class="col-lg-6 px-0"><%= link_to 'Supprimer', quote_path(@quote), method: "delete", class: "btn btn-outline-danger" %></div>
   </div>
-
 </div>
