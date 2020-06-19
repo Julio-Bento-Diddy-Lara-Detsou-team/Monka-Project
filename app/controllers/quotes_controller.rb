@@ -1,5 +1,6 @@
 class QuotesController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :set_quote, only: [:show, :edit, :update, :destroy]
   before_action :user_data_is_filled?, only: [:new]
   before_action :client_exist?, only: [:new]
@@ -8,7 +9,8 @@ class QuotesController < ApplicationController
   def index
     @quote_table = current_user.quotes.all
     @quotes = current_user.quotes.where(is_invoice: false)
-    @invoices = current_user.quotes.where(is_invoice: true)
+    @invoices = current_user.quotes.where(is_invoice: true , is_paid: false)
+    @paid_invoices = current_user.quotes.where(is_paid: true)
   end
 
   def show
@@ -193,7 +195,7 @@ class QuotesController < ApplicationController
   end
 
   def user_data_is_filled?
-    if current_user.first_name.present? || current_user.last_name.present? || current_user.address.present? || current_user.zip_code.present? || current_user.city.present? || current_user.country.present? || current_user.company_id.present? || current_user.phone_number.present?
+    unless current_user.first_name.present? && current_user.last_name.present? && current_user.address.present? && current_user.zip_code.present? && current_user.city.present? && current_user.country.present? && current_user.company_id.present? && current_user.phone_number.present?
       flash[:error] = "Vous devez obligatoirement avoir rempli votre profil afin de pouvoir modifier un devis ou facturer"
       redirect_to quotes_url
     end
