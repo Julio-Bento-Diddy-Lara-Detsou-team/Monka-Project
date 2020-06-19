@@ -10,10 +10,20 @@ body {
 main {
     display: flex;
     flex: 1;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 footer {
     color: #FFFFFF;
+}
+
+:root {
+    --primary-color: rgba(72, 241, 214, 0.91);
+    --secondary-color: #AAE9E2;
+    --grey-color: #2F3240;
 }
 
 .greenfoot {
@@ -31,12 +41,6 @@ footer {
 .greentitle {
     color: var(--primary-color) !important;
     font-weight: bold;
-}
-
-:root {
-    --primary-color: #16e5c0;
-    --secondary-color: #AAE9E2;
-    --grey-color: #2F3240;
 }
 
 .bg-dark {
@@ -58,7 +62,6 @@ footer {
     border-color: var(--primary-color) !important;
 }
 
-
 .active {
     color: var(--primary-color) !important;
 }
@@ -70,14 +73,37 @@ footer {
 
 .btn-secondary:hover {
     color: rgba(255, 255, 255, 0.54) !important;
+}
 
+.btn-outline-danger:hover {
+    color: white !important;
 }
 
 .text-success {
     color: var(--primary-color) !important;
 }
 
-.white-hr {
-    border-top: 1px solid white;
+/* Small and large containers. */
+@media (min-width: 768px) {
+    .container-small {
+        width: 300px;
+        margin: auto;
+    }
+}
+@media (min-width: 992px) {
+    .container-small {
+        width: 500px;
+        margin: auto;
+    }
+}
+@media (min-width: 1200px) {
+    .container-small {
+        width: 700px;
+        margin: auto;
+    }
 }
 
+.container-small {
+    max-width: 100%;
+    margin: auto;
+}

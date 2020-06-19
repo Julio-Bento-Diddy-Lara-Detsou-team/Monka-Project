@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  include ApplicationHelper
-
   before_action :authenticate_user!, only: [:show, :edit, :update]
 
   def show
@@ -13,6 +11,7 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
+
     @user.update(params.require(:user).permit(
         :first_name,
         :last_name,
@@ -20,9 +19,11 @@ class UsersController < ApplicationController
         :address,
         :zip_code,
         :phone_number,
-        :company_id
-        )
+        :company_id,
+        :country,
+        :city)
     )
+
     redirect_to user_path(@user)
   end
 end

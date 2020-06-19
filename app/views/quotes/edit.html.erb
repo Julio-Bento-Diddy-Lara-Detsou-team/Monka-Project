@@ -1,0 +1,18 @@
+<div class="container-fluid page__heading-container">
+  <div class="page__heading d-flex align-items-center">
+    <div class="flex">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><%= link_to "Accueil", root_path%></li>
+          <li class="breadcrumb-item"><%= link_to "Mes devis et factures", quotes_path, class: "active"%></li>
+        </ol>
+      </nav>
+      <h1 class="mt-3">Modification du document</h1>
+    </div>
+  </div>
+</div>
+
+<!-- Form -->
+<div class="container-small page__container">
+  <%= render 'form', quote: @quote %>
+</div>

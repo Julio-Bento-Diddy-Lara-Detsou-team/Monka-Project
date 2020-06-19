@@ -1,6 +1,4 @@
 class CustomersController < ApplicationController
-  include ApplicationHelper
-
   before_action :authenticate_user!
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
   after_action :customer_to_current_user, only: [:create]
@@ -24,11 +22,12 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to @customer, notice: 'Le client a été créé avec succès.' }
-        format.json { render :show, status: :created, location: @customer }
+        format.html {
+          redirect_to @customer
+          flash[:success] = 'Le client a été créé avec succès.'
+        }
       else
         format.html { render :new }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -36,20 +35,25 @@ class CustomersController < ApplicationController
   def update
     respond_to do |format|
       if @customer.update(customer_params)
-        format.html { redirect_to @customer, notice: 'Le client a été mis à jour avec succès.' }
-        format.json { render :show, status: :ok, location: @customer }
+        format.html {
+          redirect_to @customer
+          flash[:success] = 'Le client a été mis à jour avec succès.'
+        }
       else
         format.html { render :edit }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def destroy
     @customer.destroy
+
     respond_to do |format|
-      format.html { redirect_to customers_url, notice: 'Le client a été supprimé avec succès.' }
-      format.json { head :no_content }
+      format.html {
+        redirect_to customers_url
+        flash[:success] = 'Le client a été supprimé avec succès.'
+      }
+      format.js {}
     end
   end
 
@@ -70,12 +74,13 @@ class CustomersController < ApplicationController
         :is_professional,
         :address,
         :zip_code,
+        :city,
         :country,
         :phone_number,
         current_user)
   end
 
   def customer_to_current_user
-    @customer.update(user: current_user, country: params[:customer][:country])
+    @customer.update(user: current_user, country: "FRANCE")
   end
 end

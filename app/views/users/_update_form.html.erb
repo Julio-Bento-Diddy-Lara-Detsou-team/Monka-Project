@@ -21,6 +21,10 @@
   </div>
 
   <div class="form-group">
+    <%= update.text_field :city, class:"form-control", placeholder:"Ville" %>
+  </div>
+
+  <div class="form-group">
     <%= update.text_field :phone_number, class:"form-control", placeholder:"N° de téléphone" %>
   </div>
 
@@ -31,6 +35,5 @@
   <div class="actions text-center">
     <button type="submit" class="btn btn-primary">Envoyer</button>
     <%= link_to 'Retour', @user, class:"btn btn-secondary mx-5 my-5" %>
-
   </div>
 <% end %>

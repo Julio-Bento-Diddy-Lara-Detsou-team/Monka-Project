@@ -1,0 +1,14 @@
+// Place all the styles related to the charges controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.stripe-button-el {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.stripe-button-el span {
+  background: var(--grey-color) !important;
+  background-color: var(--grey-color) !important;
+  border-color: var(--grey-color) !important;
+}

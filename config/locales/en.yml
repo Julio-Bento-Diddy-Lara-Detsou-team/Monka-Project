@@ -21,7 +21,7 @@
 #
 # true, false, on, off, yes, no
 #
-# Instead, surround them with single quotes.
+# Instead, surround them with single quotes_old.
 #
 # en:
 #   'true': 'foo'

@@ -1,3 +1,31 @@
 .card-form__body {
   background-color: white;
 }
+
+.form-control {
+  font-family: 'Comfortaa', Helvetica, Arial, sans-serif !important;
+}
+
+.custom-radio-check input[type="radio"] {
+  display: none;
+}
+
+.custom-radio-check input[type="radio"]:checked+label {
+  background-color: #6c757d;
+  color: white !important;
+}
+
+.select2-selection {
+  overflow: auto
+}
+
+.zipcode {
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: rgba(147, 159, 173, 0.84);
+  line-height: .9375rem;
+  margin-bottom: .5rem;
+  font-weight: bold;
+  white-space: nowrap !important;
+}
