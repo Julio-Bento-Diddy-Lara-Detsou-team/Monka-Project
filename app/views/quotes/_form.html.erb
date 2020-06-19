@@ -11,34 +11,31 @@
       </ul>
     </div>
   <% end %>
+  <% if controller_name === "quotes" && action_name === "new"  %>
+    <div class="form-group text-center custom-radio-check card-form__body mb-4">
+      <%= form.label :is_invoice, "Type de document :" %><br/>
 
-  <div class="card card-form__body card-body">
+        <!--form-check-input / custom-control-input-->
+        <%= form.radio_button :is_invoice, false, checked: true, class: "form-check-input" %>
+        <%= form.label :is_invoice, "Devis", value: false, class: "btn btn-outline-secondary form-check-label" %>
+
+        <%= form.radio_button :is_invoice, true, class: "form-check-input" %>
+        <%= form.label :is_invoice, "Facture", value: true, class: "btn btn-outline-secondary form-check-label" %>
+    </div>
+  <% end %>
+
+  <div class="card card-form card-form__body card-body">
     <div class="d-flex justify-content-center flex-column text-center my-5 navbar-light">
       <div class="navbar-brand d-flex flex-column m-0" style="min-width: 0">
         <% if current_user.logo.attached? %>
           <%= image_tag current_user.logo, alt: 'logo', width: "100" %>
         <%end %>
-        <span><% if quote.is_invoice %>Facture<% else %>Devis<% end %></span>
-      </div>
-    </div>
-
-    <div class="form-group btn-group-lg mb-4">
-      <%= form.label :is_invoice, "Type de document :" %><br />
-
-      <div class="form-check form-check-inline">
-        <%= form.radio_button :is_invoice, false, checked: true, class: "form-check-input" %>
-        <%= form.label :is_invoice, "Devis", value: false, class: "form-check-label" %>
-      </div>
-
-      <div class="form-check form-check-inline">
-        <%= form.radio_button :is_invoice, true, class: "form-check-input" %>
-        <%= form.label :is_invoice, "Facture", value: true, class: "form-check-label" %>
       </div>
     </div>
 
     <%#= quote.customer.id if quote.customer  %>
     <div class="row">
-      <div class="field col-lg-6">
+      <div class="col-lg-6">
         <% current_customer = [] << quote.customer.id if quote.customer %>
 
         <%= form.label :customer_id, "À destination de :" %><br/>
@@ -47,7 +44,7 @@
                             current_user.customers.order(:last_name).collect{ |u| [u.fullname, u.id] },
                             current_customer
                         ),
-                        class: "form-control" %>
+                        {}, class: "form-control" %>
       </div>
 
       <div class="col-lg-6 text-right">
@@ -62,26 +59,44 @@
       </div>
     </div>
 
-    <p class="lead">Numéro de devis : <span class="small">INITIALES-<%= DateTime.now.strftime("%d%m%Y") %>-01</span> </p>
-    <p class="lead">Date d'échéance : <span class="small"><%= 3.days.from_now.strftime("%d/%m/%Y") %></span> </p>
 
+
+    <div class="row mb-5">
+      <div class="col-lg">
+        <fieldset disabled>
+          <label for="quote_number">Numéro du document :</label>
+          <input type="text" class="form-control" id="quote_number" placeholder="INITIALES-<%= DateTime.now.strftime("%d%m%Y") %>-01">
+        </fieldset>
+      </div>
+      <div class="col-lg text-right">
+        <fieldset disabled>
+          <label for="date">Date d'échéance :</label>
+          <input type="text" class="form-control text-right" id="date" placeholder="<%= 3.days.from_now.strftime("%d/%m/%Y") %>">
+        </fieldset>
+      </div>
+    </div>
     <hr/>
 
-    <div class="form-group">
+    <div class="form-group d-flex flex-wrap">
       <%= form.label :good, "Produits ou services :" %><br/>
       <%= form.select :good,
                       options_for_select(
                           current_user.goods.order(:title).collect{ |u| ["#{u.title} #{u.price}€", u.id] },
                           quote.goods.map {|good| good.id}
                       ),
-                      { :prompt => "Sélectionner un produit ou un service"}, { :multiple => true, :size => 5, class: "form-control"} %>
+                      {}, { :multiple => true, :size => 5, class: "form-control"} %>
+    </div>
+    <hr/>
+
+    <div class="bg-dark rounded">
+      <p class="text-white text-right mr-4 pt-3">Votre total s'affichera une fois votre devis validé.</p>
+      <%= form.hidden_field :amount, value: 0 %>
     </div>
 
-    <%= form.hidden_field :amount, value: 0 %>
-
+    <hr/>
     <fieldset disabled>
       <label for="CGV">Termes et conditions :</label>
-      <input type="text" class="form-control" id="CGV" value="Conditions générales de vente n°1">
+      <input type="text" class="form-control" id="CGV" placeholder="Conditions générales de vente n°1">
     </fieldset>
 
     <div class="row justify-content-center">
@@ -91,8 +106,7 @@
 
   <!-- CODE SMELL :
   This JS code below should be in the assets but this is currently making Heroku deployment crash and
-  I don't have time to fix it properly right now. Sorry to the person who will have to fix this in the futur...
+  I don't have time to fix it properly right now. Sorry to the person who will have to fix this in the future...
   -->
   <%= render "javascript" %>
 <% end %>
-

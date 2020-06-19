@@ -1,4 +1,6 @@
 class GoodsController < ApplicationController
+
+  before_action :authenticate_user!
   before_action :set_good, only: [:show, :edit, :update, :destroy]
 
   def index

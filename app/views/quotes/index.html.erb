@@ -112,6 +112,48 @@
                 <% end %>
               </td>
             </tr>
+          <% end %><div class="col-lg-12 card-form__body mt-5">
+      <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
+        <table class="table mb-0 thead-border-top-0">
+          <h3 class="text-dark-gray d-flex align-items-center mt-3 ml-4">
+            <strong>Mes factures payées</strong>
+          </h3>
+          <thead>
+          <tr>
+            <th>Numéro de la facture</th>
+            <th>Entreprise</th>
+            <th>Nom du client</th>
+            <th class="text-center">Voir</th>
+            <th class="text-center">Supprimer</th>
+          </tr>
+          </thead>
+          <tbody class="list" id="blah">
+          <% @paid_invoices.order(invoice_sending_date: :asc).each do |invoice| %>
+            <tr id="<%= invoice.id %>">
+              <td>
+                <%= link_to quote_path(invoice.id) do %>
+                  <%= invoice.invoice_number %>
+                <% end %>
+              </td>
+              <td>
+                <%= invoice.customer.company_name %>
+              </td>
+              <td>
+                <%= link_to customer_path(invoice.customer.id) do %>
+                  <%= invoice.customer.last_name.upcase %> <%= invoice.customer.first_name %>
+                <% end %>
+              </td>
+              <td class="text-center">
+                <%= link_to quote_path(invoice.id), class:"btn btn-primary btn-sm" do %>
+                  Voir
+                <% end %>
+              </td>
+              <td class="text-center">
+                <%= link_to invoice, method: :delete, class: "btn btn-danger text-white btn-sm", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %>
+                  Supprimer
+                <% end %>
+              </td>
+            </tr>
           <% end %>
           </tbody>
         </table>
