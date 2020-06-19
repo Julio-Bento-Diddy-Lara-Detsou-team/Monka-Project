@@ -20,6 +20,12 @@ footer {
     color: #FFFFFF;
 }
 
+:root {
+    --primary-color: rgba(72, 241, 214, 0.91);
+    --secondary-color: #AAE9E2;
+    --grey-color: #2F3240;
+}
+
 .greenfoot {
     color: #36F1CD;
 }
@@ -35,12 +41,6 @@ footer {
 .greentitle {
     color: var(--primary-color) !important;
     font-weight: bold;
-}
-
-:root {
-    --primary-color: rgba(72, 241, 214, 0.91);
-    --secondary-color: #AAE9E2;
-    --grey-color: #2f3240;
 }
 
 .bg-dark {
@@ -62,7 +62,6 @@ footer {
     border-color: var(--primary-color) !important;
 }
 
-
 .active {
     color: var(--primary-color) !important;
 }
@@ -82,10 +81,6 @@ footer {
 
 .text-success {
     color: var(--primary-color) !important;
-}
-
-.white-hr {
-    border-top: 1px solid white;
 }
 
 /* Small and large containers. */

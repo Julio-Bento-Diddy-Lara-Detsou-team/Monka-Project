@@ -1,19 +1,14 @@
-
 <div class="container-fluid page__heading-container">
   <div class="page__heading d-flex align-items-center">
     <div class="flex">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
-          <li class="breadcrumb-item"><%= link_to root_path do %><i class="material-icons icon-20pt">home</i><% end %></li>
-          <li class="breadcrumb-item active" aria-current="page">Edition du devis / de la facture</li>
+          <li class="breadcrumb-item"><%= link_to "Accueil", root_path%></li>
+          <li class="breadcrumb-item"><%= link_to "Mes devis et factures", quotes_path, class: "active"%></li>
         </ol>
       </nav>
-      <h1 class="mt-3">Editer le document</h1>
+      <h1 class="mt-3">Modification du document</h1>
     </div>
-  </div>
-  <!-- Button "Back to customer index" -->
-  <div class="nav justify-content-end">
-    <a href="<%= quotes_path %>" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Retour</a>
   </div>
 </div>
 
