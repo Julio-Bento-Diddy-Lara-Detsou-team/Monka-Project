@@ -59,7 +59,7 @@
                   <th class="text-center">Prix</th>
                 </tr>
                 </thead>
-                <!--Quote content : goods quantity, title description ---------->
+                <!-- Quote content : goods quantity, title description -->
                 <tbody>
                 <% @quote.goods.each do |good| %>
                   <tr>
@@ -73,7 +73,7 @@
                 </tbody>
               </table>
             </div>
-            <!--Quote total amount ---------->
+            <!-- Quote total amount -->
             <div class="bg-dark rounded">
               <h3 class="text-white text-right mr-4 py-3">Total : <%= number_to_currency(calculate_total_quote(@quote.goods), :locale => :fr) %></h3>
             </div>
@@ -98,7 +98,7 @@
       <!-- Buttons action -->
       <div class="row justify-content-center mb-5 mt-3">
         <div class="row justify-content-center">
-          <!--Button link to PDF-->
+          <!--Button link to PDF -->
           <%= link_to quote_path(@quote, format: "pdf"), class:"btn btn-secondary ml-3" do %>Télécharger <i class='material-icons'>file_download</i><% end %>
         </div>
       </div>

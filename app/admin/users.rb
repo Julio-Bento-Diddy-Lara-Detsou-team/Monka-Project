@@ -14,6 +14,4 @@ ActiveAdmin.register User do
                 :company_id,
                 :is_admin,
                 :city
-
-  
 end

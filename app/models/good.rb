@@ -8,7 +8,7 @@ class Good < ApplicationRecord
             length: { in: 3..50, message: "Veuillez saisir un produit/service entre 3 et 50 caractères"}
 
   validates :description,
-            length: { in: 3..50, message: "Veuillez saisir un produit/service entre 3 et 50 caractère"}
+            length: { in: 3..200, message: "Veuillez saisir un produit/service entre 3 et 200 caractères"}
 
   validates :quantity,
             presence: true

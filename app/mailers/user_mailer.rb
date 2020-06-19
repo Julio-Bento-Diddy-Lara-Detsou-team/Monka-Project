@@ -6,5 +6,4 @@ class UserMailer < ApplicationMailer
     @url = 'https://monka-project.herokuapp.com'
     mail(to: @user.email, subject: 'Bienvenue chez Monka !')
   end
-
 end

@@ -15,12 +15,12 @@
     <div class="form-group text-center custom-radio-check card-form__body mb-4">
       <%= form.label :is_invoice, "Type de document :" %><br/>
 
-        <!--form-check-input / custom-control-input-->
-        <%= form.radio_button :is_invoice, false, checked: true, class: "form-check-input" %>
-        <%= form.label :is_invoice, "Devis", value: false, class: "btn btn-outline-secondary form-check-label" %>
+      <!--form-check-input / custom-control-input-->
+      <%= form.radio_button :is_invoice, false, checked: true, class: "form-check-input" %>
+      <%= form.label :is_invoice, "Devis", value: false, class: "btn btn-outline-secondary form-check-label" %>
 
-        <%= form.radio_button :is_invoice, true, class: "form-check-input" %>
-        <%= form.label :is_invoice, "Facture", value: true, class: "btn btn-outline-secondary form-check-label" %>
+      <%= form.radio_button :is_invoice, true, class: "form-check-input" %>
+      <%= form.label :is_invoice, "Facture", value: true, class: "btn btn-outline-secondary form-check-label" %>
     </div>
   <% end %>
 
@@ -33,7 +33,6 @@
       </div>
     </div>
 
-    <%#= quote.customer.id if quote.customer  %>
     <div class="row">
       <div class="col-lg-6">
         <% current_customer = [] << quote.customer.id if quote.customer %>
@@ -44,7 +43,8 @@
                             current_user.customers.order(:last_name).collect{ |u| [u.fullname, u.id] },
                             current_customer
                         ),
-                        {}, class: "form-control" %>
+                        {}, class: "form-control"
+        %>
       </div>
 
       <div class="col-lg-6 text-right">
@@ -84,7 +84,8 @@
                           current_user.goods.order(:title).collect{ |u| ["#{u.title} #{u.price}€", u.id] },
                           quote.goods.map {|good| good.id}
                       ),
-                      {}, { :multiple => true, :size => 5, class: "form-control"} %>
+                      {}, { :multiple => true, :size => 5, class: "form-control"}
+      %>
     </div>
     <hr/>
 
