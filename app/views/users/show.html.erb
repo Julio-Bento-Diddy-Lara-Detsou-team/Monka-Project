@@ -34,13 +34,12 @@
                 <%= submit_tag "Valider", class: "btn btn-outline-secondary" %>
               </div>
             <% end %>
-
-            <p class="text-left"><span class="text-muted">Nom : </span><%= @user.first_name if @user.first_name.present? %> <span style="text-transform: uppercase;"><%= @user.last_name if @user.first_name.present? %></span></p>
-            <p class="text-left"><span class="text-muted">Email : </span><%= @user.email if @user.first_name.present? %></p>
-            <p class="text-left"><span class="text-muted">Téléphone : </span><%= @user.phone_number if @user.first_name.present? %></p>
-            <p class="text-left"><span class="text-muted">Entreprise : </span> <%= @user.company_name if @user.first_name.present? %></p>
-            <p class="text-left"><span class="text-muted">Siret / Siren : </span><%= @user.company_id if @user.first_name.present? %></p>
-            <p class="text-muted text-left mb-2">Adresse : </p><p class="text-left"><%= @user.address if @user.first_name.present? %> <%= @user.zip_code if @user.first_name.present? %> <%= @user.city if @user.first_name.present? %> <span style="text-transform: uppercase;"><%= @user.country if @user.first_name.present? %></span></p>
+            <p class="text-left"><span class="text-muted">Nom : </span><%= @user.first_name %> <span style="text-transform: uppercase;"><%= @user.last_name %></span></p>
+            <p class="text-left"><span class="text-muted">Email : </span><%= @user.email %></p>
+            <p class="text-left"><span class="text-muted">Téléphone : </span><%= @user.phone_number %></p>
+            <p class="text-left"><span class="text-muted">Entreprise : </span> <%= @user.company_name %></p>
+            <p class="text-left"><span class="text-muted">Siret / Siren : </span><%= @user.company_id %></p>
+            <p class="text-muted text-left mb-2">Adresse : </p><p class="text-left"><%= @user.address %> <%= @user.zip_code %> <%= @user.city %> <span style="text-transform: uppercase;"><%= @user.country %></span></p>
           </div>
         </div>
       </div>
