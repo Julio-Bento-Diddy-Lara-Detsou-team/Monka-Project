@@ -98,6 +98,7 @@ Monka comes from the French “Mon CA”. “CA” being short for “Chiffre d�
  1. Run `git clone` to clone the project on your environment
  2. Run `cd ` to go in the project's repository
  3. Run `bundle install` to install all the gem dependencies
+ 4. Run `npm install` to install all JS dependencies
  
  ### Database creation & initialisation
  
