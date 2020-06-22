@@ -11,38 +11,44 @@
       </div>
     </div>
   </div>
-    <br>
-    <div class="text-center font-weight-bold my-1">
-      <%=link_to "Une petite Démo ?", "https://stonly.com/guide/fr/premiers-pas-monka-ujlYchzm0I/Steps/", class:"btn-jumbo2 m-2 p-3 shadow mb-5 text-decoration-none", target:"_blank" %>
-    </div>
-    <br>
+  <br>
+  <div class="text-center font-weight-bold my-1">
+    <%=link_to "Une petite Démo ?", "https://stonly.com/guide/fr/premiers-pas-monka-ujlYchzm0I/Steps/", class:"btn-jumbo2 m-2 p-3 shadow mb-5 text-decoration-none", target:"_blank" %>
+  </div>
+  <br>
 
-    <br>
+  <br>
 </section>
 
 <!-- Three columns Benefits -->
-<section>
-  <h2 class="display-5 text-center my-5"><span class="green-new font-weight-bold">Monka</span> en quelques mots c'est...</h2>
+<section class="container text-center">
+  <h2 class="display-5 my-5"><span class="green-new font-weight-bold">Monka</span> en quelques mots c'est...</h2>
   <br>
-  <div class="row my-5">
-    <div class="col-lg-4 text-center justify-content-center">
-      <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="80" height="80" src="<%= image_path "easy.png" %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" alt="">
-      <h3 class= "display-9 text-center my-5 ">Simple</h3>
-      <p>Une application qui regroupe les fonctionnalités de gestion essentielles, accessible à tous les auto-entrepreneurs.</p>
+  <div class="row my-5 justify-content-center">
+    <div class="col-lg-4 ">
+      <div class="benefit"><img class="img-fluid mx-auto mb-4 mt-3" width="80" src="<%= image_path "bulb.svg" %>" alt="simple_icon"></div>
+      <div>
+        <h3 class= "display-9 mb-4 mt-3">Simple</h3>
+        <p>Une application qui regroupe les fonctionnalités de gestion essentielles, accessible à tous les auto-entrepreneurs.</p>
+      </div>
       <br>
     </div>
 
-    <div class="col-lg-4 text-center justify-content-center">
-      <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="80" height="80" src="<%= image_path "essential.png" %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" alt="">
-      <h3 class= "display-9 text-center my-5 justify-content-center">Rapide</h3>
-      <p>Un clic top chrono pour accéder à votre chiffre d'affaire et à votre synthèse des factures ! </p>
+    <div class="col-lg-4 ">
+      <div class="benefit"><img class="img-fluid mx-auto mb-4 mt-3" width="80" src="<%= image_path "timer.svg" %>" alt="fast_icon"></div>
+      <div>
+        <h3 class= "display-9 mb-4 mt-3">Rapide</h3>
+        <p>Un clic top chrono pour accéder à votre chiffre d'affaire et à votre synthèse des factures ! </p>
+      </div>
       <br>
     </div>
 
-    <div class="col-lg-4 text-center justify-content-center">
-      <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="80" height="80" src="<%= image_path "device.png" %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" alt="">
-      <h3 class= "display-9 text-center my-5 ">Pratique</h3>
-      <p>Ergonomique, Monka vous suit partout ! Créez, éditez des factures et envoyez-les à vos clients n'importe où, n'importe quand.</p>
+    <div class="col-lg-4 ">
+      <div class="benefit"><img class="img-fluid mx-auto mb-4 mt-3" width="80" src="<%= image_path "device.svg" %>" alt="ergonomic_icon"></div>
+      <div>
+        <h3 class= "display-9 mb-4 mt-3">Pratique</h3>
+        <p>Créez, éditez des factures et envoyez-les à vos clients n'importe où, n'importe quand depuis votre smartphone.</p>
+      </div>
       <br>
     </div>
   </div>
@@ -75,10 +81,10 @@
       <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="30" height="30" src="<%= image_path "bluegreybubble.png" %>" alt="bluegrey_bubble_ui"/>
     </div>
   </div>
-      <br>
-      <br>
-      <br>
-      <!--==============-->
+  <br>
+  <br>
+  <br>
+  <!--==============-->
 </section>
 <section>
   <div class="row featurette my-5">
@@ -106,8 +112,8 @@
       <p><strong>Générez en un clic autant de devis que désirés</strong>, transformez-les en factures et envoyez-les, dans la foulée à vos clients !</p>
     </div>
     <div class="col-md-7">
-      <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="900" height="900" src="<%= image_path "step3.png" %>" alt="step3_monka"/>
-      <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="40" height="40" src="<%= image_path "bulbglight.png" %> "alt="blue_bubble_ui"/>
+      <img class="img-fluid mx-auto" width="900" height="900" src="<%= image_path "step3.png" %>" alt="step3_monka"/>
+      <img class="img-fluid mx-auto" width="40" height="40" src="<%= image_path "bulbglight.png" %> "alt="blue_bubble_ui"/>
     </div>
   </div>
 </section>
