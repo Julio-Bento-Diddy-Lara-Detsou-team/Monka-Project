@@ -74,8 +74,10 @@
 }
 
 .btn-jumbo5:hover {
-  transform: scale(1.1);
+  transform: scale(1.1)!important;
+  color: var(--grey-color)!important;
 }
+
 
 .btn-jumbo5{
   background-color: #e7e7fc;

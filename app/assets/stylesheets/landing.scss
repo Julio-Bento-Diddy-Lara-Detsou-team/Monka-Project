@@ -14,7 +14,7 @@ main {
 
 body {
   color:#484C5E;
-  font-family: Nunito;
+  font-family: 'Nunito', sans-serif;
   font-size: 18px;
 }
 
@@ -30,13 +30,16 @@ body {
   background-color: var(--grey-color);
 }
 
-/*Video*/
+
 .video-container {
   max-width: 600px;
   margin: auto;
 }
 
-
+.benefit {
+  height: 40%;
+  width: 100%;
+}
 .circle-blue {
   border: solid 1px #b6b6fa;
 }

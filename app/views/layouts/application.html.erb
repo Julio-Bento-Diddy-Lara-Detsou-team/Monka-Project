@@ -12,6 +12,20 @@
     <%= favicon_link_tag 'calculate_vert_icon160.png' %>
     <!-- CSS -->
     <%= stylesheet_link_tag 'application', media: 'all' %>
+
+    <script async type="text/javascript">
+        !function () {
+            if (window.JOONBOT_WIDGET_ID) {
+                console.warn("Joonbot snippet included twice");
+            } else {
+                window.JOONBOT_WIDGET_ID = "ed242be4-5e89-4823-889d-140b1f904caa";
+                var n, o;
+                o = document.createElement("script");
+                o.src = "https://js.joonbot.com/init.js", o.defer = !0, o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous";
+                n = document.getElementsByTagName("script")[0], n.parentNode.insertBefore(o, n);
+            }
+        }()
+    </script>
   </head>
 
   <body>
