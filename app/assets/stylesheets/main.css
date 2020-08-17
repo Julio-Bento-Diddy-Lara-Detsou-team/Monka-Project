@@ -38,6 +38,12 @@ footer {
     color: #aae9e2;
 }
 
+.greenblue:hover{
+    color: var(--primary-color) !important;
+    text-decoration: none;
+}
+
+
 .greentitle {
     color: var(--primary-color) !important;
     font-weight: bold;

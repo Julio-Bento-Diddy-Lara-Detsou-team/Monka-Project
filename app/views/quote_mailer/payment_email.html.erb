@@ -20,6 +20,7 @@ Vous avez reçu une demande de paiement de la part de <%= @user.first_name %> <%
 <!-- Quote total amount -->
 <br>
 <p>Le total s'élève donc à : <%=@quote.amount %>€ </p>
+<p>Le total s'élève donc à : <%= number_to_currency(@quote.amount, locale: :fr) %></p>
 <br>
 <p>Vous pouvez directement payer <%= @user.first_name %> <%= @user.last_name %> <%= link_to  "en cliquant sur 👉 ce lien sécurisé ", @url %> </p>
 

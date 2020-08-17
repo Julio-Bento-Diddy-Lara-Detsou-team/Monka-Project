@@ -24,7 +24,8 @@
         <hr class="hrw teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
           Une appli <span class="greenblue">100% made in France</span> pour les auto-entrepreneurs qui recherchent l'efficacité ! <br/>
-          Développée avec fougue par <a href="//github.com/Julio-Bento-Diddy-Lara-Detsou-team"><span class="greenblue">The Monka Team</span></a> pour <a href="//thehackingproject.org/fr"><span class="greenblue">THP</span></a>.
+          Développée avec fougue par <%=link_to "The Monka Team", "//github.com/Julio-Bento-Diddy-Lara-Detsou-team" ,class: "greenblue text-decoration-none"%> pour <%=link_to "THP", "//thehackingproject.org/fr", class:"greenblue text-decoration-none" %>.
+
         </p>
       </div>
 
@@ -41,7 +42,7 @@
         <h6 class=" greenfoot text-uppercase font-weight-bold">Contact</h6>
         <hr class="hrw teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p><i class="fa fa-home mr-3"></i>8 rue du Poitou 75003, Paris</p>
-        <p><i class="fa fa-envelope mr-3"></i>contact@monka.com</p>
+        <p><i class="fa fa-envelope mr-3"></i><%=link_to "contact@monka.com", contacts_path, class:"greenblue text-decoration-none", target:"_blank" %></p>
         <p><i class="fa fa-phone mr-3"></i> +33 6 19 76 78 56</p>
       </div>
     </div>
