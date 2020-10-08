@@ -13,7 +13,9 @@
     </div>
     <!-- Button add Customer-->
     <% unless current_user.customers.empty? %>
-      <%= link_to "Nouveau client", new_customer_path, class: "btn btn-primary ml-3" %>
+      <%= link_to new_customer_path, class: "btn btn-primary ml-3" do %>
+        <i class="fa fa-plus mr-3"></i> Nouveau client
+      <% end %>
     <% end %>
   </div>
 </div>
@@ -39,6 +41,7 @@
             <th>Nom complet</th>
             <th>Entreprise</th>
             <th>Email</th>
+            <th class="text-center " colspan="3">Actions</th>
           </tr>
           </thead>
           <tbody>
@@ -47,14 +50,20 @@
               <td><%= link_to customer_path(customer.id) do %><%= customer.last_name.upcase %> <%= customer.first_name %><% end %></td>
               <td><%= customer.company_name %></td>
               <td><%= customer.email %></td>
+              <!-- Actions -->
               <td class="text-center">
-                <%= link_to edit_customer_path(customer.id), class: "btn btn-primary btn-sm" do %>
-                  <i class="fa fa-pencil"></i>
+                <%= link_to customer_path(customer.id), class: "btn btn-primary btn-sm" do %>
+                  <i class="fa fa-eye"></i> Voir
+                <% end %>
+              </td>
+              <td class="text-center">
+                <%= link_to edit_customer_path(customer.id), class: "btn btn-warning btn-sm" do %>
+                  <i class="fa fa-pencil"></i> Editer
                 <% end %>
               </td>
               <td class="text-center">
                 <%= link_to customer_path(customer.id), method: :delete, class:"btn btn-danger text-white btn-sm", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %>
-                  <i class="fa fa-times"></i>
+                  <i class="fa fa-times"></i> Supprimer
                 <% end %>
               </td>
             </tr>

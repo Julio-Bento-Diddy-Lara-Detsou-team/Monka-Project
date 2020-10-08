@@ -55,7 +55,7 @@
 
 <div class="card">
   <div class="card-header card-header-large bg-white">
-    <h4 class="card-header__title">Mes Devis/Factures - Juin 2020</h4>
+    <h4 class="card-header__title">Mes Devis/Factures - <%= @date %></h4>
   </div>
 
   <!-- If chart is empty-->
@@ -116,15 +116,23 @@
               }, options)
 
               var data = {
-                  labels: ["Jan", "Fev", "Mar", "Avr", "Mai", "Jui"],
+                  labels: ["Jan", "Fev", "Mar", "Avr", "Mai", "Jui", "Jui", "Aoû", "Sep", "Nov", "Déc"],
                   datasets: [{
                       label: "Performance",
-                      data: [<%= get_calendar_turnover(@paid_invoices, "01") %>,
+                      data: [
+                          <%= get_calendar_turnover(@paid_invoices, "01") %>,
                           <%= get_calendar_turnover(@paid_invoices, "02") %>,
                           <%= get_calendar_turnover(@paid_invoices, "03") %>,
                           <%= get_calendar_turnover(@paid_invoices, "04") %>,
                           <%= get_calendar_turnover(@paid_invoices, "05") %>,
-                          <%= get_calendar_turnover(@paid_invoices, "06") %>]
+                          <%= get_calendar_turnover(@paid_invoices, "06") %>,
+                          <%= get_calendar_turnover(@paid_invoices, "07") %>,
+                          <%= get_calendar_turnover(@paid_invoices, "08") %>,
+                          <%= get_calendar_turnover(@paid_invoices, "09") %>,
+                          <%= get_calendar_turnover(@paid_invoices, "10") %>,
+                          <%= get_calendar_turnover(@paid_invoices, "11") %>,
+                          <%= get_calendar_turnover(@paid_invoices, "12") %>
+                      ]
                   }]
               }
 
@@ -183,7 +191,7 @@
               }, options)
 
               var data = {
-                  labels: ["Devis", "Factures payées", "Factures non-payées"],
+                  labels: ["Devis", "Factures payée", "Factures non-payée"],
                   datasets: [{
                       data: [<%= current_user.quotes.where(is_invoice: false).count %>, <%= current_user.quotes.where(is_invoice: true, is_paid: true).count %>, <%= current_user.quotes.where(is_invoice: true, is_paid: false).count %>],
                       backgroundColor: [settings.colors.primary[400], settings.colors.success[400], settings.colors.danger[400]],

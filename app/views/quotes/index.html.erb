@@ -13,7 +13,9 @@
     </div>
     <!-- Button add quote-->
     <% unless current_user.quotes.empty? %>
-      <%= link_to "Nouveau devis", new_quote_path, class: "btn btn-primary ml-3" %>
+      <%= link_to new_quote_path, class: "btn btn-primary ml-3" do %>
+        <i class="fa fa-plus mr-3"></i> Nouveau devis
+      <% end %>
     <% end %>
   </div>
 </div>
@@ -32,7 +34,7 @@
     </div>
   <% else %>
     <div class="col-lg-12 card-form__body">
-      <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
+      <div class="table-responsive border-bottom">
         <h3 class="text-dark-gray d-flex align-items-center mt-3 font-weight-bold ml-4">Mes devis</h3>
         <table class="table mb-0 thead-border-top-0">
           <thead>
@@ -40,32 +42,33 @@
             <th>Numéro du devis</th>
             <th>Entreprise</th>
             <th>Nom du client</th>
+            <th class="text-center " colspan="3">Actions</th>
           </tr>
           </thead>
-          <tbody class="list" id="blah">
+          <tbody>
           <% @quotes.order(quote_sending_date: :asc).each do |quote| %>
             <tr id="<%= quote.id %>">
-              <td>
-                <%= link_to quote_path(quote.id) do %>
-                  <%= quote.quote_number %>
-                <% end %>
-              </td>
-              <td>
-                <%= quote.customer.company_name %>
-              </td>
+              <td><%= link_to quote_path(quote.id) do %> <%= quote.quote_number %> <% end %></td>
+              <td><%= quote.customer.company_name %></td>
               <td>
                 <%= link_to customer_path(quote.customer.id) do %>
                   <%= quote.customer.last_name.upcase %> <%= quote.customer.first_name %>
                 <% end %>
               </td>
+              <!-- Action -->
               <td class="text-center">
-                <%= link_to edit_quote_path(quote.id), class: "btn btn-primary btn-sm" do %>
-                  <i class="fa fa-pencil"></i>
+                <%= link_to quote_path(quote.id), class: "btn btn-primary btn-sm" do %>
+                  <i class="fa fa-eye"></i> Voir
                 <% end %>
               </td>
               <td class="text-center">
-                <%= link_to quote, method: :delete, class: "btn btn-danger text-white btn-sm", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %>
-                  <i class="fa fa-times"></i>
+                <%= link_to edit_quote_path(quote.id), class: "btn btn-warning btn-sm" do %>
+                  <i class="fa fa-pencil"></i> Editer
+                <% end %>
+              </td>
+              <td class="text-center">
+                <%= link_to quote_path(quote.id), method: :delete, class: "btn btn-danger text-white btn-sm", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %>
+                  <i class="fa fa-times"></i> Supprimer
                 <% end %>
               </td>
             </tr>
@@ -75,7 +78,7 @@
       </div>
     </div>
     <div class="col-lg-12 card-form__body mt-5">
-      <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
+      <div class="table-responsive border-bottom">
         <table class="table mb-0 thead-border-top-0">
           <h3 class="text-dark-gray d-flex align-items-center mt-3 font-weight-bold ml-4">Mes factures &nbsp<span class="active">payées</span></h3>
           <thead>
@@ -83,32 +86,33 @@
             <th>Numéro de la facture</th>
             <th>Entreprise</th>
             <th>Nom du client</th>
+            <th class="text-center " colspan="3">Actions</th>
           </tr>
           </thead>
-          <tbody class="list" id="blah">
+          <tbody>
             <% @paid_invoices.order(invoice_sending_date: :asc).each do |invoice| %>
               <tr id="<%= invoice.id %>">
-                <td>
-                  <%= link_to quote_path(invoice.id) do %>
-                    <%= invoice.invoice_number %>
-                  <% end %>
-                </td>
-                <td>
-                  <%= invoice.customer.company_name %>
-                </td>
+                <td><%= link_to quote_path(invoice.id) do %><%= invoice.invoice_number %><% end %></td>
+                <td><%= invoice.customer.company_name %></td>
                 <td>
                   <%= link_to customer_path(invoice.customer.id) do %>
                     <%= invoice.customer.last_name.upcase %> <%= invoice.customer.first_name %>
                   <% end %>
                 </td>
+                <!-- Action -->
                 <td class="text-center">
-                  <%= link_to edit_quote_path(invoice.id), class: "btn btn-primary btn-sm" do %>
-                    <i class="fa fa-pencil"></i>
+                  <%= link_to quote_path(invoice.id), class: "btn btn-primary btn-sm" do %>
+                    <i class="fa fa-eye"></i> Voir
+                  <% end %>
+                </td>
+                <td class="text-center">
+                  <%= link_to edit_quote_path(invoice.id), class: "btn btn-warning btn-sm" do %>
+                    <i class="fa fa-pencil"></i> Editer
                   <% end %>
                 </td>
                 <td class="text-center">
                   <%= link_to invoice, method: :delete, class: "btn btn-danger text-white btn-sm", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %>
-                    <i class="fa fa-times"></i>
+                    <i class="fa fa-times"></i> Supprimer
                   <% end %>
                 </td>
               </tr>
@@ -118,7 +122,7 @@
       </div>
     </div>
     <div class="col-lg-12 card-form__body mt-5">
-      <div class="table-responsive border-bottom" data-toggle="lists" data-lists-values='["js-lists-values-employee-name"]'>
+      <div class="table-responsive border-bottom">
         <table class="table mb-0 thead-border-top-0">
           <h3 class="text-dark-gray d-flex align-items-center mt-3 font-weight-bold ml-4">Mes factures &nbsp<span class="text-danger">non-payées</span></h3>
           <thead>
@@ -126,32 +130,33 @@
             <th>Numéro de la facture</th>
             <th>Entreprise</th>
             <th>Nom du client</th>
+            <th class="text-center " colspan="3">Actions</th>
           </tr>
           </thead>
-          <tbody class="list" id="blah">
+          <tbody>
           <% @unpaid_invoices.order(invoice_sending_date: :asc).each do |invoice| %>
             <tr id="<%= invoice.id %>">
-              <td>
-                <%= link_to quote_path(invoice.id) do %>
-                  <%= invoice.invoice_number %>
-                <% end %>
-              </td>
-              <td>
-                <%= invoice.customer.company_name %>
-              </td>
+              <td><%= link_to quote_path(invoice.id) do %><%= invoice.invoice_number %><% end %></td>
+              <td><%= invoice.customer.company_name %></td>
               <td>
                 <%= link_to customer_path(invoice.customer.id) do %>
                   <%= invoice.customer.last_name.upcase %> <%= invoice.customer.first_name %>
                 <% end %>
               </td>
+              <!-- Action -->
               <td class="text-center">
-                <%= link_to edit_quote_path(invoice.id), class: "btn btn-primary btn-sm" do %>
-                  <i class="fa fa-pencil"></i>
+                <%= link_to quote_path(invoice.id), class: "btn btn-primary btn-sm" do %>
+                  <i class="fa fa-eye"></i> Voir
+                <% end %>
+              </td>
+              <td class="text-center">
+                <%= link_to edit_quote_path(invoice.id), class: "btn btn-warning btn-sm" do %>
+                  <i class="fa fa-pencil"></i> Editer
                 <% end %>
               </td>
               <td class="text-center">
                 <%= link_to invoice, method: :delete, class: "btn btn-danger text-white btn-sm", data: {confirm: 'Supprimer cet élément ?'}, remote: true do %>
-                  <i class="fa fa-times"></i>
+                  <i class="fa fa-times"></i> Supprimer
                 <% end %>
               </td>
             </tr>
